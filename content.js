@@ -1,5 +1,5 @@
 // ============================================================
-//  EDIT THIS FILE to add your content for Atyshman's Casino Night
+//  EDIT THIS FILE to add your content for Ayushman's Casino Night
 //  Photos, artifacts, games (+rules), and YouTube playlists.
 //  Image paths: put files in an "assets/" folder and reference
 //  like "assets/photo1.jpg", or use full URLs.
@@ -85,7 +85,7 @@ window.CONTENT = {
         "Caller draws numbers; players mark matches on their ticket.",
         "First to complete a row/column wins a line prize; full house wins the jackpot.",
         "Casino twist: bonus prizes for corners, star, and top/bottom lines.",
-        "House (Atyshman) calls the numbers — keep your tickets ready!",
+        "House (Ayushman) calls the numbers — keep your tickets ready!",
       ],
     },
   ],

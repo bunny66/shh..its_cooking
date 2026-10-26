@@ -1,5 +1,5 @@
 // ============================================================
-//  Atyshman's Casino Night - app logic
+//  Ayushman's Casino Night - app logic
 // ============================================================
 
 (function () {
@@ -42,6 +42,24 @@
     style.textContent = "@keyframes float { 0%,100% { transform: translate(0,0); } 50% { transform: translate(20px,-20px); } }";
     document.head.appendChild(style);
   }
+  // Balloons
+  const balloons = $("#balloons");
+  if (balloons) {
+    const bColors = ["🎈", "🎈", "🎈", "🟥", "🟦", "🟨"];
+    const bCount = window.matchMedia("(max-width: 480px)").matches ? 8 : 14;
+    for (let i = 0; i < bCount; i++) {
+      const b = document.createElement("span");
+      b.className = "balloon";
+      b.textContent = "🎈";
+      const left = Math.random() * 100;
+      const dur = 12 + Math.random() * 14;
+      const delay = Math.random() * 12;
+      const hue = Math.random() * 360;
+      b.style.cssText = "left:" + left + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;filter:hue-rotate(" + hue + "deg);";
+      balloons.appendChild(b);
+    }
+  }
+
 
   // Photos
   const gallery = $("#gallery");

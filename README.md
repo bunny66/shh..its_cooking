@@ -1,6 +1,6 @@
-# Atyshman's Birthday — Casino Night 🎰
+# Ayushman's Birthday — Casino Night 🎰
 
-A responsive, mobile + tablet + desktop + TV friendly single-page website for Atyshman's birthday casino night theme.
+A responsive, mobile + tablet + desktop + TV friendly single-page website for Ayushman's birthday casino night theme.
 
 ## Files
 - `index.html` — page structure
