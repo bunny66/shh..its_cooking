@@ -197,7 +197,7 @@
   const photos = Array.isArray(C.photos) ? C.photos : [];
   if (gallery) {
     if (photos.length === 0) {
-      if (photosEmpty) photosEmpty.hidden = false;
+      // show Drive gallery tile only
     } else {
       photos.forEach((p, i) => {
         const item = document.createElement("button");
@@ -208,6 +208,16 @@
         item.addEventListener("click", () => openLightbox(i));
         gallery.appendChild(item);
       });
+    }
+    // Add "View Gallery" tile as last item if Drive folder is set
+    if (C.photoFolderUrl) {
+      const vg = document.createElement("a");
+      vg.className = "gallery-item gallery-viewmore";
+      vg.href = C.photoFolderUrl;
+      vg.target = "_blank";
+      vg.rel = "noopener";
+      vg.innerHTML = '<span class="viewmore-label">View Gallery ↗</span>';
+      gallery.appendChild(vg);
     }
   }
 

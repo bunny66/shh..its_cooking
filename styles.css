@@ -253,6 +253,15 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 .agenda-icon { font-size: 2rem; }
 .agenda-label { font-family: var(--font-display); font-size: 1.1rem; color: var(--gold); }
 
+.gallery-item { height: 150px; }
+.gallery-viewmore {
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(192,57,43,0.15));
+  border: 2px dashed var(--gold);
+  text-decoration: none; color: var(--gold); font-weight: 600;
+}
+.viewmore-label { font-size: 1rem; text-align: center; }
+
 /* ---------- No gifts ---------- */
 .no-gifts { color: var(--gold); font-weight: 600; margin: 6px 0; }
 
