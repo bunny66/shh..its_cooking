@@ -42,7 +42,7 @@ window.CONTENT = {
 
   games: [
     {
-      icon: "🃏", name: "Poker Hands", players: "2-10", time: "👑",
+      icon: "🃏", name: "Poker Hands", players: "2-10", time: "",
       featured: true,
       image: "https://images.ctfassets.net/o0c4x84rxbjm/1rNZghcE2A4v22v0Jbg9sl/ed0d96b522e21e2c116f8bb76e48c67a/gametypes_poker_rules_inpost4_efjuvMWeU.webp",
       rules: [
@@ -52,7 +52,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🎡", name: "Roulette with a twist", players: "2+", time: "👑",
+      icon: "🎡", name: "Roulette with a twist", players: "2+", time: "",
       featured: true,
       rules: [
         "Roulette itself with a twist — spin the wheel, one ball, place your bets.",
@@ -65,7 +65,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🎯", name: "Casino Tambola", players: "2+", time: "👑",
+      icon: "🎯", name: "Casino Tambola", players: "2+", time: "",
       featured: true,
       rules: [
         "Casino-themed Tambola (Housie). Each player gets a ticket with numbers.",
@@ -76,7 +76,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🃏", name: "Monopoly Deal", players: "2-5", time: "👑",
+      icon: "🃏", name: "Monopoly Deal", players: "2-5", time: "",
       featured: true,
       rules: [
         "Fast-paced card version of Monopoly. First to collect 3 complete property sets wins.",
@@ -87,7 +87,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🃏", name: "Bluff", players: "3-8", time: "👑",
+      icon: "🃏", name: "Bluff", players: "3-8", time: "",
       featured: true,
       rules: [
         "Also known as Cheat / I Doubt It. Goal: be first to get rid of all your cards.",
