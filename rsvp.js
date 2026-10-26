@@ -117,7 +117,13 @@
       const msg = document.getElementById("rsvpMsg");
       if (endpoint) {
         submitViaForm(entry);
-        if (msg) msg.textContent = "Thanks, " + name + "! RSVP submitted. Please check the sheet to confirm. 🎉 No gifts, please — your presence is the present.";
+        if (msg) {
+          if (attending === "no") {
+            msg.textContent = "Sorry you can't make it, " + name + ". Thanks for letting us know! 🙏";
+          } else {
+            msg.textContent = "Thanks, " + name + "! RSVP submitted. Please check the sheet to confirm. 🎉 No gifts, please — your presence is the present.";
+          }
+        }
         form.reset();
         if (drinkSel && prefs) { const t = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; }; t(); }
         toggleSections();
