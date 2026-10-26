@@ -77,6 +77,16 @@ window.CONTENT = {
         "Come/Don't Come bets work like Pass/Don't Pass after a point is set.",
       ],
     },
+    {
+      icon: "🎯", name: "Casino Tambola", players: "2+", time: "10-20 min/game",
+      rules: [
+        "Casino-themed Tambola (Housie). Each player gets a ticket with numbers.",
+        "Caller draws numbers; players mark matches on their ticket.",
+        "First to complete a row/column wins a line prize; full house wins the jackpot.",
+        "Casino twist: bonus prizes for corners, star, and top/bottom lines.",
+        "House (Atyshman) calls the numbers — keep your tickets ready!",
+      ],
+    },
   ],
 
   playlists: [
