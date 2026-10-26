@@ -42,10 +42,104 @@
     style.textContent = "@keyframes float { 0%,100% { transform: translate(0,0); } 50% { transform: translate(20px,-20px); } }";
     document.head.appendChild(style);
   }
+
   // Balloons
+  const balloons = $("#balloons");
+  if (balloons) {
+    const bCount = window.matchMedia("(max-width: 480px)").matches ? 8 : 14;
+    for (let i = 0; i < bCount; i++) {
+      const b = document.createElement("span");
+      b.className = "balloon";
+      b.textContent = "🎈";
+      const left = Math.random() * 100;
+      const dur = 12 + Math.random() * 14;
+      const delay = Math.random() * 12;
+      const hue = Math.random() * 360;
+      b.style.cssText = "left:" + left + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;filter:hue-rotate(" + hue + "deg);";
+      balloons.appendChild(b);
+    }
+  }
+
+  // Floating cards
+  const floatingCards = $("#floatingCards");
+  if (floatingCards) {
+    const cards = ["♠", "♥", "♦", "♣", "A", "K", "Q", "J", "10"];
+    const cCount = window.matchMedia("(max-width: 480px)").matches ? 10 : 18;
+    for (let i = 0; i < cCount; i++) {
+      const c = document.createElement("span");
+      c.className = "fcard";
+      c.textContent = cards[Math.floor(Math.random() * cards.length)];
+      const left = Math.random() * 100;
+      const dur = 14 + Math.random() * 16;
+      const delay = Math.random() * 14;
+      c.style.cssText = "left:" + left + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;color:" + (Math.random() > 0.5 ? "#d4af37" : "#e74c3c") + ";";
+      floatingCards.appendChild(c);
+    }
+  }
+
+  // Floating icons
+  const floatingIcons = $("#floatingIcons");
+  if (floatingIcons) {
+    const icons = ["🎲", "🃏", "🪙", "🎰", "🎡", "👑", "🎯", "♠", "♥", "♦", "♣", "⭐", "✨", "💃", "🎂", "🥂"];
+    const iCount = window.matchMedia("(max-width: 480px)").matches ? 12 : 22;
+    for (let i = 0; i < iCount; i++) {
+      const el = document.createElement("span");
+      el.className = "ficon";
+      el.textContent = icons[Math.floor(Math.random() * icons.length)];
+      const left = Math.random() * 100;
+      const dur = 16 + Math.random() * 18;
+      const delay = Math.random() * 16;
+      el.style.cssText = "left:" + left + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;";
+      floatingIcons.appendChild(el);
+    }
+  }
+
+  // Star dust
+  const starDust = $("#starDust");
+  if (starDust) {
+    const dCount = window.matchMedia("(max-width: 480px)").matches ? 25 : 50;
+    for (let i = 0; i < dCount; i++) {
+      const d = document.createElement("span");
+      d.className = "stardust";
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const dur = 2 + Math.random() * 4;
+      const delay = Math.random() * 4;
+      d.style.cssText = "left:" + left + "%;top:" + top + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;";
+      starDust.appendChild(d);
+    }
+  }
+  // Image modal
+  const imgModal = $("#imgModal");
+  const imgModalImg = $("#imgModalImg");
+  const imgModalCaption = $("#imgModalCaption");
+  const imgClose = $("#imgClose");
+  function openImageModal(src, caption) {
+    if (!imgModal) { window.open(src, "_blank"); return; }
+    if (imgModalImg) { imgModalImg.src = src; imgModalImg.alt = caption || ""; }
+    if (imgModalCaption) imgModalCaption.textContent = caption || "";
+    imgModal.classList.add("open");
+    imgModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    try { if (imgClose) imgClose.focus(); } catch (e) {}
+  }
+  function closeImageModal() {
+    if (!imgModal) return;
+    imgModal.classList.remove("open");
+    imgModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+  if (imgModal) {
+    imgClose.addEventListener("click", closeImageModal);
+    imgModal.addEventListener("click", (e) => { if (e.target === imgModal) closeImageModal(); });
+    document.addEventListener("keydown", (e) => {
+      if (!imgModal.classList.contains("open")) return;
+      if (e.key === "Escape") closeImageModal();
+    });
+  }
+
   // Agenda
   const agendaGrid = $("#agendaGrid");
-  const agendaEmpty = null;
   const agendaItems = Array.isArray(C.agenda) && C.agenda.length ? C.agenda : [
     { icon: "🤝", label: "Meet & Greet" },
     { icon: "🍽️", label: "Eat" },
@@ -73,74 +167,6 @@
       agendaGrid.appendChild(el);
     });
   }
-
-  const balloons = $("#balloons");
-  if (balloons) {
-    const bColors = ["🎈", "🎈", "🎈", "🟥", "🟦", "🟨"];
-    const bCount = window.matchMedia("(max-width: 480px)").matches ? 8 : 14;
-    for (let i = 0; i < bCount; i++) {
-      const b = document.createElement("span");
-      b.className = "balloon";
-      b.textContent = "🎈";
-      const left = Math.random() * 100;
-      const dur = 12 + Math.random() * 14;
-  // Floating cards
-  const floatingCards = $("#floatingCards");
-  if (floatingCards) {
-    const cards = ["♠", "♥", "♦", "♣", "A", "K", "Q", "J", "10"];
-    const cCount = window.matchMedia("(max-width: 480px)").matches ? 10 : 18;
-    for (let i = 0; i < cCount; i++) {
-      const c = document.createElement("span");
-      c.className = "fcard";
-      c.textContent = cards[Math.floor(Math.random() * cards.length)];
-      const left = Math.random() * 100;
-      const dur = 14 + Math.random() * 16;
-      const delay = Math.random() * 14;
-      const hue = Math.random() > 0.5 ? 0 : 340;
-      c.style.cssText = "left:" + left + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;color:" + (Math.random() > 0.5 ? "#d4af37" : "#e74c3c") + ";";
-      floatingCards.appendChild(c);
-    }
-  // Floating icons (chips, stars, all icons)
-  const floatingIcons = $("#floatingIcons");
-  if (floatingIcons) {
-    const icons = ["🎲", "🃏", "🪙", "🎰", "🎡", "👑", "🎯", "♠", "♥", "♦", "♣", "⭐", "✨", "💃", "🎂", "🥂"];
-    const iCount = window.matchMedia("(max-width: 480px)").matches ? 12 : 22;
-    for (let i = 0; i < iCount; i++) {
-      const el = document.createElement("span");
-      el.className = "ficon";
-      el.textContent = icons[Math.floor(Math.random() * icons.length)];
-      const left = Math.random() * 100;
-      const dur = 16 + Math.random() * 18;
-      const delay = Math.random() * 16;
-      el.style.cssText = "left:" + left + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;";
-      floatingIcons.appendChild(el);
-    }
-  }
-  // Star dust
-  const starDust = $("#starDust");
-  if (starDust) {
-    const dCount = window.matchMedia("(max-width: 480px)").matches ? 25 : 50;
-    for (let i = 0; i < dCount; i++) {
-      const d = document.createElement("span");
-      d.className = "stardust";
-      const left = Math.random() * 100;
-      const top = Math.random() * 100;
-      const dur = 2 + Math.random() * 4;
-      const delay = Math.random() * 4;
-      d.style.cssText = "left:" + left + "%;top:" + top + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;";
-      starDust.appendChild(d);
-    }
-  }
-
-  }
-
-      const delay = Math.random() * 12;
-      const hue = Math.random() * 360;
-      b.style.cssText = "left:" + left + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;filter:hue-rotate(" + hue + "deg);";
-      balloons.appendChild(b);
-    }
-  }
-
 
   // Photos
   const gallery = $("#gallery");
@@ -178,6 +204,7 @@
       });
     }
   }
+
   // Games
   const gamesGrid = $("#gamesGrid");
   const gamesEmpty = $("#gamesEmpty");
@@ -211,6 +238,7 @@
     }
   }
 
+
   // Playlists
   const playlistsGrid = $("#playlistsGrid");
   const musicEmpty = $("#musicEmpty");
@@ -237,19 +265,17 @@
     const vMatch = url.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
     const listId = plMatch ? plMatch[1] : "";
     const videoId = vMatch ? vMatch[1] : "";
-    // Prefer embedding the actual video (more reliably embeddable) in playlist context
     if (videoId && listId) {
-      return "https://www.youtube-nocookie.com/embed/" + videoId + "?list=" + listId;
+      return "https://www.youtube.com/embed/" + videoId + "?list=" + listId;
     }
     if (videoId) {
-      return "https://www.youtube-nocookie.com/embed/" + videoId;
+      return "https://www.youtube.com/embed/" + videoId;
     }
     if (listId) {
-      return "https://www.youtube-nocookie.com/embed/videoseries?list=" + listId;
+      return "https://www.youtube.com/embed/videoseries?list=" + listId;
     }
     return "";
   }
-  // Expose for testing
   window.toEmbedUrl = toEmbedUrl;
 
   // Lightbox
@@ -285,35 +311,6 @@
   function prev() { currentIndex = (currentIndex - 1 + photos.length) % photos.length; renderLb(); }
 
   if (lightbox) {
-  // Image modal (poker hands chart etc.)
-  const imgModal = $("#imgModal");
-  const imgModalImg = $("#imgModalImg");
-  const imgModalCaption = $("#imgModalCaption");
-  const imgClose = $("#imgClose");
-  function openImageModal(src, caption) {
-    if (!imgModal) { window.open(src, "_blank"); return; }
-    if (imgModalImg) { imgModalImg.src = src; imgModalImg.alt = caption || ""; }
-    if (imgModalCaption) imgModalCaption.textContent = caption || "";
-    imgModal.classList.add("open");
-    imgModal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-    try { if (imgClose) imgClose.focus(); } catch (e) {}
-  }
-  function closeImageModal() {
-    if (!imgModal) return;
-    imgModal.classList.remove("open");
-    imgModal.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-  }
-  if (imgModal) {
-    imgClose.addEventListener("click", closeImageModal);
-    imgModal.addEventListener("click", (e) => { if (e.target === imgModal) closeImageModal(); });
-    document.addEventListener("keydown", (e) => {
-      if (!imgModal.classList.contains("open")) return;
-      if (e.key === "Escape") closeImageModal();
-    });
-  }
-
     lbClose.addEventListener("click", closeLightbox);
     lbNext.addEventListener("click", next);
     lbPrev.addEventListener("click", prev);
@@ -338,4 +335,3 @@
     }
   });
 })();
-
