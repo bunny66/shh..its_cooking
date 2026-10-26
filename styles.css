@@ -245,11 +245,15 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 .game-featured::after {
   content: "👑";
   position: absolute; top: 12px; right: 12px;
-  background: var(--gold); color: #1a1400;
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
-  padding: 4px 8px; border-radius: 999px;
+  background: #1a1400; color: var(--gold);
+  font-size: 1.1rem;
+  padding: 6px 10px; border-radius: 999px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 .game-clickable { cursor: pointer; }
+.game-featured .game-tag { background: #1a1400; color: var(--gold); border-color: var(--gold); }
+
 .game-clickable:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 .game-hint { font-size: 0.8rem; color: var(--gold); margin-top: 4px; }
 
