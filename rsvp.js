@@ -49,7 +49,7 @@
       list.push(entry);
       save(list);
       renderList();
-      msg.textContent = "Thanks, " + name + "! RSVP saved. 🎉 No gifts, please — your presence is the present.";
+      msg.textContent = "Thanks, " + name + "! RSVP saved locally. (Set rsvpEndpoint in content.js to send to sheet.) 🎉 No gifts, please — your presence is the present.";
       form.reset();
       if (prefs) prefs.style.display = "none";
 
@@ -64,8 +64,6 @@
         }).catch(() => {
           msg.textContent = "Saved locally, but failed to send to sheet. 🎉";
         });
-      } else {
-        msg.textContent = "Thanks, " + name + "! RSVP saved locally. (Set rsvpEndpoint in content.js to send to sheet.) 🎉 No gifts, please — your presence is the present.";
       }
     });
   }
