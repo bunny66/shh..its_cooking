@@ -133,6 +133,7 @@ window.CONTENT = {
     { title: "Casino Night Mix", url: "https://www.youtube.com/watch?v=xB-BHUvWgjk&list=RDxB-BHUvWgjk&start_radio=1" },
     { title: "Casino Night Playlist 1", url: "https://www.youtube.com/watch?v=ydQtI30SbBg&list=PLTfxiuA09ZhhKWkVJ_O7P0Vj93HsqHEI8" },
     { title: "Casino Night Playlist 2", url: "https://www.youtube.com/watch?v=0aUav1lx3rA&list=RD0aUav1lx3rA&start_radio=1" },
+    { title: "Casino Night Playlist 3", url: "https://www.youtube.com/watch?v=NDnoRl9AdyY&list=RDNDnoRl9AdyY&start_radio=1" },
     // { title: "Casino Night Vibes", url: "https://www.youtube.com/playlist?list=PLxxxxxxxx" },
     // { title: "Vegas Classics", url: "https://www.youtube.com/watch?v=VIDEO_ID" },
   ],
