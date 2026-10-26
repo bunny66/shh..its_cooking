@@ -43,6 +43,28 @@ python3 -m http.server 8000
 - All tap targets are large; arrow keys navigate the lightbox.
 - Layout adapts to 4:3, 16:9, 21:9 and portrait orientations.
 
+## Collect RSVPs into the Google Sheet (optional)
+To save each RSVP directly to your Google Sheet on submit (no Google Sheet API key needed):
+
+1. Open your Google Sheet → **Extensions → Apps Script**.
+2. Paste this code:
+
+```js
+function doPost(e) {
+  const sheet = SpreadsheetApp.openById('1dXKP1Fd2B7ZcXXR1-eQ_svPrDJj_fy8eIAg6aJPGlwY').getActiveSheet();
+  const data = JSON.parse(e.postData.contents);
+  sheet.appendRow([new Date(), data.name, data.attending, data.drink, (data.prefs || []).join(', '), data.notes]);
+  return ContentService.createTextOutput(JSON.stringify({ result: 'ok' }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+```
+
+3. **Deploy → New deployment → Web app**: Execute as "Me", Who has access "Anyone".
+4. Copy the web app URL.
+5. Paste it into `content.js` → `rsvpEndpoint: "https://script.google.com/macros/s/.../exec"`.
+6. Push — RSVPs will now be appended to the sheet automatically.
+
+> Note: The local form still saves to the browser for instant feedback; the endpoint adds the central record.
 ## Host on GitHub Pages
 This repo is already static. To publish:
 1. Push to `main` (done).

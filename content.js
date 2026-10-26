@@ -13,6 +13,7 @@ window.CONTENT = {
 
   googleFormUrl: "", // paste Google Form embed URL here to collect RSVPs centrally (export to CSV)
   guestSheetUrl: "https://docs.google.com/spreadsheets/d/1dXKP1Fd2B7ZcXXR1-eQ_svPrDJj_fy8eIAg6aJPGlwY/edit?usp=sharing", // guest list sheet
+  rsvpEndpoint: "", // optional: Google Apps Script web app URL to save RSVPs to the sheet on submit
 
   agenda: [
     // Add optional image per item to make it clickable, e.g.:

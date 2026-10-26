@@ -52,6 +52,19 @@
       msg.textContent = "Thanks, " + name + "! RSVP saved. 🎉 No gifts, please — your presence is the present.";
       form.reset();
       if (prefs) prefs.style.display = "none";
+
+      const endpoint = (window.CONTENT && window.CONTENT.rsvpEndpoint) || "";
+      if (endpoint) {
+        fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(entry),
+        }).then(() => {
+          msg.textContent = "Thanks, " + name + "! RSVP saved & sent. 🎉 No gifts, please — your presence is the present.";
+        }).catch(() => {
+          msg.textContent = "Saved locally, but failed to send to sheet. 🎉";
+        });
+      }
     });
   }
   renderList();
