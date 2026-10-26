@@ -43,6 +43,36 @@
     document.head.appendChild(style);
   }
   // Balloons
+  // Agenda
+  const agendaGrid = $("#agendaGrid");
+  const agendaEmpty = null;
+  const agendaItems = Array.isArray(C.agenda) && C.agenda.length ? C.agenda : [
+    { icon: "🤝", label: "Meet" },
+    { icon: "🍽️", label: "Eat" },
+    { icon: "🥂", label: "Drink" },
+    { icon: "🎰", label: "Games" },
+    { icon: "💃", label: "Dance" },
+    { icon: "🎂", label: "Cake" },
+  ];
+  if (agendaGrid) {
+    agendaItems.forEach((a) => {
+      const el = document.createElement(a.image ? "button" : "div");
+      el.className = "agenda-item" + (a.image ? " agenda-clickable" : "");
+      if (a.image) {
+        el.type = "button";
+        el.setAttribute("aria-label", (a.label || "") + " - view picture");
+      }
+      el.innerHTML = '<span class="agenda-icon">' + esc(a.icon || "🎉") + '</span><span class="agenda-label">' + esc(a.label || "") + '</span>' +
+        (a.image ? '<span class="agenda-hint">Tap for picture ↗</span>' : "");
+      if (a.image) {
+        const open = () => openImageModal(a.image, a.label || "Agenda");
+        el.addEventListener("click", open);
+        el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+      }
+      agendaGrid.appendChild(el);
+    });
+  }
+
   const balloons = $("#balloons");
   if (balloons) {
     const bColors = ["🎈", "🎈", "🎈", "🟥", "🟦", "🟨"];

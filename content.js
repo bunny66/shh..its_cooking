@@ -11,6 +11,17 @@ window.CONTENT = {
     // { src: "assets/photo2.jpg", caption: "Vegas vibes" },
   ],
 
+  agenda: [
+    // Add optional image per item to make it clickable, e.g.:
+    // { icon: "🤝", label: "Meet", image: "assets/meet.jpg" },
+    { icon: "🤝", label: "Meet" },
+    { icon: "🍽️", label: "Eat" },
+    { icon: "🥂", label: "Drink" },
+    { icon: "🎰", label: "Games" },
+    { icon: "💃", label: "Dance" },
+    { icon: "🎂", label: "Cake" },
+  ],
+
   artifacts: [
     { icon: "🎲", name: "Dice Set", desc: "Premium casino dice for the night's games." },
     { icon: "🃏", name: "Card Deck", desc: "Custom branded playing cards." },
