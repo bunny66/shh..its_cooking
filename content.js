@@ -66,6 +66,17 @@ window.CONTENT = {
       ],
     },
     {
+      icon: "🃏", name: "Monopoly Deal", players: "2-5", time: "👑",
+      featured: true,
+      rules: [
+        "Fast-paced card version of Monopoly. First to collect 3 complete property sets wins.",
+        "On your turn: draw 2 cards, play up to 3 cards (property, money, or action).",
+        "Action cards: Deal Breaker, Sly Deal, Forced Deal, Rent, Debt Collector, etc.",
+        "Bank your money and properties; protect sets with house/hotel cards.",
+        "Say 'No!' with Just Say No cards. Last one standing with 3 sets wins!",
+      ],
+    },
+    {
       icon: "🃏", name: "Blackjack", players: "2-7", time: "5-10 min/round",
       rules: [
         "Goal: beat the dealer by getting closest to 21 without busting.",
