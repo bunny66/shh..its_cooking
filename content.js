@@ -45,6 +45,19 @@ window.CONTENT = {
       ],
     },
     {
+      icon: "🎡", name: "Roulette with a twist", players: "2+", time: "👑",
+      featured: true,
+      rules: [
+        "Roulette itself with a twist — spin the wheel, one ball, place your bets.",
+        "Place bets on numbers, colors, odds/evens, or ranges before the spin.",
+        "Dealer spins the wheel and drops the single ball.",
+        "Straight up pays 35:1; split 17:1; street 11:1; corner 8:1.",
+        "Red/Black, Odd/Even, High/Low pay 1:1. House wins on 0.",
+        "Drinking twist: losers drink, winners pour — use the 1 ball & 16 shot glasses!",
+        "Spin, drink, repeat. Play responsibly and have fun!",
+      ],
+    },
+    {
       icon: "🎯", name: "Casino Tambola", players: "2+", time: "👑",
       featured: true,
       rules: [
@@ -53,17 +66,6 @@ window.CONTENT = {
         "First to complete a row/column wins a line prize; full house wins the jackpot.",
         "Casino twist: bonus prizes for corners, star, and top/bottom lines.",
         "House (Ayushman) calls the numbers — keep your tickets ready!",
-      ],
-    },
-    {
-      icon: "🃏", name: "Bluff", players: "3-8", time: "👑",
-      featured: true,
-      rules: [
-        "Also known as Cheat / I Doubt It. Goal: be first to get rid of all your cards.",
-        "Play 1-4 cards face-down claiming they are the current rank (Aces, then 2s, 3s...).",
-        "Next player must play the next rank up (or bluff). Challenge with 'Bluff!' if you doubt.",
-        "If caught bluffing, you pick up the pile; if wrong challenge, challenger picks up the pile.",
-        "First to empty hand wins. Keep a poker face — bluffing is the game!",
       ],
     },
     {
@@ -78,16 +80,14 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🎡", name: "Roulette with a twist", players: "2+", time: "👑",
+      icon: "🃏", name: "Bluff", players: "3-8", time: "👑",
       featured: true,
       rules: [
-        "Roulette itself with a twist — spin the wheel, one ball, place your bets.",
-        "Place bets on numbers, colors, odds/evens, or ranges before the spin.",
-        "Dealer spins the wheel and drops the single ball.",
-        "Straight up pays 35:1; split 17:1; street 11:1; corner 8:1.",
-        "Red/Black, Odd/Even, High/Low pay 1:1. House wins on 0.",
-        "Drinking twist: losers drink, winners pour — use the 1 ball & 16 shot glasses!",
-        "Spin, drink, repeat. Play responsibly and have fun!",
+        "Also known as Cheat / I Doubt It. Goal: be first to get rid of all your cards.",
+        "Play 1-4 cards face-down claiming they are the current rank (Aces, then 2s, 3s...).",
+        "Next player must play the next rank up (or bluff). Challenge with 'Bluff!' if you doubt.",
+        "If caught bluffing, you pick up the pile; if wrong challenge, challenger picks up the pile.",
+        "First to empty hand wins. Keep a poker face — bluffing is the game!",
       ],
     },
     {
