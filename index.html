@@ -42,6 +42,7 @@
     <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
   </header>
 
+  <div id="fileBanner" style="display:none;background:#c0392b;color:#fff;padding:10px;text-align:center;font-weight:600;">⚠️ Open this page via http:// (not file://) for video playback. Enable GitHub Pages or run: python3 -m http.server 8000</div>
   <main id="main">
     <!-- HERO -->
     <section id="hero" class="section hero">
@@ -148,6 +149,7 @@
     <div class="lb-caption" id="imgModalCaption"></div>
   </div>
 
+  <script>if (location.protocol === 'file:') { var b = document.getElementById('fileBanner'); if (b) b.style.display = 'block'; }</script>
   <script src="content.js"></script>
 
   <script src="script.js"></script>
