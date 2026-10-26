@@ -91,6 +91,7 @@ window.CONTENT = {
     {
       icon: "🃏", name: "Bluff", players: "3-8", time: "",
       featured: true,
+      image: "https://m.media-amazon.com/images/I/617L-zUy-oL._SL1080_.jpg",
       rules: [
         "Also known as Cheat / I Doubt It. Goal: be first to get rid of all your cards.",
         "Play 1-4 cards face-down claiming they are the current rank (Aces, then 2s, 3s...).",
