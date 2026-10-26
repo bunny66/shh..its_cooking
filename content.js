@@ -54,6 +54,7 @@ window.CONTENT = {
     {
       icon: "🎡", name: "Roulette with a twist", players: "2+", time: "",
       featured: true,
+      image: "https://m.media-amazon.com/images/I/71iHL3hoDuL._SL1493_.jpg",
       rules: [
         "Roulette itself with a twist — spin the wheel, one ball, place your bets.",
         "Place bets on numbers, colors, odds/evens, or ranges before the spin.",
