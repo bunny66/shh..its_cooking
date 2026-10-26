@@ -216,6 +216,25 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
   padding-left: 18px; position: relative; font-size: 0.92rem; color: var(--ink);
 }
 .game-rules li::before { content: "♦"; position: absolute; left: 0; color: var(--gold); font-size: 0.7rem; top: 2px; }
+/* ---------- Agenda ---------- */
+.agenda {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 14px;
+}
+.agenda-item {
+  background: var(--card); border: 1px solid var(--card-border);
+  border-radius: var(--radius); padding: 20px 10px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  transition: transform .2s ease, border-color .2s;
+}
+.agenda-item:hover { transform: translateY(-4px); border-color: var(--gold); }
+.agenda-icon { font-size: 2rem; }
+.agenda-label { font-family: var(--font-display); font-size: 1.1rem; color: var(--gold); }
+
+/* ---------- No gifts ---------- */
+.no-gifts { color: var(--gold); font-weight: 600; margin: 6px 0; }
+
 /* ---------- Featured game (Poker Hands) ---------- */
 .game-featured {
   border-color: var(--gold);

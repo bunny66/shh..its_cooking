@@ -22,6 +22,16 @@ window.CONTENT = {
 
   games: [
     {
+      icon: "🃏", name: "Poker Hands", players: "2-10", time: "Most Played",
+      featured: true,
+      image: "https://images.ctfassets.net/o0c4x84rxbjm/1rNZghcE2A4v22v0Jbg9sl/ed0d96b522e21e2c116f8bb76e48c67a/gametypes_poker_rules_inpost4_efjuvMWeU.webp",
+      rules: [
+        "Our most-played game of the night — tap the card to view the full poker hands chart.",
+        "Hand rankings (high to low): Royal Flush, Straight Flush, Four of a Kind, Full House, Flush, Straight, Three of a Kind, Two Pair, One Pair, High Card.",
+        "Best 5-card hand wins. Ties split the pot.",
+      ],
+    },
+    {
       icon: "🃏", name: "Blackjack", players: "2-7", time: "5-10 min/round",
       rules: [
         "Goal: beat the dealer by getting closest to 21 without busting.",
@@ -56,16 +66,6 @@ window.CONTENT = {
         "Two cards each; third card drawn by fixed rules (no decisions).",
         "Closest to 9 wins. 10s and face cards = 0; Ace = 1.",
         "Banker pays 0.95:1 (5% commission), Player pays 1:1, Tie pays 8:1.",
-      ],
-    },
-    {
-      icon: "🃏", name: "Poker Hands", players: "2-10", time: "Most Played",
-      featured: true,
-      image: "https://images.ctfassets.net/o0c4x84rxbjm/1rNZghcE2A4v22v0Jbg9sl/ed0d96b522e21e2c116f8bb76e48c67a/gametypes_poker_rules_inpost4_efjuvMWeU.webp",
-      rules: [
-        "Our most-played game of the night — tap the card to view the full poker hands chart.",
-        "Hand rankings (high to low): Royal Flush, Straight Flush, Four of a Kind, Full House, Flush, Straight, Three of a Kind, Two Pair, One Pair, High Card.",
-        "Best 5-card hand wins. Ties split the pot.",
       ],
     },
     {
