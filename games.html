@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#0b3d2e" />
+  <title>Ayushman's Birthday — Games & Rules 🎰</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="particles" id="particles"></div>
+  </div>
+
+  <header class="topbar" role="banner">
+    <div class="brand">
+      <span class="chip-logo" aria-hidden="true">🎰</span>
+      <span class="brand-text">AYUSHMAN'S <em>CASINO NIGHT</em></span>
+    </div>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html#photos" class="nav-link">Photos</a>
+      <a href="index.html#artifacts" class="nav-link">Artifacts</a>
+      <a href="games.html" class="nav-link">Games</a>
+      <a href="music.html" class="nav-link">Playlists</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="section-head">
+        <h1 class="section-title"><span class="suit">♦</span> Games & Rules</h1>
+        <p class="section-sub">House rules for the night. Play fair, play fun.</p>
+      </div>
+      <div class="games" id="gamesGrid"></div>
+      <p class="empty-hint" id="gamesEmpty" hidden>Add games in <code>content.js</code> → <code>games</code> array.</p>
+      <p class="more-link-wrap" style="margin-top:20px;"><a class="btn btn-outline" href="index.html">← Back to home</a></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-suits" aria-hidden="true">♠ ♥ ♦ ♣</div>
+    <p>Made with luck & love for Ayushman's Birthday.</p>
+    <p class="no-gifts">🎁 No gifts, please — your presence is the present.</p>
+    <p class="footer-small">Casino Night theme · Mobile · Tablet · TV ready</p>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

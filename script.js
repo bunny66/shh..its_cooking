@@ -208,7 +208,9 @@
   // Games
   const gamesGrid = $("#gamesGrid");
   const gamesEmpty = $("#gamesEmpty");
-  const games = Array.isArray(C.games) ? C.games : [];
+  const gamesAll = Array.isArray(C.games) ? C.games : [];
+  const featuredOnly = gamesGrid && gamesGrid.getAttribute("data-featured-only") === "true";
+  const games = featuredOnly ? gamesAll.filter((g) => g.featured) : gamesAll;
   if (gamesGrid) {
     if (games.length === 0) {
       if (gamesEmpty) gamesEmpty.hidden = false;
