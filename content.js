@@ -7,6 +7,7 @@
 
 window.CONTENT = {
   photos: [
+    { src: "https://picsum.photos/seed/casino1/400/400", caption: "Sample photo (replace with your own)" },
     // { src: "assets/photo1.jpg", caption: "The birthday boy" },
     // { src: "assets/photo2.jpg", caption: "Vegas vibes" },
   ],
