@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b3d2e" />
+  <meta name="description" content="Atyshman's Birthday — Casino Night. Photos, artifacts, games & rules, and playlists." />
+  <title>Atyshman's Birthday — Casino Night 🎰</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Ambient background -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="particles" id="particles"></div>
+  </div>
+
+  <!-- Top nav -->
+  <header class="topbar" role="banner">
+    <div class="brand">
+      <span class="chip-logo" aria-hidden="true">🎰</span>
+      <span class="brand-text">ATYSHMAN'S <em>CASINO NIGHT</em></span>
+    </div>
+    <nav class="nav" aria-label="Primary">
+      <a href="#hero" class="nav-link">Home</a>
+      <a href="#photos" class="nav-link">Photos</a>
+      <a href="#artifacts" class="nav-link">Artifacts</a>
+      <a href="#games" class="nav-link">Games</a>
+      <a href="#music" class="nav-link">Playlists</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="hero" class="section hero">
+      <div class="hero-card">
+        <div class="hero-suits" aria-hidden="true">
+          <span>♠</span><span>♥</span><span>♦</span><span>♣</span>
+        </div>
+        <p class="eyebrow">You're invited</p>
+        <h1 class="title">
+          <span class="title-line">ATYSHMAN'S</span>
+          <span class="title-line gold">BIRTHDAY</span>
+          <span class="title-line">CASINO NIGHT</span>
+        </h1>
+        <p class="subtitle">High stakes. Higher spirits. All in for the birthday boy.</p>
+        <div class="hero-meta">
+          <div class="meta-pill"><span class="meta-label">Dress</span><span class="meta-val">Casino Chic</span></div>
+          <div class="meta-pill"><span class="meta-label">Vibe</span><span class="meta-val">Vegas Nights</span></div>
+          <div class="meta-pill"><span class="meta-label">Bring</span><span class="meta-val">Your Luck</span></div>
+        </div>
+        <div class="hero-cta">
+          <a href="#games" class="btn btn-gold">See Games & Rules</a>
+          <a href="#music" class="btn btn-outline">Play the Playlist</a>
+        </div>
+      </div>
+      <div class="hero-chips" aria-hidden="true">
+        <div class="chip chip-red">25</div>
+        <div class="chip chip-blue">50</div>
+        <div class="chip chip-gold">100</div>
+        <div class="chip chip-black">500</div>
+      </div>
+    </section>
+
+    <!-- PHOTOS -->
+    <section id="photos" class="section">
+      <div class="section-head">
+        <h2 class="section-title"><span class="suit">♠</span> Photo Gallery</h2>
+        <p class="section-sub">Moments from the night. Tap to enlarge.</p>
+      </div>
+      <div class="gallery" id="gallery"></div>
+      <p class="empty-hint" id="photosEmpty" hidden>Add photos in <code>content.js</code> → <code>photos</code> array.</p>
+    </section>
+
+    <!-- ARTIFACTS -->
+    <section id="artifacts" class="section">
+      <div class="section-head">
+        <h2 class="section-title"><span class="suit red">♥</span> Artifacts</h2>
+        <p class="section-sub">The props, decor & keepsakes of the night.</p>
+      </div>
+      <div class="artifacts" id="artifactsGrid"></div>
+      <p class="empty-hint" id="artifactsEmpty" hidden>Add items in <code>content.js</code> → <code>artifacts</code> array.</p>
+    </section>
+
+    <!-- GAMES -->
+    <section id="games" class="section">
+      <div class="section-head">
+        <h2 class="section-title"><span class="suit">♦</span> Games & Rules</h2>
+        <p class="section-sub">House rules for the night. Play fair, play fun.</p>
+      </div>
+      <div class="games" id="gamesGrid"></div>
+      <p class="empty-hint" id="gamesEmpty" hidden>Add games in <code>content.js</code> → <code>games</code> array.</p>
+    </section>
+
+    <!-- MUSIC / PLAYLISTS -->
+    <section id="music" class="section">
+      <div class="section-head">
+        <h2 class="section-title"><span class="suit red">♣</span> Playlists & Music</h2>
+        <p class="section-sub">The soundtrack of the night. Hit play and let it ride.</p>
+      </div>
+      <div class="playlists" id="playlistsGrid"></div>
+      <p class="empty-hint" id="musicEmpty" hidden>Add playlists in <code>content.js</code> → <code>playlists</code> array.</p>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-suits" aria-hidden="true">♠ ♥ ♦ ♣</div>
+      <p>Made with luck & love for Atyshman's Birthday.</p>
+      <p class="footer-small">Casino Night theme · Mobile · Tablet · TV ready</p>
+    </footer>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+    <img id="lbImg" alt="" />
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
