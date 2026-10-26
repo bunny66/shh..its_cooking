@@ -24,7 +24,16 @@ function doPost(e) {
   const sheet = SpreadsheetApp.openById('1dXKP1Fd2B7ZcXXR1-eQ_svPrDJj_fy8eIAg6aJPGlwY').getActiveSheet();
   let data = {};
   try { data = JSON.parse(e.postData.contents); } catch (err) { data = e.parameter || {}; }
-  sheet.appendRow([new Date(), data.name, data.attending, data.drink, (data.prefs || []).join(', '), data.notes]);
+  sheet.appendRow([
+    new Date(),
+    data.name,
+    data.attending,
+    data.drink,
+    (data.prefs || []).join(', '),
+    data.volunteer || 'no',
+    (data.volunteerRoles || []).join(', '),
+    data.notes
+  ]);
   const cb = e && e.parameter && e.parameter.callback;
   const payload = JSON.stringify({ result: 'ok' });
   if (cb) {
