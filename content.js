@@ -54,6 +54,16 @@ window.CONTENT = {
       ],
     },
     {
+      icon: "🃏", name: "Bluff", players: "3-8", time: "10-20 min/game",
+      rules: [
+        "Also known as Cheat / I Doubt It. Goal: be first to get rid of all your cards.",
+        "Play 1-4 cards face-down claiming they are the current rank (Aces, then 2s, 3s...).",
+        "Next player must play the next rank up (or bluff). Challenge with 'Bluff!' if you doubt.",
+        "If caught bluffing, you pick up the pile; if wrong challenge, challenger picks up the pile.",
+        "First to empty hand wins. Keep a poker face — bluffing is the game!",
+      ],
+    },
+    {
       icon: "🃏", name: "Blackjack", players: "2-7", time: "5-10 min/round",
       rules: [
         "Goal: beat the dealer by getting closest to 21 without busting.",
