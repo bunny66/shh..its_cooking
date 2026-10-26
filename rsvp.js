@@ -15,14 +15,16 @@
 
   const attendingSel = document.getElementById("rsvpAttending");
   const drinkSection = document.getElementById("drinkSection");
-  function toggleDrinkSection() {
-    if (!drinkSection) return;
+  const volunteerSection = document.getElementById("volunteerSection");
+  function toggleSections() {
     const attending = attendingSel ? attendingSel.value : "yes";
-    drinkSection.style.display = attending === "no" ? "none" : "block";
+    const hide = attending === "no";
+    if (drinkSection) drinkSection.style.display = hide ? "none" : "block";
+    if (volunteerSection) volunteerSection.style.display = hide ? "none" : "block";
   }
   if (attendingSel) {
-    attendingSel.addEventListener("change", toggleDrinkSection);
-    toggleDrinkSection();
+    attendingSel.addEventListener("change", toggleSections);
+    toggleSections();
   }
 
   const volSel = document.getElementById("rsvpVolunteer");
