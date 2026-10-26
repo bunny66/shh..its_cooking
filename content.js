@@ -13,7 +13,7 @@ window.CONTENT = {
 
   googleFormUrl: "", // paste Google Form embed URL here to collect RSVPs centrally (export to CSV)
   guestSheetUrl: "https://docs.google.com/spreadsheets/d/1dXKP1Fd2B7ZcXXR1-eQ_svPrDJj_fy8eIAg6aJPGlwY/edit?usp=sharing", // guest list sheet
-  rsvpEndpoint: "https://script.google.com/macros/s/AKfycbxkxGaOMRKK26XJ-EfoLkjKQctLUoVM-LSuj42fYpM2ZPZCEt8L3fZik6PE0t_IvGFm9g/exec", // Google Apps Script web app URL to save RSVPs to the sheet
+  rsvpEndpoint: "https://script.google.com/macros/s/AKfycbw49Z9ydDpp1WstSkXxdcI3hqL63v6v4UxkfWzmfZkGGMClNMrXRUwxZspW86POpogJDg/exec", // Google Apps Script web app URL to save RSVPs to the sheet
 
   agenda: [
     // Add optional image per item to make it clickable, e.g.:
