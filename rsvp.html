@@ -63,7 +63,7 @@
           <label><input type="checkbox" value="Coke" /> Coke</label>
           <label><input type="checkbox" value="Other" /> Other</label>
         </fieldset>
-        <label>Notes (optional)<br><textarea id="rsvpNotes" rows="3" placeholder="Allergies, song requests, etc."></textarea></label>
+        <label>Comments (optional)<br><textarea id="rsvpNotes" rows="3" placeholder="Any comments..."></textarea></label>
         <button type="submit" class="btn btn-gold">Submit RSVP</button>
       </form>
 
@@ -113,7 +113,7 @@
           return '<div class="artifact" style="text-align:left;margin-bottom:8px;">' +
             '<strong>' + escapeHtml(r.name) + '</strong> — ' + (r.attending === "yes" ? "Attending ✅" : "Not attending") +
             '<br/>Drinks: ' + (r.drink === "yes" ? "Yes (" + escapeHtml(prefs) + ")" : "No") +
-            (r.notes ? '<br/>Notes: ' + escapeHtml(r.notes) : '') +
+            (r.notes ? '<br/>Comments: ' + escapeHtml(r.notes) : '') +
             '</div>';
         }).join("");
       }
