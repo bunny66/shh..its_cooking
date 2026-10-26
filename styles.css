@@ -253,6 +253,9 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 }
 .game-clickable { cursor: pointer; }
 .game-featured .game-tag { background: #1a1400; color: var(--gold); border-color: var(--gold); }
+/* ---------- Hide artifacts section ---------- */
+#artifacts { display: none; }
+
 .bet-question { font-family: var(--font-display); font-size: 1.25rem; color: var(--ink); margin: 0 0 12px; }
 .bet-options { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 14px; }
 .bet-option { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--card-border); background: var(--card); color: var(--ink); cursor: pointer; transition: all .15s; }
