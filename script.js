@@ -89,11 +89,22 @@
     } else {
       games.forEach((g) => {
         const el = document.createElement("article");
-        el.className = "game";
+        el.className = "game" + (g.featured ? " game-featured" : "") + (g.image ? " game-clickable" : "");
+        if (g.image) {
+          el.setAttribute("role", "button");
+          el.setAttribute("tabindex", "0");
+          el.setAttribute("aria-label", (g.name || "") + " - view rules image");
+        }
         const rules = Array.isArray(g.rules) ? g.rules : [];
         el.innerHTML = '<div class="game-head"><span class="game-icon" aria-hidden="true">' + esc(g.icon || "🃏") + '</span><h3 class="game-name">' + esc(g.name || "") + '</h3></div>' +
           '<div class="game-meta">' + (g.players ? '<span class="game-tag">Players: ' + esc(g.players) + '</span>' : "") + (g.time ? '<span class="game-tag">' + esc(g.time) + '</span>' : "") + '</div>' +
-          '<ul class="game-rules">' + rules.map((r) => "<li>" + esc(r) + "</li>").join("") + '</ul>';
+          '<ul class="game-rules">' + rules.map((r) => "<li>" + esc(r) + "</li>").join("") + '</ul>' +
+          (g.image ? '<p class="game-hint">Tap to view rules image ↗</p>' : "");
+        if (g.image) {
+          const open = () => openImageModal(g.image, g.name || "Rules");
+          el.addEventListener("click", open);
+          el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+        }
         gamesGrid.appendChild(el);
       });
     }
@@ -163,6 +174,36 @@
   function prev() { currentIndex = (currentIndex - 1 + photos.length) % photos.length; renderLb(); }
 
   if (lightbox) {
+  // Image modal (poker hands chart etc.)
+  const imgModal = $("#imgModal");
+  const imgModalImg = $("#imgModalImg");
+  const imgModalCaption = $("#imgModalCaption");
+  const imgClose = $("#imgClose");
+  function openImageModal(src, caption) {
+    if (!imgModal) return;
+    imgModalImg.src = src;
+    imgModalImg.alt = caption || "";
+    imgModalCaption.textContent = caption || "";
+    imgModal.classList.add("open");
+    imgModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    imgClose.focus();
+  }
+  function closeImageModal() {
+    if (!imgModal) return;
+    imgModal.classList.remove("open");
+    imgModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+  if (imgModal) {
+    imgClose.addEventListener("click", closeImageModal);
+    imgModal.addEventListener("click", (e) => { if (e.target === imgModal) closeImageModal(); });
+    document.addEventListener("keydown", (e) => {
+      if (!imgModal.classList.contains("open")) return;
+      if (e.key === "Escape") closeImageModal();
+    });
+  }
+
     lbClose.addEventListener("click", closeLightbox);
     lbNext.addEventListener("click", next);
     lbPrev.addEventListener("click", prev);

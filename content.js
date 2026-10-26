@@ -59,6 +59,16 @@ window.CONTENT = {
       ],
     },
     {
+      icon: "🃏", name: "Poker Hands", players: "2-10", time: "Most Played",
+      featured: true,
+      image: "https://images.ctfassets.net/o0c4x84rxbjm/1rNZghcE2A4v22v0Jbg9sl/ed0d96b522e21e2c116f8bb76e48c67a/gametypes_poker_rules_inpost4_efjuvMWeU.webp",
+      rules: [
+        "Our most-played game of the night — tap the card to view the full poker hands chart.",
+        "Hand rankings (high to low): Royal Flush, Straight Flush, Four of a Kind, Full House, Flush, Straight, Three of a Kind, Two Pair, One Pair, High Card.",
+        "Best 5-card hand wins. Ties split the pot.",
+      ],
+    },
+    {
       icon: "🎲", name: "Craps", players: "2+", time: "1-3 min/roll",
       rules: [
         "Shooter rolls two dice. Pass Line wins on 7/11, loses on 2/3/12.",
