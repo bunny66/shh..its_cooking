@@ -115,7 +115,7 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 }
 .hero::before {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(6,36,26,0.45) 0%, rgba(6,36,26,0.55) 100%);
+  background: linear-gradient(180deg, rgba(6,36,26,0.25) 0%, rgba(6,36,26,0.35) 100%);
   z-index: 0;
 }
 .hero > * { position: relative; z-index: 1; }
