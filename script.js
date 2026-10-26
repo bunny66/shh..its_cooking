@@ -69,6 +69,38 @@
       c.style.cssText = "left:" + left + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;color:" + (Math.random() > 0.5 ? "#d4af37" : "#e74c3c") + ";";
       floatingCards.appendChild(c);
     }
+  // Floating icons (chips, stars, all icons)
+  const floatingIcons = $("#floatingIcons");
+  if (floatingIcons) {
+    const icons = ["🎲", "🃏", "🪙", "🎰", "🎡", "👑", "🎯", "♠", "♥", "♦", "♣", "⭐", "✨", "💃", "🎂", "🥂"];
+    const iCount = window.matchMedia("(max-width: 480px)").matches ? 12 : 22;
+    for (let i = 0; i < iCount; i++) {
+      const el = document.createElement("span");
+      el.className = "ficon";
+      el.textContent = icons[Math.floor(Math.random() * icons.length)];
+      const left = Math.random() * 100;
+      const dur = 16 + Math.random() * 18;
+      const delay = Math.random() * 16;
+      el.style.cssText = "left:" + left + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;";
+      floatingIcons.appendChild(el);
+    }
+  }
+  // Star dust
+  const starDust = $("#starDust");
+  if (starDust) {
+    const dCount = window.matchMedia("(max-width: 480px)").matches ? 25 : 50;
+    for (let i = 0; i < dCount; i++) {
+      const d = document.createElement("span");
+      d.className = "stardust";
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const dur = 2 + Math.random() * 4;
+      const delay = Math.random() * 4;
+      d.style.cssText = "left:" + left + "%;top:" + top + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;";
+      starDust.appendChild(d);
+    }
+  }
+
   }
 
       const delay = Math.random() * 12;
