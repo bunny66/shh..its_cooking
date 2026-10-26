@@ -43,5 +43,11 @@ python3 -m http.server 8000
 - All tap targets are large; arrow keys navigate the lightbox.
 - Layout adapts to 4:3, 16:9, 21:9 and portrait orientations.
 
-## Deploy
-Push to GitHub Pages / Netlify / Vercel — it's static.
+## Host on GitHub Pages
+This repo is already static. To publish:
+1. Push to `main` (done).
+2. On GitHub: **Settings → Pages → Source → GitHub Actions**.
+3. The workflow `.github/workflows/pages.yml` will build & deploy automatically on every push.
+4. Your site URL will be `https://bunny66.github.io/shh..its_cooking/`.
+
+> Note: `.nojekyll` is included so GitHub Pages serves files as-is.
