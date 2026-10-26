@@ -78,7 +78,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🎡", name: "House of Quirk Drinking Game", players: "2+", time: "👑",
+      icon: "🎡", name: "Roulette with a twist", players: "2+", time: "👑",
       featured: true,
       rules: [
         "Roulette itself with a twist — spin the wheel, one ball, place your bets.",
