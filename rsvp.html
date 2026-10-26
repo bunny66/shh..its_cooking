@@ -76,6 +76,10 @@
         <iframe id="googleFormFrame" src="" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="border:0;border-radius:8px;background:rgba(255,255,255,0.05);">Loading…</iframe>
         <p class="empty-hint" style="margin-top:8px;">To enable: In Google Forms → Send → &lt;&gt; (embed) → copy the src URL → replace the empty src above (or set window.GOOGLE_FORM_URL in content.js).</p>
       </div>
+      <div class="rsvp-list-wrap" style="margin-top:16px;">
+        <p class="bet-selected">Guest list sheet: <a id="sheetLink" href="#" target="_blank" rel="noopener" style="color:var(--gold);">Open Google Sheet ↗</a></p>
+      </div>
+
 
       <div class="rsvp-list-wrap">
         <h2 class="section-title" style="font-size:1.4rem;margin-top:24px;">Guest List</h2>
@@ -99,6 +103,9 @@
       const url = (window.CONTENT && window.CONTENT.googleFormUrl) || "";
       const f = document.getElementById("googleFormFrame");
       if (f && url) f.src = url;
+      const sheetUrl = (window.CONTENT && window.CONTENT.guestSheetUrl) || "";
+      const sl = document.getElementById("sheetLink");
+      if (sl && sheetUrl) sl.href = sheetUrl;
     })();
   </script>
     (function () {
