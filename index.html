@@ -164,6 +164,16 @@
   </div>
 
   <script>if (location.protocol === 'file:') { var b = document.getElementById('fileBanner'); if (b) b.style.display = 'block'; }</script>
+  <!-- Game details modal -->
+  <div class="lightbox game-modal" id="gameModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="lb-close" id="gameClose" aria-label="Close">×</button>
+    <div class="game-modal-body">
+      <h2 id="gameModalTitle"></h2>
+      <p id="gameModalMeta" class="game-modal-meta"></p>
+      <ul id="gameModalRules" class="game-rules"></ul>
+    </div>
+  </div>
+
   <script src="content.js"></script>
 
   <script src="script.js"></script>

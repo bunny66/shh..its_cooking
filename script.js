@@ -217,23 +217,16 @@
     } else {
       games.forEach((g) => {
         const el = document.createElement("article");
-        el.className = "game" + (g.featured ? " game-featured" : "") + (g.image ? " game-clickable" : "");
-        if (g.image) {
-          el.setAttribute("role", "button");
-          el.setAttribute("tabindex", "0");
-          el.setAttribute("aria-label", (g.name || "") + " - view rules image");
-        }
+        el.className = "game game-compact" + (g.featured ? " game-featured" : "") + (g.image ? " game-clickable" : "");
         const rules = Array.isArray(g.rules) ? g.rules : [];
         el.innerHTML = '<div class="game-head"><span class="game-icon" aria-hidden="true">' + esc(g.icon || "🃏") + '</span><h3 class="game-name">' + esc(g.name || "") + '</h3></div>' +
           '<div class="game-meta">' + (g.players ? '<span class="game-tag">Players: ' + esc(g.players) + '</span>' : "") + (g.time ? '<span class="game-tag">' + esc(g.time) + '</span>' : "") + '</div>' +
-          '<ul class="game-rules">' + rules.map((r) => "<li>" + esc(r) + "</li>").join("") + '</ul>' +
-          (g.image ? '<button type="button" class="view-rules-btn">View rules image ↗</button>' : "");
+          '<button type="button" class="read-more-btn">Read more →</button>';
+        const openDetails = () => openGameModal(g);
+        el.querySelector(".read-more-btn").addEventListener("click", (e) => { e.stopPropagation(); openDetails(); });
+        el.addEventListener("click", (e) => { if (!e.target.classList.contains("read-more-btn")) openDetails(); });
         if (g.image) {
-          const open = () => openImageModal(g.image, g.name || "Rules");
-          el.addEventListener("click", open);
-          const btn = el.querySelector(".view-rules-btn");
-          if (btn) btn.addEventListener("click", (e) => { e.stopPropagation(); open(); });
-          el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+          el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDetails(); } });
         }
         gamesGrid.appendChild(el);
       });
@@ -334,6 +327,41 @@
     let state = [];
     try { state = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { state = []; }
     const items = photoChecklist.querySelectorAll("li");
+  // Game details modal
+  const gameModal = $("#gameModal");
+  const gameModalTitle = $("#gameModalTitle");
+  const gameModalMeta = $("#gameModalMeta");
+  const gameModalRules = $("#gameModalRules");
+  const gameClose = $("#gameClose");
+  function openGameModal(g) {
+    if (!gameModal) return;
+    if (gameModalTitle) gameModalTitle.textContent = (g.icon || "") + " " + (g.name || "");
+    if (gameModalMeta) gameModalMeta.textContent = (g.players ? "Players: " + g.players : "") + (g.time ? "  ·  " + g.time : "");
+    if (gameModalRules) {
+      const rules = Array.isArray(g.rules) ? g.rules : [];
+      gameModalRules.innerHTML = rules.map((r) => "<li>" + esc(r) + "</li>").join("") +
+        (g.image ? '<li style="list-style:none;margin-top:8px;"><img src="' + esc(g.image) + '" alt="rules" style="max-width:100%;border-radius:8px;" /></li>' : "");
+    }
+    gameModal.classList.add("open");
+    gameModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    try { if (gameClose) gameClose.focus(); } catch (e) {}
+  }
+  function closeGameModal() {
+    if (!gameModal) return;
+    gameModal.classList.remove("open");
+    gameModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+  if (gameModal) {
+    gameClose.addEventListener("click", closeGameModal);
+    gameModal.addEventListener("click", (e) => { if (e.target === gameModal) closeGameModal(); });
+    document.addEventListener("keydown", (e) => {
+      if (!gameModal.classList.contains("open")) return;
+      if (e.key === "Escape") closeGameModal();
+    });
+  }
+
     items.forEach((li, i) => {
       const cb = li.querySelector("input[type='checkbox']");
       if (!cb) return;
