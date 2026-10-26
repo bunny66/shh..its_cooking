@@ -121,9 +121,11 @@
     <section id="bet" class="section">
       <div class="section-head">
         <h2 class="section-title"><span class="suit">♣</span> Place Your Bet</h2>
-        <p class="section-sub">Pick a chip, place your bet, spin the wheel. Just for fun!</p>
+        <p class="section-sub">Fun questions — bet your chips on the answer. Just for fun!</p>
       </div>
       <div class="bet-board">
+        <p class="bet-question" id="betQuestion"></p>
+        <div class="bet-options" id="betOptions"></div>
         <div class="bet-chips" id="betChips">
           <button class="bet-chip chip-red" data-val="25">25</button>
           <button class="bet-chip chip-blue" data-val="50">50</button>
@@ -131,8 +133,10 @@
           <button class="bet-chip chip-black" data-val="500">500</button>
         </div>
         <p class="bet-selected" id="betSelected">Selected: none</p>
-        <button class="btn btn-gold" id="placeBetBtn">Place Bet & Spin 🎡</button>
+        <button class="btn btn-gold" id="placeBetBtn">Place Bet</button>
         <p class="bet-result" id="betResult"></p>
+        <p class="bet-score" id="betScore">Score: 0</p>
+        <button class="btn btn-outline" id="nextQBtn" style="margin-top:8px;">Next Question</button>
       </div>
     </section>
 

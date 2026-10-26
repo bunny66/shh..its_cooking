@@ -253,6 +253,15 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 }
 .game-clickable { cursor: pointer; }
 .game-featured .game-tag { background: #1a1400; color: var(--gold); border-color: var(--gold); }
+.bet-question { font-family: var(--font-display); font-size: 1.25rem; color: var(--ink); margin: 0 0 12px; }
+.bet-options { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 14px; }
+.bet-option { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--card-border); background: var(--card); color: var(--ink); cursor: pointer; transition: all .15s; }
+.bet-option:hover { border-color: var(--gold); color: var(--gold); }
+.bet-option.selected { background: var(--gold); color: #1a1400; border-color: var(--gold); }
+.bet-option.correct { background: #27ae60; color: #fff; border-color: #27ae60; }
+.bet-option.wrong { background: var(--red); color: #fff; border-color: var(--red); }
+.bet-score { color: var(--gold); font-weight: 600; margin: 8px 0 0; }
+
 /* ---------- Place Your Bet ---------- */
 .bet-board { text-align: center; max-width: 600px; margin: 0 auto; }
 .bet-chips { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }

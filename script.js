@@ -327,48 +327,110 @@
   }
 
   // Focus scroll for TV
-  // Place Your Bet
+  // Place Your Bet - fun quiz
   const betChips = $("#betChips");
   const betSelected = $("#betSelected");
   const placeBetBtn = $("#placeBetBtn");
   const betResult = $("#betResult");
+  const betQuestion = $("#betQuestion");
+  const betOptions = $("#betOptions");
+  const betScore = $("#betScore");
+  const nextQBtn = $("#nextQBtn");
+
+  const questions = [
+    { q: "What does 'Blackjack' pay for a natural 21?", opts: ["1:1", "3:2", "2:1", "5:1"], ans: 1 },
+    { q: "In Roulette, what pays 35:1?", opts: ["Red/Black", "Straight up number", "Odd/Even", "Dozen"], ans: 1 },
+    { q: "How many cards in a standard deck?", opts: ["50", "52", "54", "48"], ans: 1 },
+    { q: "Best poker hand?", opts: ["Four of a Kind", "Full House", "Royal Flush", "Straight Flush"], ans: 2 },
+    { q: "Ayushman's birthday theme?", opts: ["Hollywood", "Casino Night", "Beach", "Retro"], ans: 1 },
+    { q: "What is 'Bluff' also called?", opts: ["Cheat", "Poker", "Rummy", "Bridge"], ans: 0 },
+    { q: "Monopoly Deal: sets to win?", opts: ["2", "3", "4", "5"], ans: 1 },
+    { q: "Tambola full house wins?", opts: ["Line prize", "Jackpot", "Nothing", "Re-roll"], ans: 1 },
+  ];
+  let qIndex = 0;
   let selectedBet = null;
+  let score = 0;
+  let answered = false;
+  let selectedOption = null;
+
+  function renderQuestion() {
+    const q = questions[qIndex % questions.length];
+    if (betQuestion) betQuestion.textContent = q.q;
+    if (betOptions) {
+      betOptions.innerHTML = "";
+      q.opts.forEach((o, i) => {
+        const b = document.createElement("button");
+        b.className = "bet-option";
+        b.textContent = o;
+        b.addEventListener("click", () => {
+          if (answered) return;
+          betOptions.querySelectorAll(".bet-option").forEach((x) => x.classList.remove("selected"));
+          b.classList.add("selected");
+          selectedOption = i;
+        });
+        betOptions.appendChild(b);
+      });
+    }
+    if (betResult) betResult.textContent = "";
+    answered = false;
+    selectedOption = null;
+  }
+
   if (betChips) {
     betChips.querySelectorAll(".bet-chip").forEach((chip) => {
       chip.addEventListener("click", () => {
         betChips.querySelectorAll(".bet-chip").forEach((c) => c.classList.remove("selected"));
         chip.classList.add("selected");
-        selectedBet = chip.getAttribute("data-val");
+        selectedBet = parseInt(chip.getAttribute("data-val"), 10);
         if (betSelected) betSelected.textContent = "Selected: " + selectedBet;
       });
     });
   }
   if (placeBetBtn) {
     placeBetBtn.addEventListener("click", () => {
-      if (!selectedBet) { if (betResult) betResult.textContent = "Pick a chip first!"; return; }
-      const outcomes = ["Win! 🎉", "Jackpot! 💰", "House wins 😅", "Push 🤝", "Lucky spin! ✨", "All in pays off! 🏆"];
-      const res = outcomes[Math.floor(Math.random() * outcomes.length)];
-      if (betResult) betResult.textContent = "You bet " + selectedBet + " → " + res;
-      // confetti burst
-      for (let i = 0; i < 40; i++) {
-        const conf = document.createElement("span");
-        conf.textContent = ["🎉","✨","💰","♠","♥","♦","♣"][Math.floor(Math.random()*7)];
-        conf.style.cssText = "position:fixed;left:50%;top:50%;font-size:1.4rem;pointer-events:none;z-index:9999;animation:confetti 1.2s ease-out forwards;";
-        const angle = Math.random() * Math.PI * 2;
-        const dist = 80 + Math.random() * 120;
-        conf.style.setProperty("--dx", Math.cos(angle)*dist + "px");
-        conf.style.setProperty("--dy", Math.sin(angle)*dist + "px");
-        document.body.appendChild(conf);
-        setTimeout(() => conf.remove(), 1300);
+      if (selectedBet === null) { if (betResult) betResult.textContent = "Pick a chip first!"; return; }
+      if (selectedOption === null) { if (betResult) betResult.textContent = "Pick an answer!"; return; }
+      if (answered) return;
+      answered = true;
+      const q = questions[qIndex % questions.length];
+      const opts = betOptions.querySelectorAll(".bet-option");
+      opts[q.ans].classList.add("correct");
+      if (selectedOption !== q.ans) opts[selectedOption].classList.add("wrong");
+      if (selectedOption === q.ans) {
+        score += selectedBet;
+        if (betResult) betResult.textContent = "Correct! +" + selectedBet + " points 🎉";
+        // confetti
+        for (let i = 0; i < 30; i++) {
+          const conf = document.createElement("span");
+          conf.textContent = ["🎉","✨","💰","♠","♥","♦","♣"][Math.floor(Math.random()*7)];
+          conf.style.cssText = "position:fixed;left:50%;top:50%;font-size:1.4rem;pointer-events:none;z-index:9999;animation:confetti 1.2s ease-out forwards;";
+          const angle = Math.random() * Math.PI * 2;
+          const dist = 80 + Math.random() * 120;
+          conf.style.setProperty("--dx", Math.cos(angle)*dist + "px");
+          conf.style.setProperty("--dy", Math.sin(angle)*dist + "px");
+          document.body.appendChild(conf);
+          setTimeout(() => conf.remove(), 1300);
+        }
+        const st = document.createElement("style");
+        if (!document.getElementById("confettiStyle")) {
+          st.id = "confettiStyle";
+          st.textContent = "@keyframes confetti { 0% { transform: translate(0,0) rotate(0deg); opacity:1; } 100% { transform: translate(var(--dx), var(--dy)) rotate(360deg); opacity:0; } }";
+          document.head.appendChild(st);
+        }
+      } else {
+        if (betResult) betResult.textContent = "Wrong! -" + selectedBet + " (correct: " + q.opts[q.ans] + ")";
       }
-      const st = document.createElement("style");
-      if (!document.getElementById("confettiStyle")) {
-        st.id = "confettiStyle";
-        st.textContent = "@keyframes confetti { 0% { transform: translate(0,0) rotate(0deg); opacity:1; } 100% { transform: translate(var(--dx), var(--dy)) rotate(360deg); opacity:0; } }";
-        document.head.appendChild(st);
-      }
+      if (betScore) betScore.textContent = "Score: " + score;
     });
   }
+  if (nextQBtn) {
+    nextQBtn.addEventListener("click", () => {
+      qIndex++;
+      renderQuestion();
+    });
+  }
+  renderQuestion();
+
 
   document.addEventListener("focusin", (e) => {
     const t = e.target;
