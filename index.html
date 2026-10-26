@@ -37,6 +37,7 @@
       <a href="#photos" class="nav-link">Photos</a>
       <a href="#artifacts" class="nav-link">Artifacts</a>
       <a href="#games" class="nav-link">Games</a>
+      <a href="#bet" class="nav-link">Bet</a>
       <a href="#music" class="nav-link">Playlists</a>
     </nav>
     <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
@@ -114,6 +115,25 @@
       <div class="games" id="gamesGrid" data-featured-only="true"></div>
       <p class="empty-hint" id="gamesEmpty" hidden>Add games in <code>content.js</code> → <code>games</code> array.</p>
       <p class="more-link-wrap"><a class="btn btn-outline" href="games.html">View all games & rules →</a></p>
+    </section>
+
+    <!-- BET -->
+    <section id="bet" class="section">
+      <div class="section-head">
+        <h2 class="section-title"><span class="suit">♣</span> Place Your Bet</h2>
+        <p class="section-sub">Pick a chip, place your bet, spin the wheel. Just for fun!</p>
+      </div>
+      <div class="bet-board">
+        <div class="bet-chips" id="betChips">
+          <button class="bet-chip chip-red" data-val="25">25</button>
+          <button class="bet-chip chip-blue" data-val="50">50</button>
+          <button class="bet-chip chip-gold" data-val="100">100</button>
+          <button class="bet-chip chip-black" data-val="500">500</button>
+        </div>
+        <p class="bet-selected" id="betSelected">Selected: none</p>
+        <button class="btn btn-gold" id="placeBetBtn">Place Bet & Spin 🎡</button>
+        <p class="bet-result" id="betResult"></p>
+      </div>
     </section>
 
     <!-- MUSIC / PLAYLISTS -->

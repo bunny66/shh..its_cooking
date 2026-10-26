@@ -327,6 +327,49 @@
   }
 
   // Focus scroll for TV
+  // Place Your Bet
+  const betChips = $("#betChips");
+  const betSelected = $("#betSelected");
+  const placeBetBtn = $("#placeBetBtn");
+  const betResult = $("#betResult");
+  let selectedBet = null;
+  if (betChips) {
+    betChips.querySelectorAll(".bet-chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        betChips.querySelectorAll(".bet-chip").forEach((c) => c.classList.remove("selected"));
+        chip.classList.add("selected");
+        selectedBet = chip.getAttribute("data-val");
+        if (betSelected) betSelected.textContent = "Selected: " + selectedBet;
+      });
+    });
+  }
+  if (placeBetBtn) {
+    placeBetBtn.addEventListener("click", () => {
+      if (!selectedBet) { if (betResult) betResult.textContent = "Pick a chip first!"; return; }
+      const outcomes = ["Win! 🎉", "Jackpot! 💰", "House wins 😅", "Push 🤝", "Lucky spin! ✨", "All in pays off! 🏆"];
+      const res = outcomes[Math.floor(Math.random() * outcomes.length)];
+      if (betResult) betResult.textContent = "You bet " + selectedBet + " → " + res;
+      // confetti burst
+      for (let i = 0; i < 40; i++) {
+        const conf = document.createElement("span");
+        conf.textContent = ["🎉","✨","💰","♠","♥","♦","♣"][Math.floor(Math.random()*7)];
+        conf.style.cssText = "position:fixed;left:50%;top:50%;font-size:1.4rem;pointer-events:none;z-index:9999;animation:confetti 1.2s ease-out forwards;";
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 80 + Math.random() * 120;
+        conf.style.setProperty("--dx", Math.cos(angle)*dist + "px");
+        conf.style.setProperty("--dy", Math.sin(angle)*dist + "px");
+        document.body.appendChild(conf);
+        setTimeout(() => conf.remove(), 1300);
+      }
+      const st = document.createElement("style");
+      if (!document.getElementById("confettiStyle")) {
+        st.id = "confettiStyle";
+        st.textContent = "@keyframes confetti { 0% { transform: translate(0,0) rotate(0deg); opacity:1; } 100% { transform: translate(var(--dx), var(--dy)) rotate(360deg); opacity:0; } }";
+        document.head.appendChild(st);
+      }
+    });
+  }
+
   document.addEventListener("focusin", (e) => {
     const t = e.target;
     if (t && typeof t.scrollIntoView === "function") {
