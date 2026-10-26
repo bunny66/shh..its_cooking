@@ -42,6 +42,10 @@
     });
   }
 
+  const endpoint = (window.CONTENT && window.CONTENT.rsvpEndpoint) || "";
+  const warn = document.getElementById("rsvpWarn");
+  if (warn && !endpoint) warn.style.display = "block";
+
   const sheetUrl = (window.CONTENT && window.CONTENT.guestSheetUrl) || "";
   const sl = document.getElementById("sheetLink");
   if (sl && sheetUrl) sl.href = sheetUrl;
