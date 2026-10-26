@@ -29,7 +29,7 @@ window.CONTENT = {
     { icon: "🪙", name: "Poker Chips", desc: "High-roller chip set: red, blue, gold & black." },
     { icon: "🎰", name: "Slot Machine", desc: "Mini slot machine for quick spins." },
     { icon: "🎡", name: "Roulette Wheel", desc: "The centerpiece of the casino floor." },
-    { icon: "🎡", name: "House of Quirk Drinking Game Set", desc: "Spinning wheel, 2 balls & 16 shot glasses — multicolour. Spin, drink, repeat!" },
+    { icon: "🎡", name: "House of Quirk Drinking Game Set", desc: "Spinning wheel, 1 ball & 16 shot glasses — multicolour. Spin, drink, repeat!" },
     { icon: "👑", name: "Dealer Visor", desc: "For the house dealer of the night." },
   ],
 
@@ -78,12 +78,16 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🎡", name: "House of Quirk Drinking Game", players: "2+", time: "Party game",
+      icon: "🎡", name: "House of Quirk Drinking Game", players: "2+", time: "👑",
+      featured: true,
       rules: [
-        "Spin the wheel and complete the challenge it lands on.",
-        "Use the 2 balls and 16 multicolour shot glasses for penalties/rewards.",
-        "Challenges may include truth, dare, drink, or pass the drink.",
-        "Last one standing (or most points) wins. Play responsibly and have fun!",
+        "Roulette itself with a twist — spin the wheel, one ball, place your bets.",
+        "Place bets on numbers, colors, odds/evens, or ranges before the spin.",
+        "Dealer spins the wheel and drops the single ball.",
+        "Straight up pays 35:1; split 17:1; street 11:1; corner 8:1.",
+        "Red/Black, Odd/Even, High/Low pay 1:1. House wins on 0.",
+        "Drinking twist: losers drink, winners pour — use the 1 ball & 16 shot glasses!",
+        "Spin, drink, repeat. Play responsibly and have fun!",
       ],
     },
     {
@@ -94,15 +98,6 @@ window.CONTENT = {
         "Dealer must hit until 17 (stands on soft 17).",
         "Blackjack (Ace + 10-value) pays 3:2. Insurance pays 2:1.",
         "Double down on first two cards; split pairs; no surrender.",
-      ],
-    },
-    {
-      icon: "🎡", name: "Roulette", players: "2+", time: "2-5 min/spin",
-      rules: [
-        "Place bets on numbers, colors, odds/evens, or ranges before the spin.",
-        "Dealer spins the wheel and drops the ball.",
-        "Straight up pays 35:1; split 17:1; street 11:1; corner 8:1.",
-        "Red/Black, Odd/Even, High/Low pay 1:1. House wins on 0.",
       ],
     },
     {
