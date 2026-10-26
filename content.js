@@ -129,6 +129,16 @@ window.CONTENT = {
       ],
     },
     {
+      icon: "🃏", name: "Teen Patti", players: "3-6", time: "5-15 min/game",
+      rules: [
+        "Indian 3-card poker. Each player gets 3 cards; best hand wins the pot.",
+        "Hand rankings: Trail (3 of a kind) > Pure Sequence > Sequence > Color > Pair > High Card.",
+        "Play blind (without seeing) or seen (after viewing cards).",
+        "Blind players bet less; seen players must bet double to stay in.",
+        "Showdown when only 2 players remain. Side show allowed between adjacent players.",
+      ],
+    },
+    {
       icon: "🎲", name: "Craps", players: "2+", time: "1-3 min/roll",
       rules: [
         "Shooter rolls two dice. Pass Line wins on 7/11, loses on 2/3/12.",
@@ -138,7 +148,6 @@ window.CONTENT = {
       ],
     },
   ],
-
   playlists: [
     { title: "Casino Night Mix", url: "https://www.youtube.com/watch?v=xB-BHUvWgjk&list=RDxB-BHUvWgjk&start_radio=1" },
     { title: "Casino Night Playlist 1", url: "https://www.youtube.com/watch?v=ydQtI30SbBg&list=PLTfxiuA09ZhhKWkVJ_O7P0Vj93HsqHEI8" },
