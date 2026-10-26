@@ -68,9 +68,12 @@
         const drink = String(r.drink || r.drinks || "").toLowerCase().startsWith("y");
         const prefs = r.prefs || r["drink preference"] || r.preferences || "—";
         const comments = r.notes || r.comments || r.comment || "";
+        const vol = r.volunteer || r.volunteering || "";
+        const volRoles = r["volunteer roles"] || r.volunteerroles || "";
         return '<div class="artifact" style="text-align:left;margin-bottom:8px;">' +
           '<strong>' + escapeHtml(name) + '</strong> — ' + att +
           '<br/>Drinks: ' + (drink ? "Yes (" + escapeHtml(String(prefs)) + ")" : "No") +
+          (vol === "yes" ? '<br/>Volunteer: ' + escapeHtml(String(volRoles) || "Yes") : '') +
           (comments ? '<br/>Comments: ' + escapeHtml(String(comments)) : '') +
           '</div>';
       }).join("");
@@ -79,6 +82,25 @@
     document.body.appendChild(script);
     setTimeout(() => { if (window[cbName]) { delete window[cbName]; if (script.parentNode) script.parentNode.removeChild(script); } }, 10000);
   }
+  function submitViaForm(entry) {
+    const f = document.createElement("form");
+    f.method = "POST";
+    f.action = endpoint;
+    f.target = "hidden_iframe";
+    f.style.display = "none";
+    Object.keys(entry).forEach((k) => {
+      const v = (k === "prefs" || k === "volunteerRoles") ? (entry[k] || []).join(", ") : entry[k];
+      const inp = document.createElement("input");
+      inp.type = "hidden";
+      inp.name = k;
+      inp.value = v == null ? "" : v;
+      f.appendChild(inp);
+    });
+    document.body.appendChild(f);
+    f.submit();
+    setTimeout(() => f.remove(), 1000);
+  }
+
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -92,29 +114,21 @@
       const volunteerRolesVals = volunteer === "yes" && volRoles ? Array.from(volRoles.querySelectorAll("input:checked")).map((x) => x.value) : [];
       const entry = { name, attending, drink, prefs: prefVals, volunteer, volunteerRoles: volunteerRolesVals, notes, ts: new Date().toISOString() };
 
+      const msg = document.getElementById("rsvpMsg");
       if (endpoint) {
-        fetch(endpoint, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(entry),
-        }).then(() => {
-          const msg = document.getElementById("rsvpMsg");
-          if (msg) msg.textContent = "Thanks, " + name + "! RSVP submitted. Please check the sheet to confirm. 🎉 No gifts, please — your presence is the present.";
-          form.reset();
-          if (drinkSel && prefs) { const t = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; }; t(); }
-          toggleDrinkSection();
-          setTimeout(loadGuestList, 2000);
-        }).catch(() => {
-          const msg = document.getElementById("rsvpMsg");
-          if (msg) msg.textContent = "Failed to send. Please use the Google Sheet link. 🎉";
-        });
+        submitViaForm(entry);
+        if (msg) msg.textContent = "Thanks, " + name + "! RSVP submitted. Please check the sheet to confirm. 🎉 No gifts, please — your presence is the present.";
+        form.reset();
+        if (drinkSel && prefs) { const t = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; }; t(); }
+        toggleSections();
+        toggleVolRoles();
+        setTimeout(loadGuestList, 2000);
       } else {
-        const msg = document.getElementById("rsvpMsg");
         if (msg) msg.textContent = "No backend configured. Please submit via the Google Sheet link. 🎉 No gifts, please — your presence is the present.";
         form.reset();
         if (drinkSel && prefs) { const t = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; }; t(); }
-        toggleDrinkSection();
+        toggleSections();
+        toggleVolRoles();
       }
     });
   }
@@ -122,9 +136,6 @@
   const sheetUrl = (window.CONTENT && window.CONTENT.guestSheetUrl) || "";
   const sl = document.getElementById("sheetLink");
   if (sl && sheetUrl) sl.href = sheetUrl;
-
-  const refreshBtn = document.getElementById("refreshList");
-  if (refreshBtn) refreshBtn.addEventListener("click", loadGuestList);
 
   loadGuestList();
 })();
