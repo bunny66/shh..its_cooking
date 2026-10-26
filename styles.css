@@ -286,7 +286,7 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
   box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 .game-clickable { cursor: pointer; }
-.game-featured .game-tag { background: #1a1400; color: var(--gold); border-color: var(--gold); }
+.game-featured .game-tag { background: transparent; color: var(--gold); border-color: var(--gold); }
 .title-line.red { color: var(--red-bright); text-shadow: 0 0 20px rgba(231,76,60,0.4); }
 
 /* ---------- Photo challenge checklist ---------- */
