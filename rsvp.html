@@ -91,9 +91,6 @@
   <script src="content.js"></script>
   <script>
     (function () {
-      const url = (window.CONTENT && window.CONTENT.googleFormUrl) || "";
-      const f = document.getElementById("googleFormFrame");
-      if (f && url) f.src = url;
       const sheetUrl = (window.CONTENT && window.CONTENT.guestSheetUrl) || "";
       const sl = document.getElementById("sheetLink");
       if (sl && sheetUrl) sl.href = sheetUrl;
