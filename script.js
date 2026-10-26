@@ -47,7 +47,7 @@
   const agendaGrid = $("#agendaGrid");
   const agendaEmpty = null;
   const agendaItems = Array.isArray(C.agenda) && C.agenda.length ? C.agenda : [
-    { icon: "🤝", label: "Meet" },
+    { icon: "🤝", label: "Meet & Greet" },
     { icon: "🍽️", label: "Eat" },
     { icon: "🥂", label: "Drink" },
     { icon: "🎰", label: "Games" },

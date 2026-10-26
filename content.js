@@ -14,7 +14,7 @@ window.CONTENT = {
   agenda: [
     // Add optional image per item to make it clickable, e.g.:
     // { icon: "🤝", label: "Meet", image: "assets/meet.jpg" },
-    { icon: "🤝", label: "Meet" },
+    { icon: "🤝", label: "Meet & Greet" },
     { icon: "🍽️", label: "Eat" },
     { icon: "🥂", label: "Drink" },
     { icon: "🎰", label: "Games" },
