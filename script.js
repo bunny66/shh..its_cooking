@@ -123,7 +123,7 @@
         el.className = "playlist";
         const embed = toEmbedUrl(pl.url || "");
         el.innerHTML = '<h3 class="playlist-title">' + esc(pl.title || "Playlist") + '</h3>' +
-          (embed ? '<div class="playlist-frame"><iframe src="' + esc(embed) + '" title="' + esc(pl.title || "") + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>' : "") +
+          (embed ? '<div class="playlist-frame"><iframe src="' + esc(embed) + '" title="' + esc(pl.title || "") + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' : "") +
           (pl.url ? '<a class="playlist-link" href="' + esc(pl.url) + '" target="_blank" rel="noopener">Open on YouTube ↗</a>' : "");
         playlistsGrid.appendChild(el);
       });
@@ -134,10 +134,10 @@
     if (!url) return "";
     const plMatch = url.match(/[?&]list=([^&]+)/);
     if (plMatch) {
-      return "https://www.youtube.com/embed/videoseries?list=" + plMatch[1];
+      return "https://www.youtube-nocookie.com/embed/videoseries?list=" + plMatch[1];
     }
     const vMatch = url.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
-    if (vMatch) return "https://www.youtube.com/embed/" + vMatch[1];
+    if (vMatch) return "https://www.youtube-nocookie.com/embed/" + vMatch[1];
     return "";
   }
 
