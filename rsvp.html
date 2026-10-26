@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#0b3d2e" />
+  <title>Ayushman's Birthday — RSVP 🎰</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="particles" id="particles"></div>
+  </div>
+
+  <header class="topbar" role="banner">
+    <div class="brand">
+      <span class="chip-logo" aria-hidden="true">🎰</span>
+      <span class="brand-text">AYUSHMAN'S <em>CASINO NIGHT</em></span>
+    </div>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html#agenda" class="nav-link">Agenda</a>
+      <a href="index.html#photos" class="nav-link">Photos</a>
+      <a href="games.html" class="nav-link">Games</a>
+      <a href="music.html" class="nav-link">Playlists</a>
+      <a href="rsvp.html" class="nav-link">RSVP</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="section-head">
+        <h1 class="section-title"><span class="suit red">♥</span> RSVP</h1>
+        <p class="section-sub">Let us know you're coming. 🎁 No gifts, please.</p>
+      </div>
+
+      <form id="rsvpForm" class="rsvp-form">
+        <label>Name<br><input type="text" id="rsvpName" required placeholder="Your name" /></label>
+        <label>Attending?<br>
+          <select id="rsvpAttending">
+            <option value="yes">Yes, I'll be there! 🎉</option>
+            <option value="no">Sorry, can't make it</option>
+          </select>
+        </label>
+        <label>Do you drink?<br>
+          <select id="rsvpDrink">
+            <option value="yes">Yes 🥂</option>
+            <option value="no">No, thanks</option>
+          </select>
+        </label>
+        <fieldset id="drinkPrefs" class="drink-prefs">
+          <legend>Drink preference (if yes):</legend>
+          <label><input type="checkbox" value="Beer" /> Beer</label>
+          <label><input type="checkbox" value="Wine" /> Wine</label>
+          <label><input type="checkbox" value="Whisky" /> Whisky</label>
+          <label><input type="checkbox" value="Vodka" /> Vodka</label>
+          <label><input type="checkbox" value="Cocktails" /> Cocktails</label>
+          <label><input type="checkbox" value="Non-alcoholic" /> Non-alcoholic</label>
+          <label><input type="checkbox" value="Other" /> Other</label>
+        </fieldset>
+        <label>Notes (optional)<br><textarea id="rsvpNotes" rows="3" placeholder="Allergies, song requests, etc."></textarea></label>
+        <button type="submit" class="btn btn-gold">Submit RSVP</button>
+      </form>
+
+      <p id="rsvpMsg" class="bet-result"></p>
+      <div class="rsvp-list-wrap">
+        <h2 class="section-title" style="font-size:1.4rem;margin-top:24px;">Saved RSVPs</h2>
+        <div id="rsvpList"></div>
+        <button class="btn btn-outline" id="clearRsvp" style="margin-top:10px;">Clear all</button>
+        <button class="btn btn-outline" id="copyRsvp" style="margin-top:10px;">Copy summary</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-suits" aria-hidden="true">♠ ♥ ♦ ♣</div>
+    <p>Made with luck & love for Ayushman's Birthday.</p>
+    <p class="no-gifts">🎁 No gifts, please — your presence is the present.</p>
+    <p class="footer-small">Casino Night theme · Mobile · Tablet · TV ready</p>
+  </footer>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = "ayushman_rsvp_list";
+      const form = document.getElementById("rsvpForm");
+      const listEl = document.getElementById("rsvpList");
+      const msg = document.getElementById("rsvpMsg");
+      const drinkSel = document.getElementById("rsvpDrink");
+      const prefs = document.getElementById("drinkPrefs");
+
+      function load() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); } catch (e) { return []; } }
+      function save(list) { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
+      function renderList() {
+        const list = load();
+        if (!list.length) { listEl.innerHTML = "<p class='empty-hint'>No RSVPs yet.</p>"; return; }
+        listEl.innerHTML = list.map((r) => {
+          const prefs = (r.prefs || []).join(", ") || "—";
+          return '<div class="artifact" style="text-align:left;margin-bottom:8px;">' +
+            '<strong>' + escapeHtml(r.name) + '</strong> — ' + (r.attending === "yes" ? "Attending ✅" : "Not attending") +
+            '<br/>Drinks: ' + (r.drink === "yes" ? "Yes (" + escapeHtml(prefs) + ")" : "No") +
+            (r.notes ? '<br/>Notes: ' + escapeHtml(r.notes) : '') +
+            '</div>';
+        }).join("");
+      }
+      function escapeHtml(s){ return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+      if (drinkSel && prefs) {
+        const toggle = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; };
+        drinkSel.addEventListener("change", toggle);
+        toggle();
+      }
+
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const name = document.getElementById("rsvpName").value.trim();
+          if (!name) return;
+          const attending = document.getElementById("rsvpAttending").value;
+          const drink = document.getElementById("rsvpDrink").value;
+          const prefVals = Array.from(prefs.querySelectorAll("input:checked")).map((x) => x.value);
+          const notes = document.getElementById("rsvpNotes").value.trim();
+          const entry = { name, attending, drink, prefs: prefVals, notes, ts: new Date().toISOString() };
+          const list = load();
+          list.push(entry);
+          save(list);
+          renderList();
+          msg.textContent = "Thanks, " + name + "! RSVP saved. 🎉";
+          form.reset();
+          if (prefs) prefs.style.display = "none";
+        });
+      }
+      const clearBtn = document.getElementById("clearRsvp");
+      if (clearBtn) clearBtn.addEventListener("click", () => { if (confirm("Clear all RSVPs?")) { localStorage.removeItem(STORAGE_KEY); renderList(); } });
+      const copyBtn = document.getElementById("copyRsvp");
+      if (copyBtn) copyBtn.addEventListener("click", () => {
+        const list = load();
+        const txt = list.map((r) => r.name + " | " + (r.attending==="yes"?"Attending":"Not attending") + " | Drinks: " + (r.drink==="yes"? (r.prefs||[]).join(",") : "No") + (r.notes ? " | " + r.notes : "")).join("\\n");
+        navigator.clipboard.writeText(txt).then(() => { msg.textContent = "Summary copied to clipboard!"; });
+      });
+      renderList();
+    })();
+  </script>
+</body>
+</html>
+

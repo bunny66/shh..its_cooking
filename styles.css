@@ -253,6 +253,18 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 }
 .game-clickable { cursor: pointer; }
 .game-featured .game-tag { background: #1a1400; color: var(--gold); border-color: var(--gold); }
+/* ---------- RSVP form ---------- */
+.rsvp-form { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; text-align: left; }
+.rsvp-form label { font-weight: 500; }
+.rsvp-form input, .rsvp-form select, .rsvp-form textarea {
+  width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--card-border);
+  background: rgba(0,0,0,0.3); color: var(--ink); font: inherit; margin-top: 4px;
+}
+.drink-prefs { border: 1px solid var(--card-border); border-radius: 8px; padding: 10px; }
+.drink-prefs legend { color: var(--gold); }
+.drink-prefs label { display: inline-block; margin-right: 12px; font-weight: 400; }
+.rsvp-list-wrap { max-width: 600px; margin: 20px auto 0; }
+
 /* ---------- Hide artifacts section ---------- */
 #artifacts { display: none; }
 
