@@ -102,6 +102,12 @@
       const d = document.createElement("span");
       d.className = "stardust";
       const left = Math.random() * 100;
+  // Photo upload links
+  const photoUploadBtn = $("#photoUploadBtn");
+  const photoFolderBtn = $("#photoFolderBtn");
+  if (photoUploadBtn && C.photoUploadFormUrl) photoUploadBtn.href = C.photoUploadFormUrl;
+  if (photoFolderBtn && C.photoFolderUrl) photoFolderBtn.href = C.photoFolderUrl;
+
       const top = Math.random() * 100;
       const dur = 2 + Math.random() * 4;
       const delay = Math.random() * 4;

@@ -65,6 +65,14 @@ function doPost(e) {
 6. Push — RSVPs will now be appended to the sheet automatically.
 
 > Note: The local form still saves to the browser for instant feedback; the endpoint adds the central record.
+## Collect guest photos (Google Drive)
+Guests can upload photos directly to a Google Drive folder via a Google Form with a "File upload" question.
+
+1. Create a Google Form → add a "File upload" question.
+2. In the form settings, responses are stored in a Google Drive folder (auto-created).
+3. Copy the form's share URL → `content.js` → `photoUploadFormUrl`.
+4. Share the Drive folder (or a Google Photos album) → paste its URL → `content.js` → `photoFolderUrl`.
+5. Push — "📸 Upload Photos" and "View Gallery ↗" buttons appear in the Photo Gallery section.
 ## Host on GitHub Pages
 This repo is already static. To publish:
 1. Push to `main` (done).

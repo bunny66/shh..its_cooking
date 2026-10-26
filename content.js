@@ -11,6 +11,8 @@ window.CONTENT = {
     // { src: "assets/photo2.jpg", caption: "Vegas vibes" },
   ],
 
+  photoUploadFormUrl: "", // Google Form with File upload question -> uploads to Google Drive
+  photoFolderUrl: "", // Google Drive folder link to view uploaded photos
   googleFormUrl: "", // paste Google Form embed URL here to collect RSVPs centrally (export to CSV)
   guestSheetUrl: "https://docs.google.com/spreadsheets/d/1dXKP1Fd2B7ZcXXR1-eQ_svPrDJj_fy8eIAg6aJPGlwY/edit?usp=sharing", // guest list sheet
   rsvpEndpoint: "https://script.google.com/macros/s/AKfycbyNew4GwEdWKjmfuPas4Omea_x4oqKl5D8SE0yvjsaorf-LPHGDCM9q8ByVnZzrmYR7VA/exec", // Google Apps Script web app URL to save RSVPs to the sheet
