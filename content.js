@@ -29,6 +29,7 @@ window.CONTENT = {
     { icon: "🪙", name: "Poker Chips", desc: "High-roller chip set: red, blue, gold & black." },
     { icon: "🎰", name: "Slot Machine", desc: "Mini slot machine for quick spins." },
     { icon: "🎡", name: "Roulette Wheel", desc: "The centerpiece of the casino floor." },
+    { icon: "🎡", name: "House of Quirk Drinking Game Set", desc: "Spinning wheel, 2 balls & 16 shot glasses — multicolour. Spin, drink, repeat!" },
     { icon: "👑", name: "Dealer Visor", desc: "For the house dealer of the night." },
   ],
 
