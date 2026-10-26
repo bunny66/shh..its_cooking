@@ -68,6 +68,7 @@ window.CONTENT = {
     {
       icon: "🎯", name: "Casino Tambola", players: "2+", time: "",
       featured: true,
+      image: "https://m.media-amazon.com/images/I/91O+GGvc37L._SL1500_.jpg",
       rules: [
         "Casino-themed Tambola (Housie). Each player gets a ticket with numbers.",
         "Caller draws numbers; players mark matches on their ticket.",
