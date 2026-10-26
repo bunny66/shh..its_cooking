@@ -68,24 +68,15 @@
       </form>
 
       <p id="rsvpMsg" class="bet-result"></p>
-      <p class="empty-hint" style="margin-top:12px;">Note: RSVPs are saved in this browser (localStorage). For collecting from all guests, use the Google Form below (responses go to a Google Sheet → export to CSV).</p>
 
-      <div class="rsvp-list-wrap" style="margin-top:24px;">
-        <h2 class="section-title" style="font-size:1.4rem;">Online RSVP (Google Form)</h2>
-        <p class="section-sub">Create a Google Form with fields: Name, Attending, Do you drink?, Drink preference, Comments. Then paste its embed URL below.</p>
-        <iframe id="googleFormFrame" src="" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="border:0;border-radius:8px;background:rgba(255,255,255,0.05);">Loading…</iframe>
-        <p class="empty-hint" style="margin-top:8px;">To enable: In Google Forms → Send → &lt;&gt; (embed) → copy the src URL → replace the empty src above (or set window.GOOGLE_FORM_URL in content.js).</p>
-      </div>
       <div class="rsvp-list-wrap" style="margin-top:16px;">
         <p class="bet-selected">Guest list sheet: <a id="sheetLink" href="#" target="_blank" rel="noopener" style="color:var(--gold);">Open Google Sheet ↗</a></p>
       </div>
-
 
       <div class="rsvp-list-wrap">
         <h2 class="section-title" style="font-size:1.4rem;margin-top:24px;">Guest List</h2>
         <p id="rsvpSummary" class="bet-selected"></p>
         <div id="rsvpList"></div>
-
       </div>
     </section>
   </main>
