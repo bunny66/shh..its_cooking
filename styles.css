@@ -243,7 +243,7 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
   position: relative;
 }
 .game-featured::after {
-  content: "★ MOST PLAYED";
+  content: "👑";
   position: absolute; top: 12px; right: 12px;
   background: var(--gold); color: #1a1400;
   font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;

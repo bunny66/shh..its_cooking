@@ -22,7 +22,7 @@ window.CONTENT = {
 
   games: [
     {
-      icon: "🃏", name: "Poker Hands", players: "2-10", time: "Most Played",
+      icon: "🃏", name: "Poker Hands", players: "2-10", time: "👑",
       featured: true,
       image: "https://images.ctfassets.net/o0c4x84rxbjm/1rNZghcE2A4v22v0Jbg9sl/ed0d96b522e21e2c116f8bb76e48c67a/gametypes_poker_rules_inpost4_efjuvMWeU.webp",
       rules: [
