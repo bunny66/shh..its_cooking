@@ -113,6 +113,17 @@
     if (C.photoFolderUrl) photoFolderBtn.href = C.photoFolderUrl;
     else photoFolderBtn.style.display = "none";
   }
+  // Google Drive folder embed
+  const driveWrap = $("#driveGalleryWrap");
+  const driveFrame = $("#driveGallery");
+  if (driveWrap && driveFrame && C.photoFolderUrl) {
+    const m = C.photoFolderUrl.match(/folders\/([^/?]+)/);
+    if (m) {
+      driveFrame.src = "https://drive.google.com/embeddedfolderview?id=" + m[1] + "#grid";
+      driveWrap.style.display = "block";
+    }
+  }
+
 
       const top = Math.random() * 100;
       const dur = 2 + Math.random() * 4;
