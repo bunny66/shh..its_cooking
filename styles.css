@@ -170,8 +170,14 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 /* ---------- Gallery ---------- */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
+}
+@media (min-width: 600px) {
+  .gallery { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 900px) {
+  .gallery { grid-template-columns: repeat(4, 1fr); }
 }
 .gallery-item {
   position: relative; overflow: hidden; border-radius: var(--radius-sm);
