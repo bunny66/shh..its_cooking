@@ -71,6 +71,7 @@ window.CONTENT = {
 
   playlists: [
     { title: "Casino Night Mix", url: "https://www.youtube.com/watch?v=xB-BHUvWgjk&list=RDxB-BHUvWgjk&start_radio=1" },
+    { title: "Casino Night Playlist 1", url: "https://www.youtube.com/watch?v=ydQtI30SbBg&list=PLTfxiuA09ZhhKWkVJ_O7P0Vj93HsqHEI8" },
     // { title: "Casino Night Vibes", url: "https://www.youtube.com/playlist?list=PLxxxxxxxx" },
     // { title: "Vegas Classics", url: "https://www.youtube.com/watch?v=VIDEO_ID" },
   ],
