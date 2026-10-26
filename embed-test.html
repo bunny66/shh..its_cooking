@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Embed Test</title>
+  <style>body{font-family:sans-serif;padding:20px;background:#111;color:#eee;} .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;} iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:8px;} h2{color:#d4af37;}</style>
+</head>
+<body>
+  <h1>YouTube Embed Test</h1>
+  <p>Open this page via http(s):// (not file://) for playback. Each iframe uses referrerpolicy="strict-origin-when-cross-origin".</p>
+
+  <h2>1. User-provided working snippet</h2>
+  <iframe src="https://www.youtube.com/embed/mdPrweVv7DE?si=Ux8DtVA25OqCaHl5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+  <h2>2. Our generated embed (single video)</h2>
+  <iframe src="https://www.youtube.com/embed/mdPrweVv7DE" title="test" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+  <h2>3. Our generated embed (video + list)</h2>
+  <iframe src="https://www.youtube.com/embed/mdPrweVv7DE?list=RDmdPrweVv7DE" title="test2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+  <h2>4. Dynamic (from content.js)</h2>
+  <div id="dyn"></div>
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+  <script>
+    const pl = (window.CONTENT.playlists || [])[0];
+    if (pl) {
+      const u = window.toEmbedUrl(pl.url);
+      const f = document.createElement('iframe');
+      f.src = u; f.referrerPolicy = 'strict-origin-when-cross-origin';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      document.getElementById('dyn').appendChild(f);
+      document.getElementById('dyn').insertAdjacentHTML('beforeend', '<p>src: ' + u + '</p>');
+    }
+  </script>
+</body>
+</html>
