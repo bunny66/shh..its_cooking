@@ -253,6 +253,21 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 }
 .game-clickable { cursor: pointer; }
 .game-featured .game-tag { background: #1a1400; color: var(--gold); border-color: var(--gold); }
+/* ---------- Floating cards ---------- */
+.floating-cards { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.fcard {
+  position: absolute; top: -60px;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  opacity: 0.35;
+  animation: cardfall linear infinite;
+}
+@keyframes cardfall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.35; }
+  90% { opacity: 0.35; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
 /* ---------- Tagline ---------- */
 .tagline {
   font-family: var(--font-accent); letter-spacing: 3px;

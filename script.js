@@ -53,6 +53,24 @@
       b.textContent = "🎈";
       const left = Math.random() * 100;
       const dur = 12 + Math.random() * 14;
+  // Floating cards
+  const floatingCards = $("#floatingCards");
+  if (floatingCards) {
+    const cards = ["♠", "♥", "♦", "♣", "A", "K", "Q", "J", "10"];
+    const cCount = window.matchMedia("(max-width: 480px)").matches ? 10 : 18;
+    for (let i = 0; i < cCount; i++) {
+      const c = document.createElement("span");
+      c.className = "fcard";
+      c.textContent = cards[Math.floor(Math.random() * cards.length)];
+      const left = Math.random() * 100;
+      const dur = 14 + Math.random() * 16;
+      const delay = Math.random() * 14;
+      const hue = Math.random() > 0.5 ? 0 : 340;
+      c.style.cssText = "left:" + left + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;color:" + (Math.random() > 0.5 ? "#d4af37" : "#e74c3c") + ";";
+      floatingCards.appendChild(c);
+    }
+  }
+
       const delay = Math.random() * 12;
       const hue = Math.random() * 360;
       b.style.cssText = "left:" + left + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;filter:hue-rotate(" + hue + "deg);";
