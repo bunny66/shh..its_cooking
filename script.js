@@ -105,8 +105,14 @@
   // Photo upload links
   const photoUploadBtn = $("#photoUploadBtn");
   const photoFolderBtn = $("#photoFolderBtn");
-  if (photoUploadBtn && C.photoUploadFormUrl) photoUploadBtn.href = C.photoUploadFormUrl;
-  if (photoFolderBtn && C.photoFolderUrl) photoFolderBtn.href = C.photoFolderUrl;
+  if (photoUploadBtn) {
+    if (C.photoUploadFormUrl) photoUploadBtn.href = C.photoUploadFormUrl;
+    else photoUploadBtn.style.display = "none";
+  }
+  if (photoFolderBtn) {
+    if (C.photoFolderUrl) photoFolderBtn.href = C.photoFolderUrl;
+    else photoFolderBtn.style.display = "none";
+  }
 
       const top = Math.random() * 100;
       const dur = 2 + Math.random() * 4;
