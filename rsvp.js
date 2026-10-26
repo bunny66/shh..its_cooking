@@ -25,6 +25,18 @@
     toggleDrinkSection();
   }
 
+  const volSel = document.getElementById("rsvpVolunteer");
+  const volRoles = document.getElementById("volunteerRoles");
+  function toggleVolRoles() {
+    if (!volRoles) return;
+    const v = volSel ? volSel.value : "no";
+    volRoles.style.display = v === "yes" ? "block" : "none";
+  }
+  if (volSel && volRoles) {
+    volSel.addEventListener("change", toggleVolRoles);
+    toggleVolRoles();
+  }
+
   const endpoint = (window.CONTENT && window.CONTENT.rsvpEndpoint) || "";
 
   function escapeHtml(s){ return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
@@ -75,7 +87,9 @@
       const drink = attending === "no" ? "no" : document.getElementById("rsvpDrink").value;
       const prefVals = attending === "no" ? [] : Array.from(prefs.querySelectorAll("input:checked")).map((x) => x.value);
       const notes = document.getElementById("rsvpNotes").value.trim();
-      const entry = { name, attending, drink, prefs: prefVals, notes, ts: new Date().toISOString() };
+      const volunteer = volSel ? volSel.value : "no";
+      const volunteerRolesVals = volunteer === "yes" && volRoles ? Array.from(volRoles.querySelectorAll("input:checked")).map((x) => x.value) : [];
+      const entry = { name, attending, drink, prefs: prefVals, volunteer, volunteerRoles: volunteerRolesVals, notes, ts: new Date().toISOString() };
 
       if (endpoint) {
         fetch(endpoint, {
