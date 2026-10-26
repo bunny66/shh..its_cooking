@@ -78,6 +78,15 @@ window.CONTENT = {
       ],
     },
     {
+      icon: "🎡", name: "House of Quirk Drinking Game", players: "2+", time: "Party game",
+      rules: [
+        "Spin the wheel and complete the challenge it lands on.",
+        "Use the 2 balls and 16 multicolour shot glasses for penalties/rewards.",
+        "Challenges may include truth, dare, drink, or pass the drink.",
+        "Last one standing (or most points) wins. Play responsibly and have fun!",
+      ],
+    },
+    {
       icon: "🃏", name: "Blackjack", players: "2-7", time: "5-10 min/round",
       rules: [
         "Goal: beat the dealer by getting closest to 21 without busting.",
