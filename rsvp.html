@@ -70,6 +70,13 @@
       </form>
 
       <p id="rsvpMsg" class="bet-result"></p>
+      <div class="rsvp-list-wrap">
+        <h2 class="section-title" style="font-size:1.4rem;margin-top:24px;">Guest List (from sheet)</h2>
+        <p id="rsvpSummary" class="bet-selected"></p>
+        <div id="rsvpList"></div>
+        <button class="btn btn-outline" id="refreshList" style="margin-top:10px;">Refresh list</button>
+      </div>
+
 
       <div id="rsvpWarn" style="display:none;background:#c0392b;color:#fff;padding:10px;border-radius:8px;margin:10px 0;text-align:center;font-weight:600;">⚠️ RSVPs are NOT being saved to the sheet yet. Follow the setup in apps-script.gs / README.md, then set rsvpEndpoint in content.js.</div>
 

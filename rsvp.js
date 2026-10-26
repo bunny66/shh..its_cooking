@@ -3,9 +3,18 @@
   const msg = document.getElementById("rsvpMsg");
   const drinkSel = document.getElementById("rsvpDrink");
   const prefs = document.getElementById("drinkPrefs");
-  const drinkSection = document.getElementById("drinkSection");
-  const attendingSel = document.getElementById("rsvpAttending");
+  const listEl = document.getElementById("rsvpList");
+  const summaryEl = document.getElementById("rsvpSummary");
+  const refreshBtn = document.getElementById("refreshList");
 
+  if (drinkSel && prefs) {
+    const togglePrefs = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; };
+    drinkSel.addEventListener("change", togglePrefs);
+    togglePrefs();
+  }
+
+  const attendingSel = document.getElementById("rsvpAttending");
+  const drinkSection = document.getElementById("drinkSection");
   function toggleDrinkSection() {
     if (!drinkSection) return;
     const attending = attendingSel ? attendingSel.value : "yes";
@@ -16,13 +25,47 @@
     toggleDrinkSection();
   }
 
-  let togglePrefs = null;
-  if (drinkSel && prefs) {
-    togglePrefs = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; };
-    drinkSel.addEventListener("change", togglePrefs);
-    togglePrefs();
-  }
+  const endpoint = (window.CONTENT && window.CONTENT.rsvpEndpoint) || "";
 
+  function escapeHtml(s){ return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+  function loadGuestList() {
+    if (!endpoint || !listEl) return;
+    const cbName = "cb_" + Date.now();
+    const script = document.createElement("script");
+    window[cbName] = function (data) {
+      delete window[cbName];
+      if (script.parentNode) script.parentNode.removeChild(script);
+      const rows = (data && data.rows) || [];
+      if (!rows.length) { listEl.innerHTML = "<p class='empty-hint'>No RSVPs yet.</p>"; if (summaryEl) summaryEl.textContent = ""; return; }
+      const norm = (o) => { const out = {}; Object.keys(o || {}).forEach((k) => { out[String(k).toLowerCase().trim()] = o[k]; }); return out; };
+      const mapped = rows.map(norm);
+      const attending = mapped.filter((r) => String(r.attending || r.attend || "").toLowerCase().startsWith("y")).length;
+      const drinkers = mapped.filter((r) => String(r.drink || r.drinks || "").toLowerCase().startsWith("y")).length;
+      const drinkCounts = {};
+      mapped.forEach((r) => {
+        const prefs = r.prefs || r["drink preference"] || r.preferences || "";
+        String(prefs).split(",").map((x) => x.trim()).filter(Boolean).forEach((p) => { drinkCounts[p] = (drinkCounts[p] || 0) + 1; });
+      });
+      const drinkSummary = Object.entries(drinkCounts).map(([k,v]) => k + ": " + v).join(", ") || "—";
+      if (summaryEl) summaryEl.textContent = "Total: " + mapped.length + " | Attending: " + attending + " | Drinkers: " + drinkers + " | " + drinkSummary;
+      listEl.innerHTML = mapped.map((r) => {
+        const name = r.name || r["what should we call you"] || r["your name"] || "Guest";
+        const att = String(r.attending || "").toLowerCase().startsWith("y") ? "Attending ✅" : "Not attending";
+        const drink = String(r.drink || r.drinks || "").toLowerCase().startsWith("y");
+        const prefs = r.prefs || r["drink preference"] || r.preferences || "—";
+        const comments = r.notes || r.comments || r.comment || "";
+        return '<div class="artifact" style="text-align:left;margin-bottom:8px;">' +
+          '<strong>' + escapeHtml(name) + '</strong> — ' + att +
+          '<br/>Drinks: ' + (drink ? "Yes (" + escapeHtml(String(prefs)) + ")" : "No") +
+          (comments ? '<br/>Comments: ' + escapeHtml(String(comments)) : '') +
+          '</div>';
+      }).join("");
+    };
+    script.src = endpoint + (endpoint.indexOf("?") > -1 ? "&" : "?") + "callback=" + cbName;
+    document.body.appendChild(script);
+    setTimeout(() => { if (window[cbName]) { delete window[cbName]; if (script.parentNode) script.parentNode.removeChild(script); } }, 10000);
+  }
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -34,7 +77,6 @@
       const notes = document.getElementById("rsvpNotes").value.trim();
       const entry = { name, attending, drink, prefs: prefVals, notes, ts: new Date().toISOString() };
 
-      const endpoint = (window.CONTENT && window.CONTENT.rsvpEndpoint) || "";
       if (endpoint) {
         fetch(endpoint, {
           method: "POST",
@@ -42,25 +84,33 @@
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(entry),
         }).then(() => {
-          msg.textContent = "Thanks, " + name + "! RSVP submitted. Please check your Google Sheet to confirm it was recorded. 🎉 No gifts, please — your presence is the present.";
+          const msg = document.getElementById("rsvpMsg");
+          if (msg) msg.textContent = "Thanks, " + name + "! RSVP submitted. Please check the sheet to confirm. 🎉 No gifts, please — your presence is the present.";
           form.reset();
-          if (togglePrefs) togglePrefs();
+          if (drinkSel && prefs) { const t = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; }; t(); }
+          toggleDrinkSection();
+          setTimeout(loadGuestList, 2000);
         }).catch(() => {
-          msg.textContent = "Failed to send to sheet. Please use the Google Sheet link below. 🎉";
+          const msg = document.getElementById("rsvpMsg");
+          if (msg) msg.textContent = "Failed to send. Please use the Google Sheet link. 🎉";
         });
       } else {
-        msg.textContent = "RSVP not stored (no backend). Please submit via the Google Sheet link below. 🎉 No gifts, please — your presence is the present.";
+        const msg = document.getElementById("rsvpMsg");
+        if (msg) msg.textContent = "No backend configured. Please submit via the Google Sheet link. 🎉 No gifts, please — your presence is the present.";
         form.reset();
-        if (togglePrefs) togglePrefs();
+        if (drinkSel && prefs) { const t = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; }; t(); }
+        toggleDrinkSection();
       }
     });
   }
 
-  const endpoint = (window.CONTENT && window.CONTENT.rsvpEndpoint) || "";
-  const warn = document.getElementById("rsvpWarn");
-  if (warn && !endpoint) warn.style.display = "block";
-
   const sheetUrl = (window.CONTENT && window.CONTENT.guestSheetUrl) || "";
   const sl = document.getElementById("sheetLink");
   if (sl && sheetUrl) sl.href = sheetUrl;
+
+  const refreshBtn = document.getElementById("refreshList");
+  if (refreshBtn) refreshBtn.addEventListener("click", loadGuestList);
+
+  loadGuestList();
 })();
+
