@@ -251,8 +251,7 @@
         const el = document.createElement("div");
         el.className = "playlist";
         const embed = toEmbedUrl(pl.url || "");
-        el.innerHTML = '<h3 class="playlist-title">' + esc(pl.title || "Playlist") + '</h3>' +
-          (embed ? '<div class="playlist-frame"><iframe src="' + esc(embed) + '" title="' + esc(pl.title || "") + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' : "") +
+        el.innerHTML = (embed ? '<div class="playlist-frame"><iframe src="' + esc(embed) + '" title="' + esc(pl.title || "") + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' : "") +
           (pl.url ? '<a class="playlist-link" href="' + esc(pl.url) + '" target="_blank" rel="noopener">Open on YouTube ↗</a>' : "");
         playlistsGrid.appendChild(el);
       });
