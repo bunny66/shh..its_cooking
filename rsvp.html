@@ -70,8 +70,11 @@
       </form>
 
       <p id="rsvpMsg" class="bet-result"></p>
+      <p class="empty-hint" style="margin-top:12px;">Note: RSVPs are saved in this browser (localStorage). For collecting from all guests, share a Google Form link here. To use one, replace this form with your form embed URL.</p>
+
       <div class="rsvp-list-wrap">
-        <h2 class="section-title" style="font-size:1.4rem;margin-top:24px;">Saved RSVPs</h2>
+        <h2 class="section-title" style="font-size:1.4rem;margin-top:24px;">Guest List</h2>
+        <p id="rsvpSummary" class="bet-selected"></p>
         <div id="rsvpList"></div>
         <button class="btn btn-outline" id="clearRsvp" style="margin-top:10px;">Clear all</button>
         <button class="btn btn-outline" id="copyRsvp" style="margin-top:10px;">Copy summary</button>
@@ -99,7 +102,14 @@
       function save(list) { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
       function renderList() {
         const list = load();
-        if (!list.length) { listEl.innerHTML = "<p class='empty-hint'>No RSVPs yet.</p>"; return; }
+        if (!list.length) { listEl.innerHTML = "<p class='empty-hint'>No RSVPs yet.</p>"; if (document.getElementById("rsvpSummary")) document.getElementById("rsvpSummary").textContent = ""; return; }
+        const attending = list.filter((r) => r.attending === "yes").length;
+        const drinkers = list.filter((r) => r.drink === "yes").length;
+        const drinkCounts = {};
+        list.forEach((r) => (r.prefs || []).forEach((p) => { drinkCounts[p] = (drinkCounts[p] || 0) + 1; }));
+        const drinkSummary = Object.entries(drinkCounts).map(([k,v]) => k + ": " + v).join(", ") || "—";
+        const summaryEl = document.getElementById("rsvpSummary");
+        if (summaryEl) summaryEl.textContent = "Total: " + list.length + " | Attending: " + attending + " | Drinkers: " + drinkers + " | " + drinkSummary;
         listEl.innerHTML = list.map((r) => {
           const prefs = (r.prefs || []).join(", ") || "—";
           return '<div class="artifact" style="text-align:left;margin-bottom:8px;">' +
