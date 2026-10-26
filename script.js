@@ -52,6 +52,7 @@
     { icon: "🥂", label: "Drink" },
     { icon: "🎰", label: "Games" },
     { icon: "💃", label: "Dance" },
+    { icon: "📸", label: "Clicking Photos" },
     { icon: "🎂", label: "Cake" },
   ];
   if (agendaGrid) {
