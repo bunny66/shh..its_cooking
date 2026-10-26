@@ -32,6 +32,17 @@ window.CONTENT = {
       ],
     },
     {
+      icon: "🎯", name: "Casino Tambola", players: "2+", time: "👑",
+      featured: true,
+      rules: [
+        "Casino-themed Tambola (Housie). Each player gets a ticket with numbers.",
+        "Caller draws numbers; players mark matches on their ticket.",
+        "First to complete a row/column wins a line prize; full house wins the jackpot.",
+        "Casino twist: bonus prizes for corners, star, and top/bottom lines.",
+        "House (Ayushman) calls the numbers — keep your tickets ready!",
+      ],
+    },
+    {
       icon: "🃏", name: "Blackjack", players: "2-7", time: "5-10 min/round",
       rules: [
         "Goal: beat the dealer by getting closest to 21 without busting.",
@@ -75,17 +86,6 @@ window.CONTENT = {
         "Any other number becomes the Point; shooter must hit it again before 7.",
         "Don't Pass is the opposite. Place bets on specific numbers anytime.",
         "Come/Don't Come bets work like Pass/Don't Pass after a point is set.",
-      ],
-    },
-    {
-      icon: "🎯", name: "Casino Tambola", players: "2+", time: "👑",
-      featured: true,
-      rules: [
-        "Casino-themed Tambola (Housie). Each player gets a ticket with numbers.",
-        "Caller draws numbers; players mark matches on their ticket.",
-        "First to complete a row/column wins a line prize; full house wins the jackpot.",
-        "Casino twist: bonus prizes for corners, star, and top/bottom lines.",
-        "House (Ayushman) calls the numbers — keep your tickets ready!",
       ],
     },
   ],
