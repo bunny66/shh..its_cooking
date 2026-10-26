@@ -464,9 +464,11 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
   .menu-btn { display: block; }
   .hero-chips { display: none; }
   .gallery { grid-template-columns: repeat(2, 1fr); }
-  .btn { padding: 10px 16px; font-size: 0.9rem; }
-  .section-title { font-size: 1.4rem; }
-  .more-link-wrap .btn { font-size: 0.85rem; padding: 8px 12px; }
+  .btn { padding: 8px 12px; font-size: 0.8rem; }
+  .section-title { font-size: 1.3rem; }
+  .more-link-wrap .btn { font-size: 0.8rem; padding: 6px 10px; }
+  .hero-cta { gap: 8px; }
+  .hero-cta .btn { white-space: nowrap; }
   .artifacts { grid-template-columns: 1fr; }
   .games { grid-template-columns: 1fr; }
   .playlists { grid-template-columns: 1fr; }
