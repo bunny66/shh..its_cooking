@@ -11,6 +11,8 @@ window.CONTENT = {
     // { src: "assets/photo2.jpg", caption: "Vegas vibes" },
   ],
 
+  googleFormUrl: "", // paste Google Form embed URL here to collect RSVPs centrally (export to CSV)
+
   agenda: [
     // Add optional image per item to make it clickable, e.g.:
     // { icon: "🤝", label: "Meet", image: "assets/meet.jpg" },
