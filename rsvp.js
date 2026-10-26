@@ -4,10 +4,11 @@
   const drinkSel = document.getElementById("rsvpDrink");
   const prefs = document.getElementById("drinkPrefs");
 
+  let togglePrefs = null;
   if (drinkSel && prefs) {
-    const toggle = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; };
-    drinkSel.addEventListener("change", toggle);
-    toggle();
+    togglePrefs = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; };
+    drinkSel.addEventListener("change", togglePrefs);
+    togglePrefs();
   }
 
   if (form) {
@@ -31,14 +32,14 @@
         }).then(() => {
           msg.textContent = "Thanks, " + name + "! RSVP submitted. Please check your Google Sheet to confirm it was recorded. 🎉 No gifts, please — your presence is the present.";
           form.reset();
-          if (prefs) prefs.style.display = "none";
+          if (togglePrefs) togglePrefs();
         }).catch(() => {
           msg.textContent = "Failed to send to sheet. Please use the Google Sheet link below. 🎉";
         });
       } else {
         msg.textContent = "RSVP not stored (no backend). Please submit via the Google Sheet link below. 🎉 No gifts, please — your presence is the present.";
         form.reset();
-        if (prefs) prefs.style.display = "none";
+        if (togglePrefs) togglePrefs();
       }
     });
   }
