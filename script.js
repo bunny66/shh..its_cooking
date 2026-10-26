@@ -242,7 +242,9 @@
   // Playlists
   const playlistsGrid = $("#playlistsGrid");
   const musicEmpty = $("#musicEmpty");
-  const playlists = Array.isArray(C.playlists) ? C.playlists : [];
+  const playlistsAll = Array.isArray(C.playlists) ? C.playlists : [];
+  const limitAttr = playlistsGrid ? playlistsGrid.getAttribute("data-limit") : null;
+  const playlists = limitAttr ? playlistsAll.slice(0, parseInt(limitAttr, 10)) : playlistsAll;
   if (playlistsGrid) {
     if (playlists.length === 0) {
       if (musicEmpty) musicEmpty.hidden = false;

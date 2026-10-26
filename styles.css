@@ -253,6 +253,8 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 }
 .game-clickable { cursor: pointer; }
 .game-featured .game-tag { background: #1a1400; color: var(--gold); border-color: var(--gold); }
+.more-link-wrap { text-align: center; margin-top: 16px; }
+
 .agenda-clickable { cursor: pointer; }
 .agenda-clickable:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 .agenda-hint { font-size: 0.7rem; color: var(--gold); margin-top: 2px; }
