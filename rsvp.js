@@ -3,6 +3,18 @@
   const msg = document.getElementById("rsvpMsg");
   const drinkSel = document.getElementById("rsvpDrink");
   const prefs = document.getElementById("drinkPrefs");
+  const drinkSection = document.getElementById("drinkSection");
+  const attendingSel = document.getElementById("rsvpAttending");
+
+  function toggleDrinkSection() {
+    if (!drinkSection) return;
+    const attending = attendingSel ? attendingSel.value : "yes";
+    drinkSection.style.display = attending === "no" ? "none" : "block";
+  }
+  if (attendingSel) {
+    attendingSel.addEventListener("change", toggleDrinkSection);
+    toggleDrinkSection();
+  }
 
   let togglePrefs = null;
   if (drinkSel && prefs) {
@@ -17,8 +29,8 @@
       const name = document.getElementById("rsvpName").value.trim();
       if (!name) return;
       const attending = document.getElementById("rsvpAttending").value;
-      const drink = document.getElementById("rsvpDrink").value;
-      const prefVals = Array.from(prefs.querySelectorAll("input:checked")).map((x) => x.value);
+      const drink = attending === "no" ? "no" : document.getElementById("rsvpDrink").value;
+      const prefVals = attending === "no" ? [] : Array.from(prefs.querySelectorAll("input:checked")).map((x) => x.value);
       const notes = document.getElementById("rsvpNotes").value.trim();
       const entry = { name, attending, drink, prefs: prefVals, notes, ts: new Date().toISOString() };
 
