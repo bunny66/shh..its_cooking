@@ -30,6 +30,7 @@
       <a href="index.html#agenda" class="nav-link">Agenda</a>
       <a href="index.html#photos" class="nav-link">Photos</a>
       <a href="games.html" class="nav-link">Games</a>
+      <a href="bets.html" class="nav-link">Bets</a>
       <a href="music.html" class="nav-link">Playlists</a>
       <a href="rsvp.html" class="nav-link">RSVP</a>
     </nav>
@@ -40,61 +41,15 @@
     <section class="section">
       <div class="section-head">
         <h1 class="section-title"><span class="suit red">♥</span> RSVP</h1>
-        <p class="section-sub">Let us know you're coming.</p>
+        <p class="section-sub">Let us know you're coming. 🎁 No gifts, please.</p>
       </div>
 
-      <form id="rsvpForm" class="rsvp-form">
-        <label>What should we call you?<br><input type="text" id="rsvpName" required placeholder="Your name" /></label>
-        <label>Attending?<br>
-          <select id="rsvpAttending">
-            <option value="yes">Yes, I'll be there! 🎉</option>
-            <option value="no">Sorry, can't make it</option>
-          </select>
-        </label>
-        <div id="drinkSection">
-        <label>Do you drink?<br>
-          <select id="rsvpDrink">
-            <option value="yes">Yes 🥂</option>
-            <option value="no">No, thanks</option>
-          </select>
-        </label>
-        <fieldset id="drinkPrefs" class="drink-prefs">
-          <legend>Drink preference (if yes):</legend>
-          <label><input type="checkbox" value="Beer" /> Beer</label>
-          <label><input type="checkbox" value="Wine" /> Wine</label>
-          <label><input type="checkbox" value="Vodka" /> Vodka</label>
-          <label><input type="checkbox" value="Coke" /> Coke</label>
-          <label><input type="checkbox" value="Other" /> Other</label>
-        </fieldset>
-        </div>
-        <div id="volunteerSection">
-        <label>Volunteering? (if coming)<br>
-          <select id="rsvpVolunteer">
-            <option value="no">No, just attending</option>
-            <option value="yes">Yes, I'd like to help! 🙋</option>
-          </select>
-        </label>
-        <fieldset id="volunteerRoles" class="drink-prefs">
-          <legend>Volunteer roles (if yes):</legend>
-          <label><input type="checkbox" value="Games host" /> Games host</label>
-          <label><input type="checkbox" value="Bartending" /> Bartending</label>
-          <label><input type="checkbox" value="Food" /> Food</label>
-          <label><input type="checkbox" value="Decor" /> Decor</label>
-          <label><input type="checkbox" value="Photography" /> Photography</label>
-          <label><input type="checkbox" value="Music" /> Music</label>
-          <label><input type="checkbox" value="Balloons" /> Balloons</label>
-          <label><input type="checkbox" value="Other" /> Other</label>
-        </fieldset>
-        </div>
-        <label>Comments (optional)<br><textarea id="rsvpNotes" rows="3" placeholder="Any comments..."></textarea></label>
-        <button type="submit" class="btn btn-gold">Submit RSVP</button>
-      </form>
-
-      <p id="rsvpMsg" class="bet-result"></p>
-
-
-
-      <div id="rsvpWarn" style="display:none;background:#c0392b;color:#fff;padding:10px;border-radius:8px;margin:10px 0;text-align:center;font-weight:600;">⚠️ RSVPs are NOT being saved to the sheet yet. Follow the setup in apps-script.gs / README.md, then set rsvpEndpoint in content.js.</div>
+      <div class="rsvp-list-wrap" style="max-width:720px;margin:0 auto;">
+        <h2 class="section-title" style="font-size:1.4rem;">RSVP Form</h2>
+        <p class="section-sub">Fill the form below — responses go straight to our guest sheet (exportable to CSV).</p>
+        <iframe id="googleFormFrame" src="" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0" style="border:0;border-radius:8px;background:rgba(255,255,255,0.05);">Loading…</iframe>
+        <p class="empty-hint" style="margin-top:8px;">If the form doesn't load, open it directly: <a id="formLink" href="#" target="_blank" rel="noopener" style="color:var(--gold);">Open RSVP Form ↗</a></p>
+      </div>
 
       <div class="rsvp-list-wrap" style="margin-top:16px;">
         <p class="bet-selected">Guest list sheet: <a id="sheetLink" href="#" target="_blank" rel="noopener" style="color:var(--gold);">Open Google Sheet ↗</a></p>
@@ -111,15 +66,17 @@
 
   <script src="content.js"></script>
   <script src="script.js"></script>
-  <script src="rsvp.js"></script>
   <script>
     (function () {
+      const url = (window.CONTENT && window.CONTENT.googleFormUrl) || "";
+      const f = document.getElementById("googleFormFrame");
+      const fl = document.getElementById("formLink");
+      if (f && url) f.src = url;
+      if (fl && url) fl.href = url;
       const sheetUrl = (window.CONTENT && window.CONTENT.guestSheetUrl) || "";
       const sl = document.getElementById("sheetLink");
       if (sl && sheetUrl) sl.href = sheetUrl;
     })();
   </script>
-  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" aria-hidden="true"></iframe>
 </body>
 </html>
-
