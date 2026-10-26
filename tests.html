@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Embed URL Tests</title>
+  <style>body{font-family:monospace;padding:20px;background:#111;color:#eee;} .pass{color:#4f4;} .fail{color:#f44;}</style>
+</head>
+<body>
+  <h1>toEmbedUrl tests</h1>
+  <pre id="out"></pre>
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+  <script>
+    const cases = [
+      { url: "", expected: "" },
+      { url: "https://www.youtube.com/watch?v=xB-BHUvWgjk&list=RDxB-BHUvWgjk&start_radio=1", expected: "https://www.youtube-nocookie.com/embed/xB-BHUvWgjk?list=RDxB-BHUvWgjk" },
+      { url: "https://www.youtube.com/watch?v=ydQtI30SbBg&list=PLTfxiuA09ZhhKWkVJ_O7P0Vj93HsqHEI8", expected: "https://www.youtube-nocookie.com/embed/ydQtI30SbBg?list=PLTfxiuA09ZhhKWkVJ_O7P0Vj93HsqHEI8" },
+      { url: "https://www.youtube.com/watch?v=0aUav1lx3rA&list=RD0aUav1lx3rA&start_radio=1", expected: "https://www.youtube-nocookie.com/embed/0aUav1lx3rA?list=RD0aUav1lx3rA" },
+      { url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", expected: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" },
+      { url: "https://www.youtube.com/playlist?list=PLxxxxxxxx", expected: "https://www.youtube-nocookie.com/embed/videoseries?list=PLxxxxxxxx" },
+      { url: "https://youtu.be/abc123XYZ_-", expected: "https://www.youtube-nocookie.com/embed/abc123XYZ_-" },
+    ];
+    const out = document.getElementById("out");
+    let pass = 0, fail = 0;
+    cases.forEach((c, i) => {
+      const got = window.toEmbedUrl(c.url);
+      const ok = got === c.expected;
+      if (ok) pass++; else fail++;
+      out.innerHTML += `<span class="${ok?'pass':'fail'}">${ok?'PASS':'FAIL'}</span> #${i+1}\n  url: ${c.url}\n  got: ${got}\n  exp: ${c.expected}\n\n`;
+    });
+    out.innerHTML += `\n${pass}/${cases.length} passed, ${fail} failed.`;
+  </script>
+</body>
+</html>

@@ -234,13 +234,23 @@
   function toEmbedUrl(url) {
     if (!url) return "";
     const plMatch = url.match(/[?&]list=([^&]+)/);
-    if (plMatch) {
-      return "https://www.youtube-nocookie.com/embed/videoseries?list=" + plMatch[1];
-    }
     const vMatch = url.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
-    if (vMatch) return "https://www.youtube-nocookie.com/embed/" + vMatch[1];
+    const listId = plMatch ? plMatch[1] : "";
+    const videoId = vMatch ? vMatch[1] : "";
+    // Prefer embedding the actual video (more reliably embeddable) in playlist context
+    if (videoId && listId) {
+      return "https://www.youtube-nocookie.com/embed/" + videoId + "?list=" + listId;
+    }
+    if (videoId) {
+      return "https://www.youtube-nocookie.com/embed/" + videoId;
+    }
+    if (listId) {
+      return "https://www.youtube-nocookie.com/embed/videoseries?list=" + listId;
+    }
     return "";
   }
+  // Expose for testing
+  window.toEmbedUrl = toEmbedUrl;
 
   // Lightbox
   const lightbox = $("#lightbox");
