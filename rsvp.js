@@ -60,10 +60,12 @@
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(entry),
         }).then(() => {
-          msg.textContent = "Thanks, " + name + "! RSVP saved & sent. 🎉 No gifts, please — your presence is the present.";
+          msg.textContent = "Thanks, " + name + "! RSVP saved & sent to sheet. 🎉 No gifts, please — your presence is the present.";
         }).catch(() => {
           msg.textContent = "Saved locally, but failed to send to sheet. 🎉";
         });
+      } else {
+        msg.textContent = "Thanks, " + name + "! RSVP saved locally. (Set rsvpEndpoint in content.js to send to sheet.) 🎉 No gifts, please — your presence is the present.";
       }
     });
   }
