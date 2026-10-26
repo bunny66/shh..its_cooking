@@ -116,19 +116,29 @@
 
       const msg = document.getElementById("rsvpMsg");
       if (endpoint) {
-        submitViaForm(entry);
-        if (msg) {
-          if (attending === "no") {
-            msg.textContent = "Sorry you can't make it, " + name + ". Thanks for letting us know! 🙏";
-          } else {
-            msg.textContent = "Thanks, " + name + "! RSVP submitted. Please check the sheet to confirm. 🎉 No gifts, please — your presence is the present.";
+        fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(entry),
+        }).then(() => {
+          const msg = document.getElementById("rsvpMsg");
+          if (msg) {
+            if (attending === "no") {
+              msg.textContent = "Sorry you can't make it, " + name + ". Thanks for letting us know! 🙏";
+            } else {
+              msg.textContent = "Thanks, " + name + "! RSVP submitted. Please check the sheet to confirm. 🎉 No gifts, please — your presence is the present.";
+            }
           }
-        }
-        form.reset();
-        if (drinkSel && prefs) { const t = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; }; t(); }
-        toggleSections();
-        toggleVolRoles();
-        setTimeout(loadGuestList, 2000);
+          form.reset();
+          if (drinkSel && prefs) { const t = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; }; t(); }
+          toggleSections();
+          toggleVolRoles();
+          setTimeout(loadGuestList, 2000);
+        }).catch(() => {
+          const msg = document.getElementById("rsvpMsg");
+          if (msg) msg.textContent = "Network error. Please submit via the Google Sheet link. 🎉";
+        });
       } else {
         if (msg) msg.textContent = "No backend configured. Please submit via the Google Sheet link. 🎉 No gifts, please — your presence is the present.";
         form.reset();
