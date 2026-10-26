@@ -253,6 +253,15 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 }
 .game-clickable { cursor: pointer; }
 .game-featured .game-tag { background: #1a1400; color: var(--gold); border-color: var(--gold); }
+.view-rules-btn {
+  margin-top: 8px; padding: 8px 14px; border-radius: 999px;
+  background: var(--gold); color: #1a1400; font-weight: 600; font-size: 0.9rem;
+  border: none; cursor: pointer; align-self: flex-start;
+}
+.view-rules-btn:hover { filter: brightness(1.1); }
+.view-rules-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.game-featured::after { pointer-events: none; }
+
 
 .game-clickable:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 .game-hint { font-size: 0.8rem; color: var(--gold); margin-top: 4px; }

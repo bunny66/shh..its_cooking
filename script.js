@@ -99,10 +99,12 @@
         el.innerHTML = '<div class="game-head"><span class="game-icon" aria-hidden="true">' + esc(g.icon || "🃏") + '</span><h3 class="game-name">' + esc(g.name || "") + '</h3></div>' +
           '<div class="game-meta">' + (g.players ? '<span class="game-tag">Players: ' + esc(g.players) + '</span>' : "") + (g.time ? '<span class="game-tag">' + esc(g.time) + '</span>' : "") + '</div>' +
           '<ul class="game-rules">' + rules.map((r) => "<li>" + esc(r) + "</li>").join("") + '</ul>' +
-          (g.image ? '<p class="game-hint">Tap to view rules image ↗</p>' : "");
+          (g.image ? '<button type="button" class="view-rules-btn">View rules image ↗</button>' : "");
         if (g.image) {
           const open = () => openImageModal(g.image, g.name || "Rules");
           el.addEventListener("click", open);
+          const btn = el.querySelector(".view-rules-btn");
+          if (btn) btn.addEventListener("click", (e) => { e.stopPropagation(); open(); });
           el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
         }
         gamesGrid.appendChild(el);
@@ -180,14 +182,13 @@
   const imgModalCaption = $("#imgModalCaption");
   const imgClose = $("#imgClose");
   function openImageModal(src, caption) {
-    if (!imgModal) return;
-    imgModalImg.src = src;
-    imgModalImg.alt = caption || "";
-    imgModalCaption.textContent = caption || "";
+    if (!imgModal) { window.open(src, "_blank"); return; }
+    if (imgModalImg) { imgModalImg.src = src; imgModalImg.alt = caption || ""; }
+    if (imgModalCaption) imgModalCaption.textContent = caption || "";
     imgModal.classList.add("open");
     imgModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-    imgClose.focus();
+    try { if (imgClose) imgClose.focus(); } catch (e) {}
   }
   function closeImageModal() {
     if (!imgModal) return;
