@@ -29,7 +29,7 @@
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(entry),
         }).then(() => {
-          msg.textContent = "Thanks, " + name + "! RSVP sent to the sheet. 🎉 No gifts, please — your presence is the present.";
+          msg.textContent = "Thanks, " + name + "! RSVP submitted. Please check your Google Sheet to confirm it was recorded. 🎉 No gifts, please — your presence is the present.";
           form.reset();
           if (prefs) prefs.style.display = "none";
         }).catch(() => {
