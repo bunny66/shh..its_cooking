@@ -5,7 +5,6 @@
   const prefs = document.getElementById("drinkPrefs");
   const listEl = document.getElementById("rsvpList");
   const summaryEl = document.getElementById("rsvpSummary");
-  const refreshBtn = document.getElementById("refreshList");
 
   if (drinkSel && prefs) {
     const togglePrefs = () => { prefs.style.display = drinkSel.value === "yes" ? "block" : "none"; };
