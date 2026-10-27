@@ -684,16 +684,12 @@
     enterGameBtn.addEventListener("click", () => {
       const pin = (pinInput && pinInput.value.trim()) || "";
       const name = (playerNameInput && playerNameInput.value.trim()) || "";
-      if (pin !== "2025") {
-        if (pinError) pinError.textContent = "Wrong PIN. Try again.";
-        return;
-      }
-      if (!name) {
-        if (pinError) pinError.textContent = "Please enter your name.";
-        return;
-      }
-      if (introBet === null) {
-        if (pinError) pinError.textContent = "Please select a bet chip.";
+      const missing = [];
+      if (pin !== "2025") missing.push("correct PIN");
+      if (!name) missing.push("name");
+      if (introBet === null) missing.push("bet chip");
+      if (missing.length) {
+        if (pinError) pinError.textContent = "Missing/invalid: " + missing.join(", ") + ".";
         return;
       }
       if (pinError) pinError.textContent = "";
