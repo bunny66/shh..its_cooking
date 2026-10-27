@@ -90,17 +90,6 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🃏", name: "Bluff", players: "3-8", time: "10-20 min/game", category: "Cards",
-      image: "https://m.media-amazon.com/images/I/617L-zUy-oL._SL1080_.jpg",
-      rules: [
-        "Also known as Cheat / I Doubt It. Goal: be first to get rid of all your cards.",
-        "Play 1-4 cards face-down claiming they are the current rank (Aces, then 2s, 3s...).",
-        "Next player must play the next rank up (or bluff). Challenge with 'Bluff!' if you doubt.",
-        "If caught bluffing, you pick up the pile; if wrong challenge, challenger picks up the pile.",
-        "First to empty hand wins. Keep a poker face — bluffing is the game!",
-      ],
-    },
-    {
       icon: "🥤", name: "Fastest Reflex Takes the Cup", players: "2+", time: "👑", category: "Party",
       featured: true,
       link: "https://www.instagram.com/p/DRf2ILzkuS1/",
@@ -111,17 +100,6 @@ window.CONTENT = {
         "Winner collects chips; losers pay a small penalty.",
         "Keep it fun — skip if you dislike the dare.",
       ],
-    },
-    {
-      icon: "🏓", name: "Can 'N' Ball", players: "Teams", time: "Party game", category: "Pong",
-      rules: [
-        "Teams Orange and Green face off in Can 'N' Ball!",
-        "A ping pong ball in each glass wins.",
-        "Reference: https://www.instagram.com/outscordgames/reel/DcPjVlPpyuU/",
-        "First team to land balls in all glasses wins.",
-        "Play responsibly and have fun!",
-      ],
-      link: "https://www.instagram.com/outscordgames/reel/DcPjVlPpyuU/",
     },
     {
       icon: "🥤", name: "Cup Stack", players: "2+", time: "👑",
@@ -147,6 +125,28 @@ window.CONTENT = {
         "Reference: https://www.instagram.com/p/DUJFVe7kzsS/",
       ],
       link: "https://www.instagram.com/p/DUJFVe7kzsS/",
+    },
+    {
+      icon: "🃏", name: "Bluff", players: "3-8", time: "10-20 min/game", category: "Cards",
+      image: "https://m.media-amazon.com/images/I/617L-zUy-oL._SL1080_.jpg",
+      rules: [
+        "Also known as Cheat / I Doubt It. Goal: be first to get rid of all your cards.",
+        "Play 1-4 cards face-down claiming they are the current rank (Aces, then 2s, 3s...).",
+        "Next player must play the next rank up (or bluff). Challenge with 'Bluff!' if you doubt.",
+        "If caught bluffing, you pick up the pile; if wrong challenge, challenger picks up the pile.",
+        "First to empty hand wins. Keep a poker face — bluffing is the game!",
+      ],
+    },
+    {
+      icon: "🏓", name: "Can 'N' Ball", players: "Teams", time: "Party game", category: "Pong",
+      rules: [
+        "Teams Orange and Green face off in Can 'N' Ball!",
+        "A ping pong ball in each glass wins.",
+        "Reference: https://www.instagram.com/outscordgames/reel/DcPjVlPpyuU/",
+        "First team to land balls in all glasses wins.",
+        "Play responsibly and have fun!",
+      ],
+      link: "https://www.instagram.com/outscordgames/reel/DcPjVlPpyuU/",
     },
     {
       icon: "🃏", name: "UNO", players: "2-10", time: "10-20 min/game",
