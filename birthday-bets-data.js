@@ -1,3 +1,4 @@
+"use strict";
 window.FALLBACK_BIRTHDAY_BETS = [
   { question: "Surprise! What\u2019s Ayushman\u2019s first reaction?", options: ["\u201cWHAT IS ALL THIS?!\u201d \u2014 full system reboot", "\u201cI TOLD YOU I HATE SURPRISES!\u201d \u2014 birthday boy rage", "Pretends he\u2019s not emotional. Fails.", "Immediately starts roasting the people responsible."] },
   { question: "What will Ayushman do first when he walks in?", options: ["Greet everyone like a politician on a campaign trail", "Ask what\u2019s happening / where to sit", "Head straight for the food or drinks", "Make a dramatic entrance"] },
