@@ -43,6 +43,7 @@ window.CONTENT = {
     {
       icon: "🃏", name: "Blow-De-Deck", players: "2+", time: "👑",
       featured: true,
+      link: "https://www.instagram.com/p/DYwx2AxP5YN/",
       rules: [
         "The ultimate test of lung capacity, precision, and pure chaos.",
         "A full deck of cards is balanced on top of an upside-down drinking glass.",
