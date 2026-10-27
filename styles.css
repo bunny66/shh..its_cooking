@@ -401,8 +401,8 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 @media (min-width: 769px) {
   .bet-chips { flex-wrap: nowrap; }
 }
-.kbc-intro-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 20px; align-items: start; }
-.kbc-intro-col { min-width: 0; }
+.kbc-intro-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 20px; align-items: start; justify-items: center; }
+.kbc-intro-col { min-width: 0; text-align: center; width: 100%; }
 @media (max-width: 640px) { .kbc-intro-grid { grid-template-columns: 1fr; } }
 .prize-ladder { display: flex; flex-direction: column-reverse; gap: 4px; max-width: 320px; margin: 0 auto 12px; }
 @media (max-width: 480px) {
