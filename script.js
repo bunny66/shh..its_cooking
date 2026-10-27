@@ -711,7 +711,27 @@
   // (handled by main async block above)
 
 
-  document.addEventListener("focusin", (e) => {
+  // Birthday Boy bets
+  const birthdayBetList = $("#birthdayBetList");
+  if (birthdayBetList) {
+    (async () => {
+      let data = [];
+      if (location.protocol !== 'file:') {
+        try {
+          const res = await fetch('birthday-bets.json');
+          if (res.ok) data = await res.json();
+        } catch (e) {}
+      }
+      if (!data.length) {
+        // fallback: empty
+        data = [];
+      }
+      birthdayBetList.innerHTML = data.map((q, i) => {
+        const opts = (q.options || []).map((o) => '<li class="bet-option-item">' + esc(o) + '</li>').join("");
+        return '<li class="birthday-bet-item"><strong>' + (i + 1) + '. ' + esc(q.question) + '</strong><ul class="bet-sublist">' + opts + '</ul></li>';
+      }).join("");
+    })();
+  }
     const t = e.target;
     if (t && typeof t.scrollIntoView === "function") {
       const rect = t.getBoundingClientRect();
