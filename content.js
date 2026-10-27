@@ -149,6 +149,17 @@ window.CONTENT = {
       link: "https://www.instagram.com/p/DUJFVe7kzsS/",
     },
     {
+      icon: "🃏", name: "UNO", players: "2-10", time: "10-20 min/game",
+      category: "Cards",
+      rules: [
+        "Match color or number with the top card of the discard pile.",
+        "Action cards: Skip, Reverse, Draw Two, Wild, Wild Draw Four.",
+        "Play a Wild to change the color. Wild Draw Four only if no matching color.",
+        "Shout 'UNO!' when you have one card left.",
+        "First to empty hand wins. Draw from the deck if you can't play.",
+      ],
+    },
+    {
       icon: "🃏", name: "Blackjack", players: "2-7", time: "5-10 min/round", category: "Cards",
       rules: [
         "Goal: beat the dealer by getting closest to 21 without busting.",
