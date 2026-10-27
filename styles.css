@@ -397,6 +397,25 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
   z-index: 0;
 }
 .bet-block.bet-jackpot > * { position: relative; z-index: 1; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
+.bet-block.bet-birthday {
+  position: relative;
+  background-image: url("https://media.licdn.com/dms/image/v2/D4D22AQG-f63ogO-LIA/feedshare-shrink_800/B4DZ05AreXIYAc-/0/1774777973568?e=2147483647&v=beta&t=9mxqJ7yMzlQ0am50ZxLCem0M9esG1lEstpL7htnFrpw");
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--radius);
+  padding: 24px;
+  color: #fff;
+  overflow: hidden;
+}
+.bet-block.bet-birthday::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6,36,26,0.5) 0%, rgba(6,36,26,0.7) 100%);
+  border-radius: var(--radius);
+  z-index: 0;
+}
+.bet-block.bet-birthday > * { position: relative; z-index: 1; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
 /* chips: single line on laptop/TV, wrap on phone */
 @media (min-width: 769px) {
   .bet-chips { flex-wrap: nowrap; }
