@@ -389,8 +389,12 @@
     if (gameModalRules) {
       const rules = Array.isArray(g.rules) ? g.rules : [];
       let html = "";
+      // media (image + reference video) on top
+      let mediaTop = "";
+      if (g.image) mediaTop += '<div class="gm-media"><img src="' + esc(g.image) + '" alt="rules" style="max-width:60%;border-radius:8px;" /></div>';
+      if (g.link) mediaTop += '<div class="gm-media"><a href="' + esc(g.link) + '" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-block;">Watch reference video ↗</a></div>';
       if (Array.isArray(g.sections)) {
-        html = g.sections.map((s) => {
+        html = mediaTop + g.sections.map((s) => {
           let out = '<div class="gm-section">';
           out += '<h3 class="gm-section-title">' + esc(s.title || "") + '</h3>';
           if (Array.isArray(s.items)) {
@@ -403,14 +407,8 @@
           return out;
         }).join("");
       } else {
-        html = rules.map((r) => "<li>" + esc(r) + "</li>").join("") +
-          (g.image ? '<li style="list-style:none;margin-top:8px;"><img src="' + esc(g.image) + '" alt="rules" style="max-width:60%;border-radius:8px;" /></li>' : "") +
-          (g.link ? '<li style="list-style:none;margin-top:8px;"><a href="' + esc(g.link) + '" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-block;">Watch reference video ↗</a></li>' : "");
-      }
-      // append image + link for sections mode too
-      if (Array.isArray(g.sections)) {
-        if (g.image) html += '<div class="gm-media"><img src="' + esc(g.image) + '" alt="rules" style="max-width:60%;border-radius:8px;" /></div>';
-        if (g.link) html += '<div class="gm-media"><a href="' + esc(g.link) + '" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-block;">Watch reference video ↗</a></div>';
+        html = mediaTop +
+          '<ul class="game-rules">' + rules.map((r) => "<li>" + esc(r) + "</li>").join("") + '</ul>';
       }
       gameModalRules.innerHTML = html;
     }
