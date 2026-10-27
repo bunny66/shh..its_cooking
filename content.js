@@ -135,6 +135,17 @@ window.CONTENT = {
       link: "https://www.instagram.com/p/BpDlpSDAxMV/",
     },
     {
+      icon: "🥤", name: "Musical Cups", players: "Group", time: "Party game",
+      rules: [
+        "Musical Chair ❌ Musical Cups ✅",
+        "Materials: Cups and Music.",
+        "Play music; when it stops, grab a cup. No cup = out.",
+        "Try this at your next gathering!",
+        "Reference: https://www.instagram.com/p/DUJFVe7kzsS/",
+      ],
+      link: "https://www.instagram.com/p/DUJFVe7kzsS/",
+    },
+    {
       icon: "🃏", name: "Blackjack", players: "2-7", time: "5-10 min/round",
       rules: [
         "Goal: beat the dealer by getting closest to 21 without busting.",
