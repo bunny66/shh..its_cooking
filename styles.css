@@ -338,6 +338,11 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 .bet-list { list-style: none; padding: 0; max-width: 520px; margin: 12px auto 0; text-align: left; }
 .bet-list li { padding: 8px 12px; margin-bottom: 6px; background: var(--card); border: 1px solid var(--card-border); border-radius: 8px; }
 .bet-list li::before { content: "♠ "; color: var(--gold); }
+.birthday-bet-item { padding: 10px 12px; margin-bottom: 8px; background: var(--card); border: 1px solid var(--card-border); border-radius: 8px; }
+.birthday-bet-item strong { color: var(--gold); display: block; margin-bottom: 4px; }
+.bet-sublist { margin: 4px 0 0 18px; padding: 0; list-style: disc; }
+.bet-sublist li { font-size: 0.85rem; color: var(--ink); opacity: 0.85; margin: 2px 0; padding: 0; background: none; border: none; }
+.bet-sublist li::before { content: ""; }
 
 /* ---------- RSVP form ---------- */
 .rsvp-form { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; text-align: left; }
@@ -397,20 +402,88 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
   z-index: 0;
 }
 .bet-block.bet-jackpot > * { position: relative; z-index: 1; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
-.prize-ladder { display: flex; flex-direction: column-reverse; gap: 4px; max-width: 320px; margin: 0 auto 12px; }
+.bet-block.bet-birthday {
+  position: relative;
+  background-image: url("https://media.licdn.com/dms/image/v2/D4D22AQG-f63ogO-LIA/feedshare-shrink_800/B4DZ05AreXIYAc-/0/1774777973568?e=2147483647&v=beta&t=9mxqJ7yMzlQ0am50ZxLCem0M9esG1lEstpL7htnFrpw");
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--radius);
+  padding: 24px;
+  color: #fff;
+  overflow: hidden;
+}
+.bet-block.bet-birthday::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6,36,26,0.5) 0%, rgba(6,36,26,0.7) 100%);
+  border-radius: var(--radius);
+  z-index: 0;
+}
+.bet-block.bet-birthday > * { position: relative; z-index: 1; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
+/* chips: single line on laptop/TV, wrap on phone */
+@media (min-width: 769px) {
+  .bet-chips { flex-wrap: nowrap; }
+}
+.kbc-intro-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; align-items: start; justify-items: center; }
+.kbc-intro-col { min-width: 0; text-align: center; width: 100%; }
+@media (max-width: 640px) { .kbc-intro-grid { grid-template-columns: 1fr; } }
+@media (min-width: 641px) and (max-width: 900px) { .kbc-intro-grid { grid-template-columns: 1fr 1fr; } }
+.prize-ladder { display: flex; flex-direction: column-reverse; gap: 4px; max-width: 100%; margin: 0 auto 12px; }
+@media (max-width: 480px) {
+  .kbc-question { font-size: 1rem; min-height: 52px; padding: 14px; }
+  .kbc-options { grid-template-columns: 1fr; }
+  .kbc-option { font-size: 0.9rem; padding: 10px 12px; }
+  .kbc-label { width: 28px; height: 28px; font-size: 0.85rem; }
+  .kbc-footer { flex-direction: column; align-items: stretch; }
+  .kbc-footer .btn { width: 100%; }
+  .prize-ladder { max-width: 100%; }
+  .bet-chips { gap: 8px; }
+  .bet-chip { font-size: 0.75rem; padding: 6px 10px; min-width: 52px; }
+}
+@media (min-width: 1281px) {
+  .kbc-screen { max-width: 1180px; padding: 28px; }
+  .kbc-question { font-size: 1.35rem; min-height: 72px; padding: 22px; }
+  .kbc-option { font-size: 1.15rem; padding: 16px 20px; }
+  .kbc-label { width: 40px; height: 40px; font-size: 1.1rem; }
+  .kbc-intro-grid { gap: 28px; }
+  .prize-rung { font-size: 1rem; padding: 6px 12px; }
+}
+@media (min-width: 1920px) {
+  .kbc-screen { max-width: 1380px; padding: 36px; }
+  .kbc-question { font-size: 1.6rem; min-height: 88px; padding: 28px; }
+  .kbc-option { font-size: 1.35rem; padding: 20px 24px; }
+  .kbc-label { width: 46px; height: 46px; font-size: 1.25rem; }
+  .bet-chip { font-size: 1rem; padding: 10px 14px; }
+  .prize-rung { font-size: 1.15rem; }
+  .kbc-footer .btn { font-size: 1.15rem; padding: 14px 24px; }
+}
 .prize-rung { display: flex; justify-content: space-between; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); color: #fff; font-size: 0.85rem; }
 .prize-rung.milestone { background: rgba(212,175,55,0.25); border: 1px solid rgba(212,175,55,0.5); font-weight: 600; }
 .jackpot-board {
   background: transparent;
   border: none;
   color: #fff;
+  max-width: 900px;
+  padding: 20px;
 }
-.bet-chips { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
+.bet-chips { display: flex; justify-content: space-evenly; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
 .bet-chip {
-  min-width: 64px; height: auto; padding: 8px 12px; border-radius: 999px; color: #fff; font-weight: 700; font-size: 0.85rem;
-  border: 4px dashed rgba(255,255,255,0.6); box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  width: 72px; height: 72px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 0.75rem;
+  border: 4px dashed rgba(255,255,255,0.7); box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   transition: transform .15s ease, box-shadow .15s; white-space: nowrap;
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
+  cursor: pointer;
 }
+.bet-chip:hover { transform: translateY(-3px) scale(1.05); }
+.bet-chip.selected { outline: 3px solid var(--gold); outline-offset: 3px; transform: scale(1.1); }
+.chip-red { background: radial-gradient(circle at 30% 30%, #e74c3c, #922b21); }
+.chip-green { background: radial-gradient(circle at 30% 30%, #2ecc71, #1e8449); }
+.chip-blue { background: radial-gradient(circle at 30% 30%, #3498db, #1f618d); }
+.chip-white { background: radial-gradient(circle at 30% 30%, #f5f5f5, #bdc3c7); color: #1a1400; }
+.chip-black { background: radial-gradient(circle at 30% 30%, #555, #1a1a1a); }
+.chip-gold { background: radial-gradient(circle at 30% 30%, #f1c40f, #b7950b); color: #1a1400; }
+.chip-purple { background: radial-gradient(circle at 30% 30%, #9b59b6, #6c3483); }
 .bet-chip:hover { transform: translateY(-3px) scale(1.05); }
 .bet-chip.selected { outline: 3px solid var(--gold); outline-offset: 3px; transform: scale(1.1); }
 .bet-selected { color: var(--muted); margin: 8px 0; }

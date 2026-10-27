@@ -46,30 +46,23 @@
 
       <div class="bet-block bet-jackpot">
         <h3 class="section-title" style="font-size:1.3rem;"><span class="suit red">♥</span> 🎰 Kaun Banega Crorepati — Lock kiya jaaye?</h3>
-        <p class="section-sub" style="margin-bottom:16px;">Jackpot quiz — bet your chips on the answer. Just for fun!</p>
+        <p class="section-sub" style="margin-bottom:16px;">10 questions. One jackpot. ₹7 crore up for grabs!</p>
         <div class="bet-board jackpot-board" id="kbcIntro">
-          <h3 style="color:#fff;margin:0 0 8px;">🎰 Kaun Banega Crorepati</h3>
-          <p style="color:#fff;margin:0 0 12px;">10 questions. Climb the ladder to win up to <strong>₹7 crore</strong>! Bet the chips you think you'll win, then enter the game.</p>
-          <div class="prize-ladder" id="prizeLadder"></div>
-          <div class="bet-chips" id="introChips" style="margin-top:12px;"></div>
-          <p class="bet-selected" id="introSelected" style="color:#fff;">Bet: none</p>
-          <div class="bet-rules" style="color:#fff;margin:10px 0;text-align:left;max-width:420px;margin-left:auto;margin-right:auto;">
-            <strong>Rules:</strong>
-            <ul style="margin:6px 0 0 18px;">
-              <li>10 questions, increasing prizes up to ₹7 crore.</li>
-              <li>Answer all correctly to win the top prize.</li>
-              <li>On a wrong answer: if your prize so far ≥ your bet, you keep that prize; else you get 0.</li>
-              <li>You bet before entering; no betting during questions.</li>
-            </ul>
+          <p style="color:#fff;margin:0 0 12px;text-align:center;">Think you know your games? Put your chips where your answers are and see if you can hit the jackpot!</p>
+          <div class="bet-chips" id="introChips" style="margin:0 0 10px 0;width:100%;"></div>
+          <p class="bet-selected" id="introSelected" style="color:#fff;margin:0 0 12px;text-align:center;">Your Bet: 0</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;margin:8px 0;">
+            <input type="text" id="playerNameInput" placeholder="Your name" value="Test" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:180px;flex:1;" />
+            <input type="password" id="pinInput" placeholder="PIN" maxlength="4" inputmode="numeric" value="2025" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:100px;letter-spacing:4px;text-align:center;" />
           </div>
-          <div style="margin:8px 0;">
-            <input type="text" id="playerNameInput" placeholder="Your name" value="Test" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:240px;width:100%;" />
+          <p class="bet-result" id="pinError" style="color:#ff6b6b;margin:4px 0;text-align:center;"></p>
+          <button class="btn btn-gold" id="enterGameBtn" style="min-width:160px;">Enter Game ▶</button>
+          <div class="bet-rules" style="color:#fff;margin:12px 0 0;text-align:left;width:100%;">
+            <strong style="font-size:0.9rem;">Rules:</strong>
+            <p style="margin:6px 0 0;font-size:0.85rem;line-height:1.5;opacity:0.9;">Place your bet before entering. No last-minute negotiations with the quizmaster!</p>
+            <p style="margin:4px 0 0;font-size:0.85rem;line-height:1.5;opacity:0.9;">Get a question right, and you climb the prize ladder. Get one wrong, and it’s game over.</p>
+            <p style="margin:4px 0 0;font-size:0.85rem;line-height:1.5;opacity:0.9;">Once the game begins, your bet is locked. No changing your mind, no emotional damage claims, no blaming the cards.</p>
           </div>
-          <div style="margin:8px 0;">
-            <input type="password" id="pinInput" placeholder="4-digit PIN" maxlength="4" inputmode="numeric" value="2025" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:160px;width:100%;letter-spacing:4px;text-align:center;" />
-          </div>
-          <p class="bet-result" id="pinError" style="color:#ff6b6b;"></p>
-          <button class="btn btn-gold" id="enterGameBtn">Enter Game ▶</button>
         </div>
         <div class="bet-board kbc-screen" id="betQuiz" style="display:none;">
           <div class="kbc-question" id="betQuestion"></div>
@@ -84,16 +77,18 @@
         </div>
       </div>
 
-      <div class="bet-block">
+      <div class="bet-block bet-birthday">
         <h3 class="section-title" style="font-size:1.3rem;"><span class="suit">♠</span> Bet on the Birthday Boy</h3>
         <p class="section-sub">Bet your play money on predictions about Ayushman. Reveal answers throughout the evening — win or lose chips!</p>
-        <ul class="bet-list">
-          <li>Who will he hug first?</li>
-          <li>What song will make him dance?</li>
-          <li>How long before he mentions work?</li>
-          <li>What will his first reaction be to his birthday cake?</li>
-          <li>Who knows his most embarrassing story?</li>
-        </ul>
+        <div id="birthdayGate" style="margin:12px 0;">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;margin:8px 0;">
+            <input type="text" id="bbName" placeholder="Your name" value="Test" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:180px;flex:1;" />
+            <input type="password" id="bbPin" placeholder="PIN" maxlength="4" inputmode="numeric" value="9999" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:100px;letter-spacing:4px;text-align:center;" />
+            <button class="btn btn-gold" id="bbEnterBtn">Enter ▶</button>
+          </div>
+          <p id="bbError" style="color:#ff6b6b;margin:4px 0;text-align:center;"></p>
+        </div>
+        <ul class="bet-list" id="birthdayBetList" style="display:none;"></ul>
       </div>
 
       <div class="bet-block">
@@ -153,8 +148,16 @@
   </footer>
 
   <script src="config.js"></script>
+  <script src="birthday-bets-data.js"></script>
   <script src="content.js"></script>
-  <script src="script.js"></script>
+  <script src="core.js"></script>
+  <script src="ambient.js"></script>
+  <script src="ui-sections.js"></script>
+  <script src="extras.js"></script>
+  <script src="games-modal.js"></script>
+  <script src="chaos.js"></script>
+  <script src="kbc.js"></script>
+  <script src="birthday-bets.js"></script>
 </body>
 </html>
 
