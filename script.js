@@ -541,11 +541,11 @@
       if (selectedOption !== q.answer) opts[selectedOption].classList.add("wrong");
       if (selectedOption === q.answer) {
         prizeWon = prizeValue(q.prize);
-        if (betResult) betResult.textContent = "Correct! Prize: " + (q.prize || "") + "  " + (q.explanation || "");
+        if (betResult) betResult.textContent = playerName + ": Correct! Prize: " + (q.prize || "") + "  " + (q.explanation || "");
         if (qIndex >= questions.length - 1) {
           // completed all questions
           const finalWin = prizeWon;
-          if (betResult) betResult.textContent = "🎉 You won " + (q.prize || "") + "!  " + (q.explanation || "");
+          if (betResult) betResult.textContent = "🎉 " + playerName + " won " + (q.prize || "") + "!  " + (q.explanation || "");
           if (betScore) betScore.textContent = "Final: " + finalWin.toLocaleString("en-IN");
           if (nextQBtn) nextQBtn.style.display = "none";
         } else {
@@ -572,7 +572,7 @@
       } else {
         // wrong answer: apply bet rule
         const finalWin = (prizeWon >= (selectedBet || 0)) ? prizeWon : 0;
-        if (betResult) betResult.textContent = "Wrong! (correct: " + q.options[q.answer] + ")  " + (q.explanation || "") +
+        if (betResult) betResult.textContent = playerName + ": Wrong! (correct: " + q.options[q.answer] + ")  " + (q.explanation || "") +
           "  → You " + (finalWin > 0 ? "win " + finalWin.toLocaleString("en-IN") : "win 0 (your bet was higher than your prize so far)");
         if (betScore) betScore.textContent = "Final: " + finalWin.toLocaleString("en-IN");
         if (nextQBtn) nextQBtn.style.display = "none";
@@ -611,7 +611,9 @@
   const introChips = $("#introChips");
   const introSelected = $("#introSelected");
   const enterGameBtn = $("#enterGameBtn");
+  const playerNameInput = $("#playerNameInput");
   let introBet = null;
+  let playerName = "";
 
   function prizeValue(str) {
     if (!str) return 0;
@@ -678,6 +680,7 @@
   }
   if (enterGameBtn) {
     enterGameBtn.addEventListener("click", () => {
+      playerName = (playerNameInput && playerNameInput.value.trim()) || "Player";
       if (kbcIntro) kbcIntro.style.display = "none";
       if (betQuiz) betQuiz.style.display = "";
       selectedBet = introBet;
