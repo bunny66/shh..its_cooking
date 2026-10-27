@@ -46,7 +46,7 @@
 
       <div class="bet-block bet-jackpot">
         <h3 class="section-title" style="font-size:1.3rem;"><span class="suit red">♥</span> 🎰 Kaun Banega Crorepati — Lock kiya jaaye?</h3>
-        <p class="section-sub">Jackpot quiz — bet your chips on the answer. Just for fun!</p>
+        <p class="section-sub" style="margin-bottom:16px;">Jackpot quiz — bet your chips on the answer. Just for fun!</p>
         <div class="bet-board jackpot-board" id="kbcIntro">
           <h3 style="color:#fff;margin:0 0 8px;">🎰 Kaun Banega Crorepati</h3>
           <p style="color:#fff;margin:0 0 12px;">10 questions. Climb the ladder to win up to <strong>₹7 crore</strong>! Bet the chips you think you'll win, then enter the game.</p>
@@ -63,20 +63,22 @@
             </ul>
           </div>
           <div style="margin:8px 0;">
-            <input type="text" id="playerNameInput" placeholder="Your name" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:240px;width:100%;" />
+            <input type="text" id="playerNameInput" placeholder="Your name" value="Test" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:240px;width:100%;" />
           </div>
           <div style="margin:8px 0;">
-            <input type="password" id="pinInput" placeholder="4-digit PIN" maxlength="4" inputmode="numeric" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:160px;width:100%;letter-spacing:4px;text-align:center;" />
+            <input type="password" id="pinInput" placeholder="4-digit PIN" maxlength="4" inputmode="numeric" value="2025" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:160px;width:100%;letter-spacing:4px;text-align:center;" />
           </div>
           <p class="bet-result" id="pinError" style="color:#ff6b6b;"></p>
           <button class="btn btn-gold" id="enterGameBtn">Enter Game ▶</button>
         </div>
-        <div class="bet-board jackpot-board" id="betQuiz" style="display:none;">
-          <p class="bet-question" id="betQuestion"></p>
-          <div class="bet-options" id="betOptions"></div>
-          <button class="btn btn-gold" id="placeBetBtn">Lock Answer</button>
+        <div class="bet-board kbc-screen" id="betQuiz" style="display:none;">
+          <div class="kbc-question" id="betQuestion"></div>
+          <div class="kbc-options" id="betOptions"></div>
           <p class="bet-result" id="betResult"></p>
-          <p class="bet-score" id="betScore">Score: 0</p>
+          <div class="kbc-footer">
+            <p class="bet-score" id="betScore" style="margin:0;">Score: 0</p>
+            <button class="btn btn-gold" id="placeBetBtn">Lock Answer</button>
+          </div>
           <button class="btn btn-outline" id="nextQBtn" style="margin-top:8px;display:none;">Next Question</button>
         </div>
         </div>
@@ -150,6 +152,7 @@
     <p class="footer-small">Casino Night theme · Mobile · Tablet · TV ready</p>
   </footer>
 
+  <script src="config.js"></script>
   <script src="content.js"></script>
   <script src="script.js"></script>
 </body>
