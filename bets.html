@@ -47,7 +47,19 @@
       <div class="bet-block bet-jackpot">
         <h3 class="section-title" style="font-size:1.3rem;"><span class="suit red">♥</span> 🎰 Kaun Banega Crorepati — Lock kiya jaaye?</h3>
         <p class="section-sub">Jackpot quiz — bet your chips on the answer. Just for fun!</p>
-        <div class="bet-board jackpot-board">
+        <div class="bet-board jackpot-board" id="kbcIntro">
+          <h3 style="color:#fff;margin:0 0 8px;">🎰 Kaun Banega Crorepati</h3>
+          <p style="color:#fff;margin:0 0 12px;">10 questions. Climb the ladder to win up to <strong>₹7 crore</strong>! Bet the chips you think you'll win, then enter the game.</p>
+          <div class="prize-ladder" id="prizeLadder"></div>
+          <div class="bet-chips" id="introChips" style="margin-top:12px;">
+            <button class="bet-chip chip-red" data-val="25">25</button>
+            <button class="bet-chip chip-blue" data-val="50">50</button>
+            <button class="bet-chip chip-gold" data-val="100">100</button>
+          </div>
+          <p class="bet-selected" id="introSelected" style="color:#fff;">Bet: none</p>
+          <button class="btn btn-gold" id="enterGameBtn">Enter Game ▶</button>
+        </div>
+        <div class="bet-board jackpot-board" id="betQuiz" style="display:none;">
           <p class="bet-question" id="betQuestion"></p>
           <div class="bet-options" id="betOptions"></div>
           <div class="bet-chips" id="betChips">

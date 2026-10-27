@@ -569,7 +569,52 @@
       } catch (e) {}
     }
     renderQuestion();
+    renderPrizeLadder();
   })();
+
+  // KBC intro: prize ladder + bet + enter game
+  const kbcIntro = $("#kbcIntro");
+  const betQuiz = $("#betQuiz");
+  const prizeLadder = $("#prizeLadder");
+  const introChips = $("#introChips");
+  const introSelected = $("#introSelected");
+  const enterGameBtn = $("#enterGameBtn");
+  let introBet = null;
+
+  function renderPrizeLadder() {
+    if (!prizeLadder) return;
+    // questions already loaded (or fallback); use their prizes
+    const prizes = questions.map((q) => q.prize).filter(Boolean);
+    // show high -> low
+    const rows = prizes.slice().reverse().map((p, i) => {
+      const milestone = (i === prizes.length - 1) || (i === 0) || (i === Math.floor(prizes.length/2));
+      return '<div class="prize-rung' + (milestone ? ' milestone' : '') + '"><span>Q' + (prizes.length - i) + '</span><span>' + p + '</span></div>';
+    });
+    prizeLadder.innerHTML = rows.join("");
+  }
+
+  if (introChips) {
+    introChips.querySelectorAll(".bet-chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        introChips.querySelectorAll(".bet-chip").forEach((c) => c.classList.remove("selected"));
+        chip.classList.add("selected");
+        introBet = parseInt(chip.getAttribute("data-val"), 10);
+        if (introSelected) introSelected.textContent = "Bet: " + introBet;
+      });
+    });
+  }
+  if (enterGameBtn) {
+    enterGameBtn.addEventListener("click", () => {
+      if (kbcIntro) kbcIntro.style.display = "none";
+      if (betQuiz) betQuiz.style.display = "";
+      selectedBet = introBet;
+      if (betSelected) betSelected.textContent = "Selected: " + (selectedBet || "none");
+      renderQuestion();
+    });
+  }
+
+  // render ladder after questions load
+  // (handled by main async block above)
 
 
   document.addEventListener("focusin", (e) => {
