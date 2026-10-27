@@ -65,7 +65,6 @@ window.CONTENT = {
             "Raise: Increase the current bet, forcing others to pay more.",
             "Fold: Surrender cards and forfeit chips contributed this hand.",
           ] },
-        { title: "🏆 Hand Rankings (high → low)", ranks: ["Royal Flush","Straight Flush","Four of a Kind","Full House","Flush","Straight","Three of a Kind","Two Pair","One Pair","High Card"] },
       ],
     },
     {
