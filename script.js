@@ -253,7 +253,7 @@
         el.className = "game game-compact" + (g.featured ? " game-featured" : "") + (g.image ? " game-clickable" : "");
         const rules = Array.isArray(g.rules) ? g.rules : [];
         el.innerHTML = '<div class="game-head"><span class="game-icon" aria-hidden="true">' + esc(g.icon || "🃏") + '</span><h3 class="game-name">' + esc(g.name || "") + '</h3></div>' +
-          '<div class="game-meta">' + (g.category ? '<span class="game-tag game-cat">' + esc(g.category) + '</span>' : "") + (g.players ? '<span class="game-tag">Players: ' + esc(g.players) + '</span>' : "") + '<button type="button" class="read-more-btn">Read more →</button></div>';
+          '<div class="game-meta">' + (g.category ? '<span class="game-tag game-cat">' + esc(g.category) + '</span>' : "") + (g.players ? '<span class="game-tag">Players: ' + esc(g.players) + '</span>' : "") + '<button type="button" class="read-more-btn" style="background:var(--gold,#d4af37);color:#1a1400;border:1px solid #d4af37;padding:4px 10px;border-radius:999px;font-size:0.8rem;cursor:pointer;margin-left:auto;white-space:nowrap;font-weight:600;">Read more →</button></div>';
         const openDetails = () => openGameModal(g);
         el.querySelector(".read-more-btn").addEventListener("click", (e) => { e.stopPropagation(); openDetails(); });
         el.addEventListener("click", (e) => { if (!e.target.classList.contains("read-more-btn")) openDetails(); });
