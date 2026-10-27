@@ -600,7 +600,6 @@
       } catch (e) {}
     }
     renderQuestion();
-    renderPrizeLadder();
     if (introChips) makeChips(introChips, (v) => { introBet = v; if (introSelected) introSelected.textContent = "Your Bet: " + v.toLocaleString("en-IN"); });
     if (betChips) makeChips(betChips, (v) => { selectedBet = v; if (betSelected) betSelected.textContent = "Selected: " + v.toLocaleString("en-IN"); });
   })();
@@ -608,7 +607,6 @@
   // KBC intro: prize ladder + bet + enter game
   const kbcIntro = $("#kbcIntro");
   const betQuiz = $("#betQuiz");
-  const prizeLadder = $("#prizeLadder");
   const introChips = $("#introChips");
   const introSelected = $("#introSelected");
   const enterGameBtn = $("#enterGameBtn");
@@ -660,15 +658,6 @@
       container.appendChild(btn);
     });
   }
-  function renderPrizeLadder() {
-    if (!prizeLadder) return;
-    // questions already loaded (or fallback); use their prizes
-    const prizes = questions.map((q) => q.prize).filter(Boolean);
-    // show high -> low
-    const rows = prizes.slice().reverse().map((p, i) => {
-      const milestone = (i === prizes.length - 1) || (i === 0) || (i === Math.floor(prizes.length/2));
-      return '<div class="prize-rung' + (milestone ? ' milestone' : '') + '"><span>Q' + (prizes.length - i) + '</span><span>' + p + '</span></div>';
-    });
     prizeLadder.innerHTML = rows.join("");
   }
 
