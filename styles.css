@@ -445,10 +445,21 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 }
 .bet-chips { display: flex; justify-content: space-evenly; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
 .bet-chip {
-  min-width: 52px; height: auto; padding: 6px 10px; border-radius: 999px; color: #fff; font-weight: 700; font-size: 0.8rem;
-  border: 4px dashed rgba(255,255,255,0.6); box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  width: 72px; height: 72px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 0.75rem;
+  border: 4px dashed rgba(255,255,255,0.7); box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   transition: transform .15s ease, box-shadow .15s; white-space: nowrap;
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
+  cursor: pointer;
 }
+.bet-chip:hover { transform: translateY(-3px) scale(1.05); }
+.bet-chip.selected { outline: 3px solid var(--gold); outline-offset: 3px; transform: scale(1.1); }
+.chip-red { background: radial-gradient(circle at 30% 30%, #e74c3c, #922b21); }
+.chip-green { background: radial-gradient(circle at 30% 30%, #2ecc71, #1e8449); }
+.chip-blue { background: radial-gradient(circle at 30% 30%, #3498db, #1f618d); }
+.chip-white { background: radial-gradient(circle at 30% 30%, #f5f5f5, #bdc3c7); color: #1a1400; }
+.chip-black { background: radial-gradient(circle at 30% 30%, #555, #1a1a1a); }
+.chip-gold { background: radial-gradient(circle at 30% 30%, #f1c40f, #b7950b); color: #1a1400; }
+.chip-purple { background: radial-gradient(circle at 30% 30%, #9b59b6, #6c3483); }
 .bet-chip:hover { transform: translateY(-3px) scale(1.05); }
 .bet-chip.selected { outline: 3px solid var(--gold); outline-offset: 3px; transform: scale(1.1); }
 .bet-selected { color: var(--muted); margin: 8px 0; }

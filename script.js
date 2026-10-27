@@ -641,12 +641,15 @@
     if (!container) return;
     container.innerHTML = "";
     const seen = new Set();
+    const colors = ["chip-red","chip-green","chip-blue","chip-white","chip-black","chip-gold","chip-purple","chip-red","chip-green","chip-blue"];
+    let ci = 0;
     questions.forEach((q) => {
       const v = prizeValue(q.prize);
       if (seen.has(v)) return;
       seen.add(v);
       const btn = document.createElement("button");
-      btn.className = "bet-chip chip-gold";
+      btn.className = "bet-chip " + colors[ci % colors.length];
+      ci++;
       btn.setAttribute("data-val", String(v));
       btn.textContent = shortPrize(q.prize);
       btn.addEventListener("click", () => {
