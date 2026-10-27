@@ -253,13 +253,18 @@
         el.className = "game game-compact" + (g.featured ? " game-featured" : "") + (g.image ? " game-clickable" : "");
         const rules = Array.isArray(g.rules) ? g.rules : [];
         el.innerHTML = '<div class="game-head"><span class="game-icon" aria-hidden="true">' + esc(g.icon || "🃏") + '</span><h3 class="game-name">' + esc(g.name || "") + '</h3></div>' +
-          '<div class="game-meta">' + (g.category ? '<span class="game-tag game-cat">' + esc(g.category) + '</span>' : "") + (g.players ? '<span class="game-tag">Players: ' + esc(g.players) + '</span>' : "") + (g.time ? '<span class="game-tag">' + esc(g.time) + '</span>' : "") + '<button type="button" class="read-more-btn">Read more →</button></div>';
-        const openDetails = () => openGameModal(g);
-        el.querySelector(".read-more-btn").addEventListener("click", (e) => { e.stopPropagation(); openDetails(); });
-        el.addEventListener("click", (e) => { if (!e.target.classList.contains("read-more-btn")) openDetails(); });
-        if (g.image) {
-          el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDetails(); } });
-        }
+          '<div class="game-meta">' + (g.category ? '<span class="game-tag game-cat">' + esc(g.category) + '</span>' : "") + (g.players ? '<span class="game-tag">Players: ' + esc(g.players) + '</span>' : "") + (g.time ? '<span class="game-tag">' + esc(g.time) + '</span>' : "") + '<button type="button" class="read-more-btn">Read more →</button></div>' +
+          '<ul class="game-rules">' + rules.map((r) => "<li>" + esc(r) + "</li>").join("") + (g.image ? '<li style="list-style:none;margin-top:8px;"><img src="' + esc(g.image) + '" alt="rules" style="max-width:60%;border-radius:8px;" /></li>' : "") + (g.link ? '<li style="list-style:none;margin-top:8px;"><a href="' + esc(g.link) + '" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-block;">Watch reference video ↗</a></li>' : "") + '</ul>';
+        const btn = el.querySelector(".read-more-btn");
+        const rulesEl = el.querySelector(".game-rules");
+        const toggle = () => {
+          const expanded = el.classList.toggle("expanded");
+          if (btn) btn.textContent = expanded ? "Show less ↑" : "Read more →";
+          if (rulesEl) rulesEl.style.display = expanded ? "flex" : "none";
+        };
+        if (btn) btn.addEventListener("click", (e) => { e.stopPropagation(); toggle(); });
+        el.addEventListener("click", (e) => { if (!e.target.classList.contains("read-more-btn")) toggle(); });
+        el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
         gamesGrid.appendChild(el);
       });
     }
