@@ -594,6 +594,14 @@
     return Math.round(num);
   }
 
+  function shortPrize(str) {
+    const v = prizeValue(str);
+    if (v >= 10000000) return (v / 10000000) + "Cr";
+    if (v >= 100000) return (v / 100000) + "L";
+    if (v >= 1000) return (v / 1000) + "k";
+    return String(v);
+  }
+
   function makeChips(container, onSelect) {
     if (!container) return;
     container.innerHTML = "";
@@ -605,7 +613,7 @@
       const btn = document.createElement("button");
       btn.className = "bet-chip chip-gold";
       btn.setAttribute("data-val", String(v));
-      btn.textContent = q.prize;
+      btn.textContent = shortPrize(q.prize);
       btn.addEventListener("click", () => {
         container.querySelectorAll(".bet-chip").forEach((c) => c.classList.remove("selected"));
         btn.classList.add("selected");
