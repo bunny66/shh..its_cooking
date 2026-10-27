@@ -682,10 +682,11 @@
   }
   if (enterGameBtn) {
     enterGameBtn.addEventListener("click", () => {
+      const expectedPin = (window.CONFIG && window.CONFIG.pin) || "2025";
       const pin = (pinInput && pinInput.value.trim()) || "";
       const name = (playerNameInput && playerNameInput.value.trim()) || "";
       const missing = [];
-      if (pin !== "2025") missing.push("correct PIN");
+      if (pin !== expectedPin) missing.push("correct PIN");
       if (!name) missing.push("name");
       if (introBet === null) missing.push("bet chip");
       if (missing.length) {
