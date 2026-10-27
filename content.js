@@ -136,7 +136,9 @@ window.CONTENT = {
       link: "https://www.instagram.com/p/BpDlpSDAxMV/",
     },
     {
-      icon: "🥤", name: "Musical Cups", players: "Group", time: "Party game", category: "Pong",
+      icon: "🥤", name: "Musical Cups", players: "Group", time: "👑",
+      featured: true,
+      category: "Pong",
       rules: [
         "Musical Chair ❌ Musical Cups ✅",
         "Materials: Cups and Music.",
