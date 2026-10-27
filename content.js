@@ -182,6 +182,7 @@ window.CONTENT = {
     {
       icon: "🃏", name: "UNO", players: "2-10", time: "10-20 min/game",
       category: "Cards",
+      image: "https://www.eourmart.com/cdn/shop/files/1_439056c0-44e4-4a6b-9789-27ac4bb9b825.jpg?v=1727431227",
       rules: [
         "Match color or number with the top card of the discard pile.",
         "Action cards: Skip, Reverse, Draw Two, Wild, Wild Draw Four.",
