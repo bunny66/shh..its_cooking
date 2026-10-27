@@ -113,6 +113,17 @@ window.CONTENT = {
       ],
     },
     {
+      icon: "🏓", name: "Can 'N' Ball", players: "Teams", time: "Party game",
+      rules: [
+        "Teams Orange and Green face off in Can 'N' Ball!",
+        "A ping pong ball in each glass wins.",
+        "Reference: https://www.instagram.com/outscordgames/reel/DcPjVlPpyuU/",
+        "First team to land balls in all glasses wins.",
+        "Play responsibly and have fun!",
+      ],
+      link: "https://www.instagram.com/outscordgames/reel/DcPjVlPpyuU/",
+    },
+    {
       icon: "🃏", name: "Blackjack", players: "2-7", time: "5-10 min/round",
       rules: [
         "Goal: beat the dealer by getting closest to 21 without busting.",
