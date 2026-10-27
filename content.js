@@ -115,6 +115,7 @@ window.CONTENT = {
     {
       icon: "🥤", name: "Cup Stack", players: "2+", time: "👑",
       featured: true,
+      category: "Party",
       rules: [
         "Stack 4 cups with index cards in between.",
         "Once built, remove each card until the cups fall into a single stack.",
@@ -140,6 +141,7 @@ window.CONTENT = {
     {
       icon: "🃏", name: "Blow-De-Deck", players: "2+", time: "👑",
       featured: true,
+      category: "Party",
       link: "https://www.instagram.com/p/DYwx2AxP5YN/",
       rules: [
         "The ultimate test of lung capacity, precision, and pure chaos.",
