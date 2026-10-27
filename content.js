@@ -79,6 +79,7 @@ window.CONTENT = {
     {
       icon: "🃏", name: "Monopoly Deal", players: "2-5", time: "",
       featured: true,
+      image: "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/000000000491668399/vjL_wZh0dk-491668399-2.jpg",
       rules: [
         "Fast-paced card version of Monopoly. First to collect 3 complete property sets wins.",
         "On your turn: draw 2 cards, play up to 3 cards (property, money, or action).",
