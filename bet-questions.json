@@ -1,0 +1,10 @@
+[
+  { "q": "What does 'Blackjack' pay for a natural 21?", "opts": ["1:1", "3:2", "2:1", "5:1"], "ans": 1 },
+  { "q": "In Roulette, what pays 35:1?", "opts": ["Red/Black", "Straight up number", "Odd/Even", "Dozen"], "ans": 1 },
+  { "q": "How many cards in a standard deck?", "opts": ["50", "52", "54", "48"], "ans": 1 },
+  { "q": "Best poker hand?", "opts": ["Four of a Kind", "Full House", "Royal Flush", "Straight Flush"], "ans": 2 },
+  { "q": "Ayushman's birthday theme?", "opts": ["Hollywood", "Casino Night", "Beach", "Retro"], "ans": 1 },
+  { "q": "What is 'Bluff' also called?", "opts": ["Cheat", "Poker", "Rummy", "Bridge"], "ans": 0 },
+  { "q": "Monopoly Deal: sets to win?", "opts": ["2", "3", "4", "5"], "ans": 1 },
+  { "q": "Tambola full house wins?", "opts": ["Line prize", "Jackpot", "Nothing", "Re-roll"], "ans": 1 }
+]

@@ -475,7 +475,7 @@
   const betScore = $("#betScore");
   const nextQBtn = $("#nextQBtn");
 
-  const questions = [
+  const FALLBACK_QUESTIONS = [
     { q: "What does 'Blackjack' pay for a natural 21?", opts: ["1:1", "3:2", "2:1", "5:1"], ans: 1 },
     { q: "In Roulette, what pays 35:1?", opts: ["Red/Black", "Straight up number", "Odd/Even", "Dozen"], ans: 1 },
     { q: "How many cards in a standard deck?", opts: ["50", "52", "54", "48"], ans: 1 },
@@ -485,6 +485,7 @@
     { q: "Monopoly Deal: sets to win?", opts: ["2", "3", "4", "5"], ans: 1 },
     { q: "Tambola full house wins?", opts: ["Line prize", "Jackpot", "Nothing", "Re-roll"], ans: 1 },
   ];
+  let questions = FALLBACK_QUESTIONS;
   let qIndex = 0;
   let selectedBet = null;
   let score = 0;
@@ -567,7 +568,15 @@
       renderQuestion();
     });
   }
-  renderQuestion();
+  (async () => {
+    if (location.protocol !== 'file:') {
+      try {
+        const res = await fetch('bet-questions.json');
+        if (res.ok) questions = await res.json();
+      } catch (e) {}
+    }
+    renderQuestion();
+  })();
 
 
   document.addEventListener("focusin", (e) => {
