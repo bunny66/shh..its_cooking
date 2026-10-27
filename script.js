@@ -683,12 +683,21 @@
   if (enterGameBtn) {
     enterGameBtn.addEventListener("click", () => {
       const pin = (pinInput && pinInput.value.trim()) || "";
+      const name = (playerNameInput && playerNameInput.value.trim()) || "";
       if (pin !== "2025") {
         if (pinError) pinError.textContent = "Wrong PIN. Try again.";
         return;
       }
+      if (!name) {
+        if (pinError) pinError.textContent = "Please enter your name.";
+        return;
+      }
+      if (introBet === null) {
+        if (pinError) pinError.textContent = "Please select a bet chip.";
+        return;
+      }
       if (pinError) pinError.textContent = "";
-      playerName = (playerNameInput && playerNameInput.value.trim()) || "Player";
+      playerName = name;
       if (kbcIntro) kbcIntro.style.display = "none";
       if (betQuiz) betQuiz.style.display = "";
       selectedBet = introBet;
