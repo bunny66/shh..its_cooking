@@ -711,9 +711,31 @@
   // (handled by main async block above)
 
 
-  // Birthday Boy bets
-  const birthdayBetList = $("#birthdayBetList");
-  if (birthdayBetList) {
+  // Birthday Boy gate
+  const bbEnterBtn = $("#bbEnterBtn");
+  const bbName = $("#bbName");
+  const bbPin = $("#bbPin");
+  const bbError = $("#bbError");
+  const bbList = $("#birthdayBetList");
+  const bbGate = $("#birthdayGate");
+  if (bbEnterBtn) {
+    bbEnterBtn.addEventListener("click", () => {
+      const pin = (bbPin && bbPin.value.trim()) || "";
+      const name = (bbName && bbName.value.trim()) || "";
+      if (pin !== ((window.CONFIG && window.CONFIG.pin) || "2025")) {
+        if (bbError) bbError.textContent = "Wrong PIN. Try again.";
+        return;
+      }
+      if (!name) {
+        if (bbError) bbError.textContent = "Please enter your name.";
+        return;
+      }
+      if (bbError) bbError.textContent = "";
+      if (bbGate) bbGate.style.display = "none";
+      if (bbList) bbList.style.display = "";
+    });
+  }
+  if (bbList) {
     (async () => {
       let data = [];
       if (location.protocol !== 'file:') {
@@ -722,11 +744,7 @@
           if (res.ok) data = await res.json();
         } catch (e) {}
       }
-      if (!data.length) {
-        // fallback: empty
-        data = [];
-      }
-      birthdayBetList.innerHTML = data.map((q, i) => {
+      bbList.innerHTML = data.map((q, i) => {
         const opts = (q.options || []).map((o) => '<li class="bet-option-item">' + esc(o) + '</li>').join("");
         return '<li class="birthday-bet-item"><strong>' + (i + 1) + '. ' + esc(q.question) + '</strong><ul class="bet-sublist">' + opts + '</ul></li>';
       }).join("");

@@ -81,7 +81,15 @@
       <div class="bet-block bet-birthday">
         <h3 class="section-title" style="font-size:1.3rem;"><span class="suit">♠</span> Bet on the Birthday Boy</h3>
         <p class="section-sub">Bet your play money on predictions about Ayushman. Reveal answers throughout the evening — win or lose chips!</p>
-        <ul class="bet-list" id="birthdayBetList"></ul>
+        <div id="birthdayGate" style="margin:12px 0;">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;margin:8px 0;">
+            <input type="text" id="bbName" placeholder="Your name" value="Test" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:180px;flex:1;" />
+            <input type="password" id="bbPin" placeholder="PIN" maxlength="4" inputmode="numeric" value="2025" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:100px;letter-spacing:4px;text-align:center;" />
+            <button class="btn btn-gold" id="bbEnterBtn">Enter ▶</button>
+          </div>
+          <p id="bbError" style="color:#ff6b6b;margin:4px 0;text-align:center;"></p>
+        </div>
+        <ul class="bet-list" id="birthdayBetList" style="display:none;"></ul>
       </div>
 
       <div class="bet-block">
