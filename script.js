@@ -476,14 +476,7 @@
   const nextQBtn = $("#nextQBtn");
 
   const FALLBACK_QUESTIONS = [
-    { q: "What does 'Blackjack' pay for a natural 21?", opts: ["1:1", "3:2", "2:1", "5:1"], ans: 1 },
-    { q: "In Roulette, what pays 35:1?", opts: ["Red/Black", "Straight up number", "Odd/Even", "Dozen"], ans: 1 },
-    { q: "How many cards in a standard deck?", opts: ["50", "52", "54", "48"], ans: 1 },
-    { q: "Best poker hand?", opts: ["Four of a Kind", "Full House", "Royal Flush", "Straight Flush"], ans: 2 },
-    { q: "Ayushman's birthday theme?", opts: ["Hollywood", "Casino Night", "Beach", "Retro"], ans: 1 },
-    { q: "What is 'Bluff' also called?", opts: ["Cheat", "Poker", "Rummy", "Bridge"], ans: 0 },
-    { q: "Monopoly Deal: sets to win?", opts: ["2", "3", "4", "5"], ans: 1 },
-    { q: "Tambola full house wins?", opts: ["Line prize", "Jackpot", "Nothing", "Re-roll"], ans: 1 },
+    { question: "How many cards are there in a standard deck, without jokers?", options: ["48", "50", "52", "54"], answer: 2, prize: "₹1,000", explanation: "A standard deck has 52 cards: 4 suits, with 13 cards in each." },
   ];
   let questions = FALLBACK_QUESTIONS;
   let qIndex = 0;
@@ -494,10 +487,10 @@
 
   function renderQuestion() {
     const q = questions[qIndex % questions.length];
-    if (betQuestion) betQuestion.textContent = q.q;
+    if (betQuestion) betQuestion.textContent = q.question;
     if (betOptions) {
       betOptions.innerHTML = "";
-      q.opts.forEach((o, i) => {
+      q.options.forEach((o, i) => {
         const b = document.createElement("button");
         b.className = "bet-option";
         b.textContent = o;
@@ -533,11 +526,11 @@
       answered = true;
       const q = questions[qIndex % questions.length];
       const opts = betOptions.querySelectorAll(".bet-option");
-      opts[q.ans].classList.add("correct");
-      if (selectedOption !== q.ans) opts[selectedOption].classList.add("wrong");
-      if (selectedOption === q.ans) {
+      opts[q.answer].classList.add("correct");
+      if (selectedOption !== q.answer) opts[selectedOption].classList.add("wrong");
+      if (selectedOption === q.answer) {
         score += selectedBet;
-        if (betResult) betResult.textContent = "Correct! +" + selectedBet + " points 🎉";
+        if (betResult) betResult.textContent = "Correct! +" + selectedBet + " points 🎉  Prize: " + (q.prize || "") + "  " + (q.explanation || "");
         // confetti
         for (let i = 0; i < 30; i++) {
           const conf = document.createElement("span");
@@ -557,7 +550,7 @@
           document.head.appendChild(st);
         }
       } else {
-        if (betResult) betResult.textContent = "Wrong! -" + selectedBet + " (correct: " + q.opts[q.ans] + ")";
+        if (betResult) betResult.textContent = "Wrong! -" + selectedBet + " (correct: " + q.options[q.answer] + ")  " + (q.explanation || "");
       }
       if (betScore) betScore.textContent = "Score: " + score;
     });
