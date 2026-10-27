@@ -48,28 +48,32 @@
         <h3 class="section-title" style="font-size:1.3rem;"><span class="suit red">♥</span> 🎰 Kaun Banega Crorepati — Lock kiya jaaye?</h3>
         <p class="section-sub" style="margin-bottom:16px;">Jackpot quiz — bet your chips on the answer. Just for fun!</p>
         <div class="bet-board jackpot-board" id="kbcIntro">
-          <h3 style="color:#fff;margin:0 0 8px;">🎰 Kaun Banega Crorepati</h3>
-          <p style="color:#fff;margin:0 0 12px;">10 questions. Climb the ladder to win up to <strong>₹7 crore</strong>! Bet the chips you think you'll win, then enter the game.</p>
-          <div class="prize-ladder" id="prizeLadder"></div>
-          <div class="bet-chips" id="introChips" style="margin-top:12px;"></div>
-          <p class="bet-selected" id="introSelected" style="color:#fff;">Bet: none</p>
-          <div class="bet-rules" style="color:#fff;margin:10px 0;text-align:left;max-width:420px;margin-left:auto;margin-right:auto;">
-            <strong>Rules:</strong>
-            <ul style="margin:6px 0 0 18px;">
-              <li>10 questions, increasing prizes up to ₹7 crore.</li>
-              <li>Answer all correctly to win the top prize.</li>
-              <li>On a wrong answer: if your prize so far ≥ your bet, you keep that prize; else you get 0.</li>
-              <li>You bet before entering; no betting during questions.</li>
-            </ul>
+          <h3 style="color:#fff;margin:0 0 8px;text-align:center;">🎰 Kaun Banega Crorepati</h3>
+          <p style="color:#fff;margin:0 0 12px;text-align:center;">10 questions. Climb the ladder to win up to <strong>₹7 crore</strong>! Bet the chips you think you'll win, then enter the game.</p>
+          <div class="kbc-intro-grid">
+            <div class="kbc-intro-col">
+              <div class="prize-ladder" id="prizeLadder"></div>
+            </div>
+            <div class="kbc-intro-col">
+              <div class="bet-chips" id="introChips" style="margin-top:0;"></div>
+              <p class="bet-selected" id="introSelected" style="color:#fff;margin:8px 0;">Bet: none</p>
+              <div class="bet-rules" style="color:#fff;margin:10px 0;text-align:left;">
+                <strong>Rules:</strong>
+                <ul style="margin:6px 0 0 18px;">
+                  <li>10 questions, increasing prizes up to ₹7 crore.</li>
+                  <li>Answer all correctly to win the top prize.</li>
+                  <li>On a wrong answer: if your prize so far ≥ your bet, you keep that prize; else you get 0.</li>
+                  <li>You bet before entering; no betting during questions.</li>
+                </ul>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0;">
+                <input type="text" id="playerNameInput" placeholder="Your name" value="Test" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:180px;flex:1;" />
+                <input type="password" id="pinInput" placeholder="PIN" maxlength="4" inputmode="numeric" value="2025" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:100px;letter-spacing:4px;text-align:center;" />
+              </div>
+              <p class="bet-result" id="pinError" style="color:#ff6b6b;margin:4px 0;"></p>
+              <button class="btn btn-gold" id="enterGameBtn" style="width:100%;">Enter Game ▶</button>
+            </div>
           </div>
-          <div style="margin:8px 0;">
-            <input type="text" id="playerNameInput" placeholder="Your name" value="Test" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:240px;width:100%;" />
-          </div>
-          <div style="margin:8px 0;">
-            <input type="password" id="pinInput" placeholder="4-digit PIN" maxlength="4" inputmode="numeric" value="2025" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:160px;width:100%;letter-spacing:4px;text-align:center;" />
-          </div>
-          <p class="bet-result" id="pinError" style="color:#ff6b6b;"></p>
-          <button class="btn btn-gold" id="enterGameBtn">Enter Game ▶</button>
         </div>
         <div class="bet-board kbc-screen" id="betQuiz" style="display:none;">
           <div class="kbc-question" id="betQuestion"></div>

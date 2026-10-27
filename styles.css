@@ -397,6 +397,9 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
   z-index: 0;
 }
 .bet-block.bet-jackpot > * { position: relative; z-index: 1; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
+.kbc-intro-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 20px; align-items: start; }
+.kbc-intro-col { min-width: 0; }
+@media (max-width: 640px) { .kbc-intro-grid { grid-template-columns: 1fr; } }
 .prize-ladder { display: flex; flex-direction: column-reverse; gap: 4px; max-width: 320px; margin: 0 auto 12px; }
 .prize-rung { display: flex; justify-content: space-between; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); color: #fff; font-size: 0.85rem; }
 .prize-rung.milestone { background: rgba(212,175,55,0.25); border: 1px solid rgba(212,175,55,0.5); font-weight: 600; }
