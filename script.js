@@ -570,6 +570,8 @@
     }
     renderQuestion();
     renderPrizeLadder();
+    if (introChips) makeChips(introChips, (v) => { introBet = v; if (introSelected) introSelected.textContent = "Bet: " + v.toLocaleString("en-IN"); });
+    if (betChips) makeChips(betChips, (v) => { selectedBet = v; if (betSelected) betSelected.textContent = "Selected: " + v.toLocaleString("en-IN"); });
   })();
 
   // KBC intro: prize ladder + bet + enter game
@@ -581,7 +583,37 @@
   const enterGameBtn = $("#enterGameBtn");
   let introBet = null;
 
-  function renderPrizeLadder() {
+  function prizeValue(str) {
+    if (!str) return 0;
+    const s = String(str).replace(/[₹,\s]/g, "").toLowerCase();
+    const m = s.match(/^([\d.]+)(lakh|crore)?$/);
+    if (!m) return 0;
+    const num = parseFloat(m[1]);
+    if (m[2] === "lakh") return Math.round(num * 100000);
+    if (m[2] === "crore") return Math.round(num * 10000000);
+    return Math.round(num);
+  }
+
+  function makeChips(container, onSelect) {
+    if (!container) return;
+    container.innerHTML = "";
+    const seen = new Set();
+    questions.forEach((q) => {
+      const v = prizeValue(q.prize);
+      if (seen.has(v)) return;
+      seen.add(v);
+      const btn = document.createElement("button");
+      btn.className = "bet-chip chip-gold";
+      btn.setAttribute("data-val", String(v));
+      btn.textContent = q.prize;
+      btn.addEventListener("click", () => {
+        container.querySelectorAll(".bet-chip").forEach((c) => c.classList.remove("selected"));
+        btn.classList.add("selected");
+        onSelect(v);
+      });
+      container.appendChild(btn);
+    });
+  }
     if (!prizeLadder) return;
     // questions already loaded (or fallback); use their prizes
     const prizes = questions.map((q) => q.prize).filter(Boolean);
@@ -594,13 +626,15 @@
   }
 
   if (introChips) {
-    introChips.querySelectorAll(".bet-chip").forEach((chip) => {
-      chip.addEventListener("click", () => {
-        introChips.querySelectorAll(".bet-chip").forEach((c) => c.classList.remove("selected"));
-        chip.classList.add("selected");
-        introBet = parseInt(chip.getAttribute("data-val"), 10);
-        if (introSelected) introSelected.textContent = "Bet: " + introBet;
-      });
+    makeChips(introChips, (v) => {
+      introBet = v;
+      if (introSelected) introSelected.textContent = "Bet: " + v.toLocaleString("en-IN");
+    });
+  }
+  if (betChips) {
+    makeChips(betChips, (v) => {
+      selectedBet = v;
+      if (betSelected) betSelected.textContent = "Selected: " + v.toLocaleString("en-IN");
     });
   }
   if (enterGameBtn) {
