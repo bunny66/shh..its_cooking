@@ -366,7 +366,8 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 /* ---------- Place Your Bet ---------- */
 /* ---------- KBC screen ---------- */
 .bet-board { text-align: center; max-width: 600px; margin: 0 auto; }
-.kbc-screen { background: linear-gradient(180deg, #0a1f44 0%, #06122b 100%); border: 2px solid #d4af37; border-radius: 12px; padding: 20px; color: #fff; max-width: 720px; margin: 0 auto; }
+.kbc-screen { background: linear-gradient(180deg, #0a1f44 0%, #06122b 100%); border: 2px solid #d4af37; border-radius: 12px; padding: 24px; color: #fff; max-width: 980px; margin: 0 auto; }
+.kbc-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; gap: 12px; }
 .kbc-question { background: #0d2a5c; border: 2px solid #d4af37; border-radius: 8px; padding: 18px; font-size: 1.15rem; text-align: center; margin-bottom: 16px; min-height: 64px; line-height: 1.4; }
 .kbc-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
 .kbc-option { display: flex; align-items: center; gap: 12px; background: #0d2a5c; border: 2px solid #d4af37; border-radius: 8px; padding: 12px 16px; color: #fff; cursor: pointer; font-size: 1rem; text-align: left; transition: background .15s, transform .1s; }
