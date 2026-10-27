@@ -100,6 +100,18 @@ window.CONTENT = {
       ],
     },
     {
+      icon: "🥤", name: "Fastest Reflex Takes the Cup", players: "2+", time: "👑",
+      featured: true,
+      link: "https://www.instagram.com/p/DRf2ILzkuS1/",
+      rules: [
+        "A fast-paced reflex challenge — first to react takes the cup!",
+        "Watch the reference video for the rules: https://www.instagram.com/p/DRf2ILzkuS1/",
+        "Host calls a cue; fastest player to grab the cup wins the round.",
+        "Winner collects chips; losers pay a small penalty.",
+        "Keep it fun — skip if you dislike the dare.",
+      ],
+    },
+    {
       icon: "🃏", name: "Blackjack", players: "2-7", time: "5-10 min/round",
       rules: [
         "Goal: beat the dealer by getting closest to 21 without busting.",

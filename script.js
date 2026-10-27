@@ -381,7 +381,8 @@
     if (gameModalRules) {
       const rules = Array.isArray(g.rules) ? g.rules : [];
       gameModalRules.innerHTML = rules.map((r) => "<li>" + esc(r) + "</li>").join("") +
-        (g.image ? '<li style="list-style:none;margin-top:8px;"><img src="' + esc(g.image) + '" alt="rules" style="max-width:60%;border-radius:8px;" /></li>' : "");
+        (g.image ? '<li style="list-style:none;margin-top:8px;"><img src="' + esc(g.image) + '" alt="rules" style="max-width:60%;border-radius:8px;" /></li>' : "") +
+        (g.link ? '<li style="list-style:none;margin-top:8px;"><a href="' + esc(g.link) + '" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-block;">Watch reference video ↗</a></li>' : "");
     }
     gameModal.classList.add("open");
     gameModal.setAttribute("aria-hidden", "false");
