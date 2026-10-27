@@ -41,7 +41,7 @@ window.CONTENT = {
 
   games: [
     {
-      icon: "🃏", name: "Poker Hands", players: "2-10", time: "",
+      icon: "🃏", name: "Poker Hands", players: "2-10", time: "", category: "Cards",
       featured: true,
       image: "https://images.ctfassets.net/o0c4x84rxbjm/1rNZghcE2A4v22v0Jbg9sl/ed0d96b522e21e2c116f8bb76e48c67a/gametypes_poker_rules_inpost4_efjuvMWeU.webp",
       rules: [
@@ -51,7 +51,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🎡", name: "Roulette with a twist", players: "2+", time: "",
+      icon: "🎡", name: "Roulette with a twist", players: "2+", time: "", category: "Roulette",
       featured: true,
       image: "https://m.media-amazon.com/images/I/71iHL3hoDuL._SL1493_.jpg",
       rules: [
@@ -65,7 +65,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🎯", name: "Casino Tambola", players: "2+", time: "",
+      icon: "🎯", name: "Casino Tambola", players: "2+", time: "", category: "Party",
       featured: true,
       image: "https://m.media-amazon.com/images/I/91O+GGvc37L._SL1500_.jpg",
       rules: [
@@ -77,7 +77,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🃏", name: "Monopoly Deal", players: "2-5", time: "",
+      icon: "🃏", name: "Monopoly Deal", players: "2-5", time: "", category: "Cards",
       featured: true,
       image: "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/000000000491668399/vjL_wZh0dk-491668399-2.jpg",
       rules: [
@@ -89,7 +89,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🃏", name: "Bluff", players: "3-8", time: "",
+      icon: "🃏", name: "Bluff", players: "3-8", time: "", category: "Cards",
       featured: true,
       image: "https://m.media-amazon.com/images/I/617L-zUy-oL._SL1080_.jpg",
       rules: [
@@ -101,7 +101,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🥤", name: "Fastest Reflex Takes the Cup", players: "2+", time: "👑",
+      icon: "🥤", name: "Fastest Reflex Takes the Cup", players: "2+", time: "👑", category: "Party",
       featured: true,
       link: "https://www.instagram.com/p/DRf2ILzkuS1/",
       rules: [
@@ -113,7 +113,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🏓", name: "Can 'N' Ball", players: "Teams", time: "Party game",
+      icon: "🏓", name: "Can 'N' Ball", players: "Teams", time: "Party game", category: "Party",
       rules: [
         "Teams Orange and Green face off in Can 'N' Ball!",
         "A ping pong ball in each glass wins.",
@@ -124,7 +124,7 @@ window.CONTENT = {
       link: "https://www.instagram.com/outscordgames/reel/DcPjVlPpyuU/",
     },
     {
-      icon: "🥤", name: "Cup Stack", players: "2+", time: "Party game",
+      icon: "🥤", name: "Cup Stack", players: "2+", time: "Party game", category: "Party",
       rules: [
         "Stack 4 cups with index cards in between.",
         "Once built, remove each card until the cups fall into a single stack.",
@@ -135,7 +135,7 @@ window.CONTENT = {
       link: "https://www.instagram.com/p/BpDlpSDAxMV/",
     },
     {
-      icon: "🥤", name: "Musical Cups", players: "Group", time: "Party game",
+      icon: "🥤", name: "Musical Cups", players: "Group", time: "Party game", category: "Party",
       rules: [
         "Musical Chair ❌ Musical Cups ✅",
         "Materials: Cups and Music.",
@@ -146,7 +146,7 @@ window.CONTENT = {
       link: "https://www.instagram.com/p/DUJFVe7kzsS/",
     },
     {
-      icon: "🃏", name: "Blackjack", players: "2-7", time: "5-10 min/round",
+      icon: "🃏", name: "Blackjack", players: "2-7", time: "5-10 min/round", category: "Cards",
       rules: [
         "Goal: beat the dealer by getting closest to 21 without busting.",
         "Card values: 2-10 face value, J/Q/K = 10, Ace = 1 or 11.",
@@ -156,7 +156,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "♠️", name: "Texas Hold'em", players: "2-10", time: "10-30 min/hand",
+      icon: "♠️", name: "Texas Hold'em", players: "2-10", time: "10-30 min/hand", category: "Cards",
       rules: [
         "Each player gets 2 hole cards; 5 community cards dealt over rounds.",
         "Best 5-card hand wins. Rounds: pre-flop, flop, turn, river.",
@@ -165,7 +165,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "♦️", name: "Baccarat", players: "2+", time: "2-4 min/hand",
+      icon: "♦️", name: "Baccarat", players: "2+", time: "2-4 min/hand", category: "Cards",
       rules: [
         "Bet on Player, Banker, or Tie before cards are dealt.",
         "Two cards each; third card drawn by fixed rules (no decisions).",
@@ -174,7 +174,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🃏", name: "Teen Patti", players: "3-6", time: "5-15 min/game",
+      icon: "🃏", name: "Teen Patti", players: "3-6", time: "5-15 min/game", category: "Cards",
       rules: [
         "Indian 3-card poker. Each player gets 3 cards; best hand wins the pot.",
         "Hand rankings: Trail (3 of a kind) > Pure Sequence > Sequence > Color > Pair > High Card.",
@@ -184,7 +184,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🎲", name: "Craps", players: "2+", time: "1-3 min/roll",
+      icon: "🎲", name: "Craps", players: "2+", time: "1-3 min/roll", category: "Dice",
       rules: [
         "Shooter rolls two dice. Pass Line wins on 7/11, loses on 2/3/12.",
         "Any other number becomes the Point; shooter must hit it again before 7.",
