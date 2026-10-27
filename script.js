@@ -388,9 +388,30 @@
     if (gameModalMeta) gameModalMeta.textContent = (g.players ? "Players: " + g.players : "");
     if (gameModalRules) {
       const rules = Array.isArray(g.rules) ? g.rules : [];
-      gameModalRules.innerHTML = rules.map((r) => "<li>" + esc(r) + "</li>").join("") +
-        (g.image ? '<li style="list-style:none;margin-top:8px;"><img src="' + esc(g.image) + '" alt="rules" style="max-width:60%;border-radius:8px;" /></li>' : "") +
-        (g.link ? '<li style="list-style:none;margin-top:8px;"><a href="' + esc(g.link) + '" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-block;">Watch reference video ↗</a></li>' : "");
+      let html = "";
+      // media (image + reference video) on top
+      let mediaTop = "";
+      const imgWidth = (g.name === "Poker Hands") ? "60%" : "35%";
+      if (g.image) mediaTop += '<div class="gm-media"><img src="' + esc(g.image) + '" alt="rules" style="max-width:' + imgWidth + ';border-radius:8px;" /></div>';
+      if (g.link) mediaTop += '<div class="gm-media"><a href="' + esc(g.link) + '" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-block;">Watch reference video ↗</a></div>';
+      if (Array.isArray(g.sections)) {
+        html = mediaTop + g.sections.map((s) => {
+          let out = '<div class="gm-section">';
+          out += '<h3 class="gm-section-title">' + esc(s.title || "") + '</h3>';
+          if (Array.isArray(s.items)) {
+            out += '<ul class="game-rules">' + s.items.map((r) => "<li>" + esc(r) + "</li>").join("") + '</ul>';
+          }
+          if (Array.isArray(s.ranks)) {
+            out += '<div class="gm-ranks">' + s.ranks.map((r, i) => '<span class="gm-rank"><span class="gm-rank-num">' + (i + 1) + '</span>' + esc(r) + '</span>').join("") + '</div>';
+          }
+          out += '</div>';
+          return out;
+        }).join("");
+      } else {
+        html = mediaTop +
+          '<ul class="game-rules">' + rules.map((r) => "<li>" + esc(r) + "</li>").join("") + '</ul>';
+      }
+      gameModalRules.innerHTML = html;
     }
     gameModal.style.display = "flex";
     gameModal.classList.add("open");
