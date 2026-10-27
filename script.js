@@ -601,7 +601,7 @@
     }
     renderQuestion();
     renderPrizeLadder();
-    if (introChips) makeChips(introChips, (v) => { introBet = v; if (introSelected) introSelected.textContent = "Bet: " + v.toLocaleString("en-IN"); });
+    if (introChips) makeChips(introChips, (v) => { introBet = v; if (introSelected) introSelected.textContent = "Your Bet: " + v.toLocaleString("en-IN"); });
     if (betChips) makeChips(betChips, (v) => { selectedBet = v; if (betSelected) betSelected.textContent = "Selected: " + v.toLocaleString("en-IN"); });
   })();
 
