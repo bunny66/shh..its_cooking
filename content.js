@@ -101,7 +101,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🥤", name: "Fastest Reflex Takes the Cup", players: "2+", time: "👑", category: "Party",
+      icon: "🥤", name: "Fastest Reflex Takes the Cup", players: "2+", time: "", category: "Party",
       featured: true,
       link: "https://www.instagram.com/p/DRf2ILzkuS1/",
       rules: [
@@ -113,7 +113,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🥤", name: "Cup Stack", players: "2+", time: "👑",
+      icon: "🥤", name: "Cup Stack", players: "2+", time: "",
       featured: true,
       category: "Party",
       rules: [
@@ -126,7 +126,7 @@ window.CONTENT = {
       link: "https://www.instagram.com/p/BpDlpSDAxMV/",
     },
     {
-      icon: "🥤", name: "Musical Cups", players: "Group", time: "👑",
+      icon: "🥤", name: "Musical Cups", players: "Group", time: "",
       featured: true,
       category: "Pong",
       rules: [
@@ -139,7 +139,7 @@ window.CONTENT = {
       link: "https://www.instagram.com/p/DUJFVe7kzsS/",
     },
     {
-      icon: "🃏", name: "Blow-De-Deck", players: "2+", time: "👑",
+      icon: "🃏", name: "Blow-De-Deck", players: "2+", time: "",
       featured: true,
       category: "Party",
       link: "https://www.instagram.com/p/DYwx2AxP5YN/",
