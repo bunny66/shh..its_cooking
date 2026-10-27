@@ -614,6 +614,7 @@
       container.appendChild(btn);
     });
   }
+  function renderPrizeLadder() {
     if (!prizeLadder) return;
     // questions already loaded (or fallback); use their prizes
     const prizes = questions.map((q) => q.prize).filter(Boolean);
