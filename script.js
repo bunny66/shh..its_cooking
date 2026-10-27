@@ -385,7 +385,7 @@
   function openGameModal(g) {
     if (!gameModal) return;
     if (gameModalTitle) gameModalTitle.textContent = (g.icon || "") + " " + (g.name || "");
-    if (gameModalMeta) gameModalMeta.textContent = (g.players ? "Players: " + g.players : "") + (g.time ? "  ·  " + g.time : "");
+    if (gameModalMeta) gameModalMeta.textContent = (g.players ? "Players: " + g.players : "");
     if (gameModalRules) {
       const rules = Array.isArray(g.rules) ? g.rules : [];
       gameModalRules.innerHTML = rules.map((r) => "<li>" + esc(r) + "</li>").join("") +
