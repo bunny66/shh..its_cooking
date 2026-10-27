@@ -1,0 +1,82 @@
+[
+  {
+    "question": "How many cards are there in a standard deck, without jokers?",
+    "options": ["48", "50", "52", "54"],
+    "answer": 2,
+    "prize": "₹1,000",
+    "explanation": "A standard deck has 52 cards: 4 suits, with 13 cards in each."
+  },
+  {
+    "question": "In Ludo, what do you need to roll to move a token out of the starting area?",
+    "options": ["A 1", "A 4", "A 5", "A 6"],
+    "answer": 3,
+    "prize": "₹2,000",
+    "explanation": "In standard Ludo rules, rolling a six lets you bring a token out of its starting area."
+  },
+  {
+    "question": "A player plays their second-to-last card in UNO but forgets to say 'UNO.' When can another player catch them?",
+    "options": [
+      "Before the next player begins their turn",
+      "Only after the game ends",
+      "Only if they have a Wild card",
+      "They cannot be penalized"
+    ],
+    "answer": 0,
+    "prize": "₹5,000",
+    "explanation": "Under the official rules, a player can be caught before the next player begins their turn."
+  },
+  {
+    "question": "In chess, which piece can jump over other pieces?",
+    "options": ["Bishop", "Knight", "Rook", "Queen"],
+    "answer": 1,
+    "prize": "₹10,000",
+    "explanation": "The knight moves in an L-shape and is the only chess piece that can jump over others."
+  },
+  {
+    "question": "In Monopoly, what happens when you land on an unowned property?",
+    "options": [
+      "You must buy it",
+      "You may buy it or it goes to auction",
+      "You get it for free",
+      "You pay rent to the bank"
+    ],
+    "answer": 1,
+    "prize": "₹20,000",
+    "explanation": "You can buy the property at its listed price; if you decline, it goes to auction."
+  },
+  {
+    "question": "In Tambola, how many numbers are printed on a standard ticket?",
+    "options": ["12", "15", "18", "20"],
+    "answer": 1,
+    "prize": "₹50,000",
+    "explanation": "A standard Tambola ticket contains 15 numbers arranged across 3 rows and 9 columns."
+  },
+  {
+    "question": "In poker, which hand beats a Flush?",
+    "options": ["Three of a Kind", "Straight", "Full House", "Two Pair"],
+    "answer": 2,
+    "prize": "₹1 lakh",
+    "explanation": "A Full House beats a Flush because it ranks higher in standard poker hand rankings."
+  },
+  {
+    "question": "In chess, what is it called when a pawn reaches the opposite end of the board?",
+    "options": ["Castling", "En passant", "Promotion", "Stalemate"],
+    "answer": 2,
+    "prize": "₹10 lakh",
+    "explanation": "A pawn reaching the last rank is promoted, usually to a queen."
+  },
+  {
+    "question": "In Monopoly, how many houses can you build on a property before upgrading to a hotel?",
+    "options": ["3", "4", "5", "6"],
+    "answer": 1,
+    "prize": "₹1 crore",
+    "explanation": "You can build up to four houses on each property before upgrading to a hotel."
+  },
+  {
+    "question": "In Scrabble, what is the maximum number of points a blank tile can score?",
+    "options": ["0", "1", "5", "10"],
+    "answer": 0,
+    "prize": "₹7 crore",
+    "explanation": "Blank tiles are worth zero points, even when placed on a premium square."
+  }
+]
