@@ -39,27 +39,29 @@
 
   <main id="main">
     <section class="section">
-      <div class="section-head">
-        <h1 class="section-title"><span class="suit">♣</span> Place Your Bet</h1>
-        <p class="section-sub">Fun questions — bet your chips on the answer. Just for fun!</p>
-      </div>
-      <div class="bet-board">
-        <p class="bet-question" id="betQuestion"></p>
-        <div class="bet-options" id="betOptions"></div>
-        <div class="bet-chips" id="betChips">
-          <button class="bet-chip chip-red" data-val="25">25</button>
-          <button class="bet-chip chip-blue" data-val="50">50</button>
-          <button class="bet-chip chip-gold" data-val="100">100</button>
+      <div class="bet-block">
+        <div class="section-head">
+          <h1 class="section-title"><span class="suit">♣</span> Place Your Bet</h1>
+          <p class="section-sub">Fun questions — bet your chips on the answer. Just for fun!</p>
         </div>
-        <p class="bet-selected" id="betSelected">Selected: none</p>
-        <button class="btn btn-gold" id="placeBetBtn">Place Bet</button>
-        <p class="bet-result" id="betResult"></p>
-        <p class="bet-score" id="betScore">Score: 0</p>
-        <button class="btn btn-outline" id="nextQBtn" style="margin-top:8px;">Next Question</button>
+        <div class="bet-board">
+          <p class="bet-question" id="betQuestion"></p>
+          <div class="bet-options" id="betOptions"></div>
+          <div class="bet-chips" id="betChips">
+            <button class="bet-chip chip-red" data-val="25">25</button>
+            <button class="bet-chip chip-blue" data-val="50">50</button>
+            <button class="bet-chip chip-gold" data-val="100">100</button>
+          </div>
+          <p class="bet-selected" id="betSelected">Selected: none</p>
+          <button class="btn btn-gold" id="placeBetBtn">Place Bet</button>
+          <p class="bet-result" id="betResult"></p>
+          <p class="bet-score" id="betScore">Score: 0</p>
+          <button class="btn btn-outline" id="nextQBtn" style="margin-top:8px;">Next Question</button>
+        </div>
       </div>
 
-      <div class="bet-side">
-        <h3 class="section-title" style="font-size:1.3rem;margin-top:24px;"><span class="suit">♠</span> Bet on the Birthday Boy</h3>
+      <div class="bet-block">
+        <h3 class="section-title" style="font-size:1.3rem;"><span class="suit">♠</span> Bet on the Birthday Boy</h3>
         <p class="section-sub">Bet your play money on predictions about Ayushman. Reveal answers throughout the evening — win or lose chips!</p>
         <ul class="bet-list">
           <li>Who will he hug first?</li>
@@ -68,10 +70,8 @@
           <li>What will his first reaction be to his birthday cake?</li>
           <li>Who knows his most embarrassing story?</li>
         </ul>
-      </div>
-
-      <div class="bet-side">
-        <h3 class="section-title" style="font-size:1.3rem;margin-top:24px;"><span class="suit red">♥</span> How Well Do You Know Ayushman?</h3>
+      <div class="bet-block">
+        <h3 class="section-title" style="font-size:1.3rem;"><span class="suit red">♥</span> How Well Do You Know Ayushman?</h3>
         <p class="section-sub">Fast, funny quiz — answer simultaneously. Winner gets the title of "Ayushman's Official Favourite Person" for the night!</p>
         <ul class="bet-list">
           <li>His most-used phrase?</li>
@@ -84,8 +84,8 @@
         <p class="bet-result" style="margin-top:12px;">Reveal answers throughout the evening. 🏆</p>
       </div>
 
-      <div class="bet-side">
-        <h3 class="section-title" style="font-size:1.3rem;margin-top:24px;"><span class="suit red">♥</span> The Casino Photo Challenge</h3>
+      <div class="bet-block">
+        <h3 class="section-title" style="font-size:1.3rem;"><span class="suit red">♥</span> The Casino Photo Challenge</h3>
         <p class="section-sub">Collect these shots. Award chips for the funniest. Best ones on the TV later!</p>
         <ul class="photo-checklist" id="photoChecklist">
           <li><label><input type="checkbox" /> The most dramatic poker face</label></li>
@@ -97,8 +97,8 @@
         <p class="bet-selected" id="photoProgress">0 / 5 collected</p>
       </div>
 
-      <div class="bet-side">
-        <h3 class="section-title" style="font-size:1.3rem;margin-top:24px;"><span class="suit">♠</span> Spin the Wheel of Chaos</h3>
+      <div class="bet-block">
+        <h3 class="section-title" style="font-size:1.3rem;"><span class="suit">♠</span> Spin the Wheel of Chaos</h3>
         <p class="section-sub">Spin for a lucky, silly, or social dare. Skip any dare you dislike!</p>
         <div class="bet-board">
           <button class="btn btn-gold" id="spinChaosBtn">Spin the Wheel 🎡</button>
@@ -130,3 +130,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+      </div>
