@@ -41,7 +41,7 @@ window.CONTENT = {
 
   games: [
     {
-      icon: "🃏", name: "Poker Hands", players: "2-10", time: "", category: "Cards",
+      icon: "🃏", name: "Poker Hands", players: "2-10", time: "", category: "Casino",
       featured: true,
       image: "https://images.ctfassets.net/o0c4x84rxbjm/1rNZghcE2A4v22v0Jbg9sl/ed0d96b522e21e2c116f8bb76e48c67a/gametypes_poker_rules_inpost4_efjuvMWeU.webp",
       rules: [
@@ -51,7 +51,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🎡", name: "Roulette with a twist", players: "2+", time: "", category: "Roulette",
+      icon: "🎡", name: "Roulette with a twist", players: "2+", time: "", category: "Casino",
       featured: true,
       image: "https://m.media-amazon.com/images/I/71iHL3hoDuL._SL1493_.jpg",
       rules: [
@@ -65,7 +65,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🎯", name: "Casino Tambola", players: "2+", time: "", category: "Party",
+      icon: "🎯", name: "Casino Tambola", players: "2+", time: "", category: "Casino",
       featured: true,
       image: "https://m.media-amazon.com/images/I/91O+GGvc37L._SL1500_.jpg",
       rules: [
