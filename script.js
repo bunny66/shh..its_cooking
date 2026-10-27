@@ -612,6 +612,8 @@
   const introSelected = $("#introSelected");
   const enterGameBtn = $("#enterGameBtn");
   const playerNameInput = $("#playerNameInput");
+  const pinInput = $("#pinInput");
+  const pinError = $("#pinError");
   let introBet = null;
   let playerName = "";
 
@@ -680,6 +682,12 @@
   }
   if (enterGameBtn) {
     enterGameBtn.addEventListener("click", () => {
+      const pin = (pinInput && pinInput.value.trim()) || "";
+      if (pin !== "2025") {
+        if (pinError) pinError.textContent = "Wrong PIN. Try again.";
+        return;
+      }
+      if (pinError) pinError.textContent = "";
       playerName = (playerNameInput && playerNameInput.value.trim()) || "Player";
       if (kbcIntro) kbcIntro.style.display = "none";
       if (betQuiz) betQuiz.style.display = "";
