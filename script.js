@@ -518,9 +518,11 @@
       });
     });
   }
+  // prize won so far (value of last correctly answered question)
+  let prizeWon = 0;
+
   if (placeBetBtn) {
     placeBetBtn.addEventListener("click", () => {
-      if (selectedBet === null) { if (betResult) betResult.textContent = "Pick a chip first!"; return; }
       if (selectedOption === null) { if (betResult) betResult.textContent = "Pick an answer!"; return; }
       if (answered) return;
       answered = true;
@@ -529,8 +531,17 @@
       opts[q.answer].classList.add("correct");
       if (selectedOption !== q.answer) opts[selectedOption].classList.add("wrong");
       if (selectedOption === q.answer) {
-        score += selectedBet;
-        if (betResult) betResult.textContent = "Correct! +" + selectedBet + " points 🎉  Prize: " + (q.prize || "") + "  " + (q.explanation || "");
+        prizeWon = prizeValue(q.prize);
+        if (betResult) betResult.textContent = "Correct! Prize: " + (q.prize || "") + "  " + (q.explanation || "");
+        if (qIndex >= questions.length - 1) {
+          // completed all questions
+          const finalWin = prizeWon;
+          if (betResult) betResult.textContent = "🎉 You won " + (q.prize || "") + "!  " + (q.explanation || "");
+          if (betScore) betScore.textContent = "Final: " + finalWin.toLocaleString("en-IN");
+          if (nextQBtn) nextQBtn.style.display = "none";
+        } else {
+          if (nextQBtn) nextQBtn.style.display = "";
+        }
         // confetti
         for (let i = 0; i < 30; i++) {
           const conf = document.createElement("span");
@@ -550,15 +561,25 @@
           document.head.appendChild(st);
         }
       } else {
-        if (betResult) betResult.textContent = "Wrong! -" + selectedBet + " (correct: " + q.options[q.answer] + ")  " + (q.explanation || "");
+        // wrong answer: apply bet rule
+        const finalWin = (prizeWon >= (selectedBet || 0)) ? prizeWon : 0;
+        if (betResult) betResult.textContent = "Wrong! (correct: " + q.options[q.answer] + ")  " + (q.explanation || "") +
+          "  → You " + (finalWin > 0 ? "win " + finalWin.toLocaleString("en-IN") : "win 0 (your bet was higher than your prize so far)");
+        if (betScore) betScore.textContent = "Final: " + finalWin.toLocaleString("en-IN");
+        if (nextQBtn) nextQBtn.style.display = "none";
       }
-      if (betScore) betScore.textContent = "Score: " + score;
+      if (betScore && selectedOption === q.answer && qIndex < questions.length - 1) {
+        if (betScore) betScore.textContent = "Score: " + prizeWon.toLocaleString("en-IN");
+      }
     });
   }
   if (nextQBtn) {
+    nextQBtn.style.display = "none";
     nextQBtn.addEventListener("click", () => {
       qIndex++;
+      if (qIndex >= questions.length) return;
       renderQuestion();
+      if (nextQBtn) nextQBtn.style.display = "none";
     });
   }
   (async () => {
