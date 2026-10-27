@@ -201,9 +201,11 @@
   // Photos
   const gallery = $("#gallery");
   const photosEmpty = $("#photosEmpty");
-  const photos = Array.isArray(C.photos) ? C.photos : [];
+  const photosAll = Array.isArray(C.photos) ? C.photos : [];
+  const photoLimitAttr = gallery ? gallery.getAttribute("data-limit") : null;
+  const photos = photoLimitAttr ? photosAll.slice(0, parseInt(photoLimitAttr, 10)) : photosAll;
   if (gallery) {
-    if (photos.length === 0) {
+    if (photosAll.length === 0) {
       gallery.style.display = "none";
     } else {
       photos.forEach((p, i) => {
