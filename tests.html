@@ -9,6 +9,8 @@
 <body>
   <h1>toEmbedUrl tests</h1>
   <pre id="out"></pre>
+  <h1>toDriveEmbedUrl tests</h1>
+  <pre id="out2"></pre>
   <script src="content.js"></script>
   <script src="script.js"></script>
   <script>
@@ -31,5 +33,21 @@
     });
     out.innerHTML += `\n${pass}/${cases.length} passed, ${fail} failed.`;
   </script>
-</body>
+  <script>
+    const dCases = [
+      { url: "", expected: "" },
+      { url: "https://drive.google.com/drive/folders/1xhrSxGy-fkgBZGnk8MEoiKKZpoPcpyxq?usp=drive_link", expected: "https://drive.google.com/embeddedfolderview?id=1xhrSxGy-fkgBZGnk8MEoiKKZpoPcpyxq#grid" },
+      { url: "https://drive.google.com/drive/folders/ABC123", expected: "https://drive.google.com/embeddedfolderview?id=ABC123#grid" },
+      { url: "https://example.com/no-folder", expected: "" },
+    ];
+    const out2 = document.getElementById("out2");
+    let dp = 0, df = 0;
+    dCases.forEach((c, i) => {
+      const got = window.toDriveEmbedUrl(c.url);
+      const ok = got === c.expected;
+      if (ok) dp++; else df++;
+      out2.innerHTML += `<span class="${ok?'pass':'fail'}">${ok?'PASS':'FAIL'}</span> #${i+1}\n  url: ${c.url}\n  got: ${got}\n  exp: ${c.expected}\n\n`;
+    });
+    out2.innerHTML += `\n${dp}/${dCases.length} passed, ${df} failed.`;
+  </script>
 </html>

@@ -116,13 +116,20 @@
   // Google Drive folder embed
   const driveWrap = $("#driveGalleryWrap");
   const driveFrame = $("#driveGallery");
+  function toDriveEmbedUrl(url) {
+    if (!url) return "";
+    const m = url.match(/folders\/([^/?]+)/);
+    if (!m) return "";
+    return "https://drive.google.com/embeddedfolderview?id=" + m[1] + "#grid";
+  }
   if (driveWrap && driveFrame && C.photoFolderUrl) {
-    const m = C.photoFolderUrl.match(/folders\/([^/?]+)/);
-    if (m) {
-      driveFrame.src = "https://drive.google.com/embeddedfolderview?id=" + m[1] + "#grid";
+    const embedUrl = toDriveEmbedUrl(C.photoFolderUrl);
+    if (embedUrl) {
+      driveFrame.src = embedUrl;
       driveWrap.style.display = "block";
     }
   }
+  window.toDriveEmbedUrl = toDriveEmbedUrl;
 
 
       const top = Math.random() * 100;
@@ -197,7 +204,7 @@
   const photos = Array.isArray(C.photos) ? C.photos : [];
   if (gallery) {
     if (photos.length === 0) {
-      // show Drive gallery tile only
+      gallery.style.display = "none";
     } else {
       photos.forEach((p, i) => {
         const item = document.createElement("button");
