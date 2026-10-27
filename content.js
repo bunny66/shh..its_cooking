@@ -41,19 +41,6 @@ window.CONTENT = {
 
   games: [
     {
-      icon: "🃏", name: "Blow-De-Deck", players: "2+", time: "👑",
-      featured: true,
-      link: "https://www.instagram.com/p/DYwx2AxP5YN/",
-      rules: [
-        "The ultimate test of lung capacity, precision, and pure chaos.",
-        "A full deck of cards is balanced on top of an upside-down drinking glass.",
-        "Players stand a few paces back and blow cards off the deck into a plate below.",
-        "Blow too softly and nothing moves; blow too hard and cards scatter wildly.",
-        "Round ends when the glass is empty; player with most cards in the plate wins bragging rights.",
-        "A hilarious mix of gentle strategy, red-faced straining, and unpredictable card physics!",
-      ],
-    },
-    {
       icon: "🃏", name: "Poker Hands", players: "2-10", time: "", category: "Casino",
       featured: true,
       image: "https://images.ctfassets.net/o0c4x84rxbjm/1rNZghcE2A4v22v0Jbg9sl/ed0d96b522e21e2c116f8bb76e48c67a/gametypes_poker_rules_inpost4_efjuvMWeU.webp",
@@ -149,6 +136,19 @@ window.CONTENT = {
         "Reference: https://www.instagram.com/p/DUJFVe7kzsS/",
       ],
       link: "https://www.instagram.com/p/DUJFVe7kzsS/",
+    },
+    {
+      icon: "🃏", name: "Blow-De-Deck", players: "2+", time: "👑",
+      featured: true,
+      link: "https://www.instagram.com/p/DYwx2AxP5YN/",
+      rules: [
+        "The ultimate test of lung capacity, precision, and pure chaos.",
+        "A full deck of cards is balanced on top of an upside-down drinking glass.",
+        "Players stand a few paces back and blow cards off the deck into a plate below.",
+        "Blow too softly and nothing moves; blow too hard and cards scatter wildly.",
+        "Round ends when the glass is empty; player with most cards in the plate wins bragging rights.",
+        "A hilarious mix of gentle strategy, red-faced straining, and unpredictable card physics!",
+      ],
     },
     {
       icon: "🃏", name: "Bluff", players: "3-8", time: "10-20 min/game", category: "Cards",
