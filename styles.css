@@ -394,9 +394,9 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 }
 .bet-chips { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
 .bet-chip {
-  width: 64px; height: 64px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 1.1rem;
+  min-width: 64px; height: auto; padding: 8px 12px; border-radius: 999px; color: #fff; font-weight: 700; font-size: 0.85rem;
   border: 4px dashed rgba(255,255,255,0.6); box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  transition: transform .15s ease, box-shadow .15s;
+  transition: transform .15s ease, box-shadow .15s; white-space: nowrap;
 }
 .bet-chip:hover { transform: translateY(-3px) scale(1.05); }
 .bet-chip.selected { outline: 3px solid var(--gold); outline-offset: 3px; transform: scale(1.1); }
