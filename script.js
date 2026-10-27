@@ -107,7 +107,7 @@
   const photoFolderBtn = $("#photoFolderBtn");
   if (photoUploadBtn) {
     if (C.photoUploadFormUrl) photoUploadBtn.href = C.photoUploadFormUrl;
-    else photoUploadBtn.style.display = "none";
+    else { photoUploadBtn.style.display = "none"; if (photoUploadBtn.parentElement) photoUploadBtn.parentElement.style.display = "none"; }
   }
   if (photoFolderBtn) {
     if (C.photoFolderUrl) photoFolderBtn.href = C.photoFolderUrl;
