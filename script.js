@@ -388,9 +388,31 @@
     if (gameModalMeta) gameModalMeta.textContent = (g.players ? "Players: " + g.players : "");
     if (gameModalRules) {
       const rules = Array.isArray(g.rules) ? g.rules : [];
-      gameModalRules.innerHTML = rules.map((r) => "<li>" + esc(r) + "</li>").join("") +
-        (g.image ? '<li style="list-style:none;margin-top:8px;"><img src="' + esc(g.image) + '" alt="rules" style="max-width:60%;border-radius:8px;" /></li>' : "") +
-        (g.link ? '<li style="list-style:none;margin-top:8px;"><a href="' + esc(g.link) + '" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-block;">Watch reference video ↗</a></li>' : "");
+      let html = "";
+      if (Array.isArray(g.sections)) {
+        html = g.sections.map((s) => {
+          let out = '<div class="gm-section">';
+          out += '<h3 class="gm-section-title">' + esc(s.title || "") + '</h3>';
+          if (Array.isArray(s.items)) {
+            out += '<ul class="game-rules">' + s.items.map((r) => "<li>" + esc(r) + "</li>").join("") + '</ul>';
+          }
+          if (Array.isArray(s.ranks)) {
+            out += '<div class="gm-ranks">' + s.ranks.map((r, i) => '<span class="gm-rank"><span class="gm-rank-num">' + (i + 1) + '</span>' + esc(r) + '</span>').join("") + '</div>';
+          }
+          out += '</div>';
+          return out;
+        }).join("");
+      } else {
+        html = rules.map((r) => "<li>" + esc(r) + "</li>").join("") +
+          (g.image ? '<li style="list-style:none;margin-top:8px;"><img src="' + esc(g.image) + '" alt="rules" style="max-width:60%;border-radius:8px;" /></li>' : "") +
+          (g.link ? '<li style="list-style:none;margin-top:8px;"><a href="' + esc(g.link) + '" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-block;">Watch reference video ↗</a></li>' : "");
+      }
+      // append image + link for sections mode too
+      if (Array.isArray(g.sections)) {
+        if (g.image) html += '<div class="gm-media"><img src="' + esc(g.image) + '" alt="rules" style="max-width:60%;border-radius:8px;" /></div>';
+        if (g.link) html += '<div class="gm-media"><a href="' + esc(g.link) + '" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-block;">Watch reference video ↗</a></div>';
+      }
+      gameModalRules.innerHTML = html;
     }
     gameModal.style.display = "flex";
     gameModal.classList.add("open");
