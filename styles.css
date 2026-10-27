@@ -397,10 +397,39 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
   z-index: 0;
 }
 .bet-block.bet-jackpot > * { position: relative; z-index: 1; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
+/* ---------- KBC responsive ---------- */
 .kbc-intro-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 20px; align-items: start; }
 .kbc-intro-col { min-width: 0; }
 @media (max-width: 640px) { .kbc-intro-grid { grid-template-columns: 1fr; } }
 .prize-ladder { display: flex; flex-direction: column-reverse; gap: 4px; max-width: 320px; margin: 0 auto 12px; }
+@media (max-width: 480px) {
+  .kbc-question { font-size: 1rem; min-height: 52px; padding: 14px; }
+  .kbc-options { grid-template-columns: 1fr; }
+  .kbc-option { font-size: 0.9rem; padding: 10px 12px; }
+  .kbc-label { width: 28px; height: 28px; font-size: 0.85rem; }
+  .kbc-footer { flex-direction: column; align-items: stretch; }
+  .kbc-footer .btn { width: 100%; }
+  .prize-ladder { max-width: 100%; }
+  .bet-chips { gap: 8px; }
+  .bet-chip { font-size: 0.75rem; padding: 6px 10px; min-width: 52px; }
+}
+@media (min-width: 1281px) {
+  .kbc-screen { max-width: 1180px; padding: 28px; }
+  .kbc-question { font-size: 1.35rem; min-height: 72px; padding: 22px; }
+  .kbc-option { font-size: 1.15rem; padding: 16px 20px; }
+  .kbc-label { width: 40px; height: 40px; font-size: 1.1rem; }
+  .kbc-intro-grid { gap: 28px; }
+  .prize-rung { font-size: 1rem; padding: 6px 12px; }
+}
+@media (min-width: 1920px) {
+  .kbc-screen { max-width: 1380px; padding: 36px; }
+  .kbc-question { font-size: 1.6rem; min-height: 88px; padding: 28px; }
+  .kbc-option { font-size: 1.35rem; padding: 20px 24px; }
+  .kbc-label { width: 46px; height: 46px; font-size: 1.25rem; }
+  .bet-chip { font-size: 1rem; padding: 10px 14px; }
+  .prize-rung { font-size: 1.15rem; }
+  .kbc-footer .btn { font-size: 1.15rem; padding: 14px 24px; }
+}
 .prize-rung { display: flex; justify-content: space-between; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); color: #fff; font-size: 0.85rem; }
 .prize-rung.milestone { background: rgba(212,175,55,0.25); border: 1px solid rgba(212,175,55,0.5); font-weight: 600; }
 .jackpot-board {
