@@ -751,13 +751,4 @@
       if (bbList) bbList.style.display = "";
     });
   }
-    const t = e.target;
-    if (t && typeof t.scrollIntoView === "function") {
-      const rect = t.getBoundingClientRect();
-      const vh = window.innerHeight;
-      if (rect.top < 80 || rect.bottom > vh - 40) {
-        t.scrollIntoView({ block: "center", behavior: "smooth" });
-      }
-    }
-  });
 })();
