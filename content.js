@@ -124,6 +124,17 @@ window.CONTENT = {
       link: "https://www.instagram.com/outscordgames/reel/DcPjVlPpyuU/",
     },
     {
+      icon: "🥤", name: "Cup Stack", players: "2+", time: "Party game",
+      rules: [
+        "Stack 4 cups with index cards in between.",
+        "Once built, remove each card until the cups fall into a single stack.",
+        "Reference: https://www.instagram.com/p/BpDlpSDAxMV/",
+        "Fastest to complete the stack wins!",
+        "Play responsibly and have fun!",
+      ],
+      link: "https://www.instagram.com/p/BpDlpSDAxMV/",
+    },
+    {
       icon: "🃏", name: "Blackjack", players: "2-7", time: "5-10 min/round",
       rules: [
         "Goal: beat the dealer by getting closest to 21 without busting.",
