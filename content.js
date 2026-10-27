@@ -112,7 +112,7 @@ window.CONTENT = {
       ],
     },
     {
-      icon: "🏓", name: "Can 'N' Ball", players: "Teams", time: "Party game", category: "Party",
+      icon: "🏓", name: "Can 'N' Ball", players: "Teams", time: "Party game", category: "Pong",
       rules: [
         "Teams Orange and Green face off in Can 'N' Ball!",
         "A ping pong ball in each glass wins.",
@@ -123,7 +123,7 @@ window.CONTENT = {
       link: "https://www.instagram.com/outscordgames/reel/DcPjVlPpyuU/",
     },
     {
-      icon: "🥤", name: "Cup Stack", players: "2+", time: "Party game", category: "Party",
+      icon: "🥤", name: "Cup Stack", players: "2+", time: "Party game", category: "Pong",
       rules: [
         "Stack 4 cups with index cards in between.",
         "Once built, remove each card until the cups fall into a single stack.",
@@ -134,7 +134,7 @@ window.CONTENT = {
       link: "https://www.instagram.com/p/BpDlpSDAxMV/",
     },
     {
-      icon: "🥤", name: "Musical Cups", players: "Group", time: "Party game", category: "Party",
+      icon: "🥤", name: "Musical Cups", players: "Group", time: "Party game", category: "Pong",
       rules: [
         "Musical Chair ❌ Musical Cups ✅",
         "Materials: Cups and Music.",
