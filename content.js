@@ -44,6 +44,7 @@ window.CONTENT = {
       icon: "🃏", name: "Poker Hands", players: "2-10", time: "", category: "Casino",
       featured: true,
       image: "https://images.ctfassets.net/o0c4x84rxbjm/1rNZghcE2A4v22v0Jbg9sl/ed0d96b522e21e2c116f8bb76e48c67a/gametypes_poker_rules_inpost4_efjuvMWeU.webp",
+      link: "https://www.youtube.com/shorts/1IkvR0bfF4M",
       rules: [
         "Our most-played game of the night — tap the card to view the full poker hands chart.",
         "Hand rankings (high to low): Royal Flush, Straight Flush, Four of a Kind, Full House, Flush, Straight, Three of a Kind, Two Pair, One Pair, High Card.",
@@ -123,7 +124,8 @@ window.CONTENT = {
       link: "https://www.instagram.com/outscordgames/reel/DcPjVlPpyuU/",
     },
     {
-      icon: "🥤", name: "Cup Stack", players: "2+", time: "Party game", category: "Pong",
+      icon: "🥤", name: "Cup Stack", players: "2+", time: "👑",
+      featured: true,
       rules: [
         "Stack 4 cups with index cards in between.",
         "Once built, remove each card until the cups fall into a single stack.",
@@ -157,10 +159,19 @@ window.CONTENT = {
     {
       icon: "♠️", name: "Texas Hold'em", players: "2-10", time: "10-30 min/hand", category: "Cards",
       rules: [
-        "Each player gets 2 hole cards; 5 community cards dealt over rounds.",
-        "Best 5-card hand wins. Rounds: pre-flop, flop, turn, river.",
-        "Actions: check, bet, call, raise, fold, all-in.",
-        "Blinds rotate each hand. Standard poker hand rankings apply.",
+        "Objective: Win the chips in the pot by holding the best five-card poker hand at showdown or forcing all others to fold.",
+        "The Deal: Every player receives 2 private face-down hole cards.",
+        "Community Cards: 5 shared cards placed face-up across three phases.",
+        "The Flop: First 3 community cards dealt face-up, then second betting round.",
+        "The Turn: 4th community card dealt face-up, then third betting round.",
+        "The River: 5th and final community card dealt face-up, then final betting round.",
+        "Hand Construction: Use any combination of your 2 hole cards and 5 community cards to form your best 5-card hand.",
+        "The Showdown: Remaining players reveal hole cards after final betting; highest-ranked hand claims the pot.",
+        "Check: Pass action without betting, only if no bet has been made this round.",
+        "Bet: Place chips into the pot, forcing others to match, raise, or fold.",
+        "Call: Match the highest bet or raise to stay active.",
+        "Raise: Increase the current bet, forcing others to pay more.",
+        "Fold: Surrender cards and forfeit chips contributed this hand.",
       ],
     },
     {
