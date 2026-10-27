@@ -501,11 +501,12 @@
       betOptions.innerHTML = "";
       q.options.forEach((o, i) => {
         const b = document.createElement("button");
-        b.className = "bet-option";
-        b.textContent = o;
+        b.className = "kbc-option";
+        const label = String.fromCharCode(65 + i);
+        b.innerHTML = '<span class="kbc-label">' + label + '</span><span>' + esc(o) + '</span>';
         b.addEventListener("click", () => {
           if (answered) return;
-          betOptions.querySelectorAll(".bet-option").forEach((x) => x.classList.remove("selected"));
+          betOptions.querySelectorAll(".kbc-option").forEach((x) => x.classList.remove("selected"));
           b.classList.add("selected");
           selectedOption = i;
         });
@@ -536,7 +537,7 @@
       if (answered) return;
       answered = true;
       const q = questions[qIndex % questions.length];
-      const opts = betOptions.querySelectorAll(".bet-option");
+      const opts = betOptions.querySelectorAll (".kbc-option");
       opts[q.answer].classList.add("correct");
       if (selectedOption !== q.answer) opts[selectedOption].classList.add("wrong");
       if (selectedOption === q.answer) {
