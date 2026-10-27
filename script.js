@@ -384,6 +384,7 @@
         (g.image ? '<li style="list-style:none;margin-top:8px;"><img src="' + esc(g.image) + '" alt="rules" style="max-width:60%;border-radius:8px;" /></li>' : "") +
         (g.link ? '<li style="list-style:none;margin-top:8px;"><a href="' + esc(g.link) + '" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-block;">Watch reference video ↗</a></li>' : "");
     }
+    gameModal.style.display = "flex";
     gameModal.classList.add("open");
     gameModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
@@ -392,6 +393,7 @@
   function closeGameModal() {
     if (!gameModal) return;
     gameModal.classList.remove("open");
+    gameModal.style.display = "none";
     gameModal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
   }
