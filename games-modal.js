@@ -14,7 +14,7 @@
       let html = "";
       // media (image + reference video) on top
       let mediaTop = "";
-      const imgWidth = (g.name === "Poker Hands") ? "60%" : "35%";
+      const imgWidth = (window.matchMedia("(max-width: 480px)").matches) ? "100%" : (g.name === "Poker Hands" ? "60%" : "35%");
       if (g.image) mediaTop += '<div class="gm-media"><img src="' + esc(g.image) + '" alt="rules" style="max-width:' + imgWidth + ';border-radius:8px;" /></div>';
       if (g.link) mediaTop += '<div class="gm-media"><a href="' + esc(g.link) + '" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-block;">Watch reference video ↗</a></div>';
       if (Array.isArray(g.sections)) {
