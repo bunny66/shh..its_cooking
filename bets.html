@@ -31,6 +31,7 @@
       <a href="photos.html" class="nav-link">Photos</a>
       <a href="games.html" class="nav-link">Games</a>
       <a href="bets.html" class="nav-link">Bets</a>
+      <a href="leaderboard.html" class="nav-link">Leaderboard</a>
       <a href="music.html" class="nav-link">Playlists</a>
       <a href="rsvp.html" class="nav-link">RSVP</a>
     </nav>
@@ -52,7 +53,7 @@
           <div class="bet-chips" id="introChips" style="margin:0 0 10px 0;width:100%;"></div>
           <p class="bet-selected" id="introSelected" style="color:#fff;margin:0 0 12px;text-align:center;">Your Bet: 0</p>
           <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;margin:8px 0;">
-            <input type="text" id="playerNameInput" placeholder="Your name" value="Test" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:180px;flex:1;" />
+            <input type="text" id="playerNameInput" placeholder="Your name" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:180px;flex:1;" />
             <input type="password" id="pinInput" placeholder="PIN" maxlength="4" inputmode="numeric" value="2025" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:100px;letter-spacing:4px;text-align:center;" />
           </div>
           <p class="bet-result" id="pinError" style="color:#ff6b6b;margin:4px 0;text-align:center;"></p>
@@ -79,11 +80,14 @@
 
       <div class="bet-block bet-birthday">
         <h3 class="section-title" style="font-size:1.3rem;"><span class="suit">♠</span> Bet on the Birthday Boy</h3>
-        <p class="section-sub">Bet your play money on predictions about Ayushman. Reveal answers throughout the evening — win or lose chips!</p>
+        <p class="section-sub">Think you know Ayushman? Time to prove it.</p>
+        <p class="section-sub bet-intro" style="margin-top:8px;">Predict his moves, call his reactions, and see how well you can read the birthday boy. From surprise reactions to questionable dance moves, how many of his antics can you predict?</p>
+        <p class="section-sub bet-intro" style="margin-top:8px;">The answers will be revealed throughout the night. Get it right, win chips!</p>
+        <p class="section-sub bet-intro" style="margin-top:8px;">🎁 The sharpest predictor takes home a special prize!</p>
         <div id="birthdayGate" style="margin:12px 0;padding:40px;">
           <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;margin:8px 0;">
-            <input type="text" id="bbName" placeholder="Your name" value="Test" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:180px;flex:1;" />
-            <input type="password" id="bbPin" placeholder="PIN" maxlength="4" inputmode="numeric" value="9999" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:100px;letter-spacing:4px;text-align:center;" />
+            <input type="text" id="bbName" placeholder="Your name" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:180px;flex:1;" />
+            <input type="hidden" id="bbPin" value="9999" />
             <button class="btn btn-gold" id="bbEnterBtn">Enter ▶</button>
           </div>
           <p id="bbError" style="color:#ff6b6b;margin:4px 0;text-align:center;"></p>
@@ -104,10 +108,11 @@
           <div id="bbSummaryList" style="text-align:left;"></div>
           <p class="bet-result" id="bbThanks"></p>
         </div>
-        <p class="section-sub" style="margin-top:12px;font-size:0.8rem;opacity:0.7;">Enter PIN 9999 to play. Pick any options per question. Your picks are saved to the sheet on submit. 🎁 Exciting prize for the top predictor!</p>
+        <p class="section-sub" style="margin-top:12px;font-size:0.8rem;opacity:0.7;">Pick as many options as you like for each question. Your predictions will be saved when you submit.</p>
       </div>
 
-      <div class="bet-block">
+<!-- moved: not required (not designed well) -->
+      <div class="bet-block" style="display:none;">
         <h3 class="section-title" style="font-size:1.3rem;"><span class="suit red">♥</span> How Well Do You Know Ayushman?</h3>
         <p class="section-sub">Fast, funny quiz — answer simultaneously. Winner gets the title of "Ayushman's Official Favourite Person" for the night!</p>
         <ul class="bet-list">
@@ -136,19 +141,24 @@
 
       <div class="bet-block">
         <h3 class="section-title" style="font-size:1.3rem;"><span class="suit">♠</span> Spin the Wheel of Chaos</h3>
-        <p class="section-sub">Spin for a lucky, silly, or social dare. Skip any dare you dislike!</p>
+        <p class="section-sub">You won! Now let fate decide your bonus.</p>
+        <p class="section-sub" style="margin-top:8px;">Every win earns you a spin. Land on a reward, claim a perk, or stir up a little chaos. From bonus chips to putting another guest on the spot — your victory just got more interesting.</p>
         <div class="bet-board">
           <button class="btn btn-gold" id="spinChaosBtn">Spin the Wheel 🎡</button>
           <p class="bet-result" id="chaosResult"></p>
           <ul class="bet-list" id="chaosList">
-            <li>Double your chips</li>
-            <li>Challenge another guest</li>
-            <li>Best dance move</li>
-            <li>Tell a funny story about Ayushman</li>
-            <li>Choose the next song</li>
-            <li>Steal 50 chips from a willing opponent</li>
-            <li>Everyone at your table does a group pose</li>
+            <li><strong>Double Your Chips</strong> — Double the chips you just won.</li>
+            <li><strong>Choose the Next Song</strong> — Take over the playlist.</li>
+            <li><strong>Choose the Next Game</strong> — Your pick. Everyone else plays along.</li>
+            <li><strong>One Extra Shot</strong> — A little victory toast.</li>
+            <li><strong>Steal 50 Chips</strong> — Take 50 chips from anyone you choose.</li>
+            <li><strong>Swap Coins</strong> — Swap your chip balance with another guest.</li>
+            <li><strong>Share the Luck</strong> — Gift 50 chips to a guest of your choice.</li>
+            <li><strong>Challenge Another Guest</strong> — Pick someone for a dance-off, sing-off, or comedy showdown. Let the battle begin!</li>
+            <li><strong>Lucky You!</strong> — Take another spin.</li>
+            <li><strong>Birthday Boy’s Choice</strong> — Ayushman gets to decide your fate.</li>
           </ul>
+          <p class="section-sub" style="margin-top:12px;font-size:0.85rem;opacity:0.8;">Skip any challenge you don’t feel like doing. No pressure, just chaos!</p>
         </div>
       </div>
 
