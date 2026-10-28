@@ -901,10 +901,20 @@ main { position: relative; z-index: 1; }
 
 /* ---------- House Hustles (modern) ---------- */
 .hh-modern {
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-  border: 1px solid var(--card-border);
+  background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(192,57,43,0.06));
+  border: 1px solid rgba(212,175,55,0.3);
   border-radius: var(--radius);
-  padding: 20px;
+  padding: 24px 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+.hh-modern::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 .hh-grid {
   display: grid;
