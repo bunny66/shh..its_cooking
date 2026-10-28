@@ -41,7 +41,10 @@
             "<td style='padding:10px;'>" + escapeHtml(r.remarks) + "</td>" +
             "</tr>";
         }).join("");
-        if (status) status.textContent = "Live from Google Sheet.";
+        if (status) {
+      if (/index\.html$|^\/$/.test(location.pathname)) status.textContent = "";
+      else status.textContent = "Live from Google Sheet.";
+    }
       } catch (e) {
         if (status) status.textContent = "Could not load leaderboard.";
         body.innerHTML = "<tr><td colspan='4' style='padding:10px;text-align:center;'>Failed to load data.</td></tr>";
