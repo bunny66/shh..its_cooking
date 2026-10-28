@@ -2,7 +2,7 @@
   // Floating cards
   const floatingCards = $("#floatingCards");
   if (floatingCards) {
-    const cards = ["♠", "♥", "♦", "♣", "A", "K", "Q", "J", "10"];
+    const cards = ["A"];
     const cCount = window.matchMedia("(max-width: 480px)").matches ? 10 : 18;
     for (let i = 0; i < cCount; i++) {
       const c = document.createElement("span");
