@@ -3,7 +3,7 @@
   const floatingCards = $("#floatingCards");
   if (floatingCards) {
     const cards = ["A"];
-    const cCount = window.matchMedia("(max-width: 480px)").matches ? 10 : 18;
+    const cCount = window.matchMedia("(max-width: 480px)").matches ? 5 : 9;
     for (let i = 0; i < cCount; i++) {
       const c = document.createElement("span");
       c.className = "fcard";
@@ -36,7 +36,7 @@
   // Star dust
   const starDust = $("#starDust");
   if (starDust) {
-    const dCount = window.matchMedia("(max-width: 480px)").matches ? 25 : 50;
+    const dCount = window.matchMedia("(max-width: 480px)").matches ? 12 : 25;
     for (let i = 0; i < dCount; i++) {
       const d = document.createElement("span");
       d.className = "stardust";

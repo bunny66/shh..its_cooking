@@ -28,7 +28,7 @@
   // Particles
   const particles = $("#particles");
   if (particles) {
-    const count = window.matchMedia("(max-width: 480px)").matches ? 18 : 36;
+    const count = window.matchMedia("(max-width: 480px)").matches ? 9 : 18;
     for (let i = 0; i < count; i++) {
       const p = document.createElement("span");
       p.className = "particle";
