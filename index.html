@@ -156,6 +156,32 @@
       <p class="more-link-wrap"><a class="btn btn-outline" href="music.html">View all playlists & music →</a></p>
     </section>
 
+    <section id="leaderboard" class="section">
+      <div class="section-head">
+        <h2 class="section-title"><span class="suit">♣</span> Leaderboard</h2>
+        <p class="section-sub">Top chip holders of the night.</p>
+      </div>
+      <div class="bet-board" style="max-width:900px;">
+        <div id="leaderboardStatus" class="bet-result" style="margin-bottom:12px;"></div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;color:#fff;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--card-border);">
+                <th style="padding:10px;text-align:left;">Rank</th>
+                <th style="padding:10px;text-align:left;">Player</th>
+                <th style="padding:10px;text-align:right;">Chips</th>
+                <th style="padding:10px;text-align:left;">Remarks</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardBody"></tbody>
+          </table>
+        </div>
+        <p class="more-link-wrap" style="margin-top:20px;">
+          <a class="btn btn-outline" href="leaderboard.html">View full leaderboard →</a>
+        </p>
+      </div>
+    </section>
+
     <footer class="footer">
       <div class="footer-suits" aria-hidden="true">♠ ♥ ♦ ♣</div>
       <p>Made with luck & love for Ayushman's Birthday.</p>
@@ -200,6 +226,7 @@
   <script src="extras.js"></script>
   <script src="games-modal.js"></script>
   <script src="chaos.js"></script>
+  <script src="leaderboard.js"></script>
   <script src="kbc.js"></script>
   <script src="birthday-bets.js"></script>
 </body>
