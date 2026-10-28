@@ -430,7 +430,7 @@ main { position: relative; z-index: 1; }
 .bet-block.bet-jackpot > * { position: relative; z-index: 1; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
 .bet-block.bet-birthday {
   position: relative;
-  background-image: url("https://media.licdn.com/dms/image/v2/D4D22AQG-f63ogO-LIA/feedshare-shrink_800/B4DZ05AreXIYAc-/0/1774777973568?e=2147483647&v=beta&t=9mxqJ7yMzlQ0am50ZxLCem0M9esG1lEstpL7htnFrpw");
+  background-image: url("https://scontent.fbom9-1.fna.fbcdn.net/v/t39.30808-6/447282670_18339170539188187_4762217609160180059_n.jpg?stp=cp6_dst-jpegr_tt6&cstp=mx1440x1440&ctp=s1440x1440&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=5h9Hh3I590UQ7kNvwEYV5UN&_nc_oc=AdpnH85X6DfA0_lRnSTGCB1zThFewfoB4SLXfdk-ngmRMZZ7oBOOGBJkcM1FhPVjusQ&_nc_zt=23&se=-1&_nc_ht=scontent.fbom9-1.fna&_nc_gid=tDfIJwQ8oTbjG4pcQeM51g&_nc_ss=7b2a8&oh=00_AQRUsgAPDyjb7thtyUC4gJxVy_CYj1DIPOLsNLsgzWPgWw&oe=6AE80F3B");
   background-size: cover;
   background-position: center;
   border-radius: var(--radius);
