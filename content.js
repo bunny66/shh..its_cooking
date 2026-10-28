@@ -21,6 +21,7 @@ window.CONTENT = {
     { icon: "🤝", label: "Join the House" },
     { icon: "🍽️", label: "Fuel the Players" },
     { icon: "🥂", label: "Raise the Stakes" },
+    { icon: "🎲", label: "Party Games" },
     { icon: "🎰", label: "Place Your Bets" },
     { icon: "💃", label: "Hit the Floor" },
     { icon: "📸", label: "Capture the Evidence" },
