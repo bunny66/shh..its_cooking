@@ -21,7 +21,6 @@ let bbQuestions = [];
 let bbIndex = 0;
 let bbAnswers = [];
 let bbAnswered = false;
-let bbSelected = null;
 
 async function loadBbQuestions() {
   let data = [];
@@ -41,23 +40,24 @@ function renderBbQuestion() {
   if (bbQuestion) bbQuestion.textContent = q.question;
   if (bbOptions) {
     bbOptions.innerHTML = "";
+    const ul = document.createElement("ul");
+    ul.className = "photo-checklist";
+    ul.style.maxWidth = "100%";
     q.options.forEach((o, i) => {
-      const b = document.createElement("button");
-      b.className = "kbc-option";
-      const label = String.fromCharCode(65 + i);
-      b.innerHTML = '<span class="kbc-label">' + label + '</span><span>' + esc(o) + '</span>';
-      b.addEventListener("click", () => {
-        if (bbAnswered) return;
-        bbOptions.querySelectorAll(".kbc-option").forEach((x) => x.classList.remove("selected"));
-        b.classList.add("selected");
-        bbSelected = i;
-      });
-      bbOptions.appendChild(b);
+      const li = document.createElement("li");
+      const label = document.createElement("label");
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.value = String(i);
+      label.appendChild(cb);
+      label.appendChild(document.createTextNode(" " + o));
+      li.appendChild(label);
+      ul.appendChild(li);
     });
+    bbOptions.appendChild(ul);
   }
   if (bbResult) bbResult.textContent = "";
   bbAnswered = false;
-  bbSelected = null;
   if (bbProgress) bbProgress.textContent = "Question " + (bbIndex + 1) + " of " + bbQuestions.length;
   if (bbNextBtn) bbNextBtn.style.display = "none";
   if (bbSubmitBtn) bbSubmitBtn.style.display = "none";
@@ -88,15 +88,15 @@ if (bbEnterBtn) {
 
 if (bbLockBtn) {
   bbLockBtn.addEventListener("click", () => {
-    if (bbSelected === null) {
-      if (bbResult) bbResult.textContent = "Pick an answer!";
+    const checked = Array.from(bbOptions.querySelectorAll('input[type="checkbox"]:checked')).map((c) => parseInt(c.value, 10));
+    if (!checked.length) {
+      if (bbResult) bbResult.textContent = "Pick at least one option!";
       return;
     }
     bbAnswered = true;
-    bbAnswers[bbIndex] = bbSelected;
-    const opts = bbOptions.querySelectorAll(".kbc-option");
-    opts[bbSelected].classList.add("selected");
-    if (bbResult) bbResult.textContent = "Locked: " + bbQuestions[bbIndex].options[bbSelected];
+    bbAnswers[bbIndex] = checked;
+    bbOptions.querySelectorAll('input[type="checkbox"]').forEach((c) => { c.disabled = true; });
+    if (bbResult) bbResult.textContent = "Locked: " + checked.map((i) => bbQuestions[bbIndex].options[i]).join(", ");
     if (bbLockBtn) bbLockBtn.style.display = "none";
     if (bbIndex >= bbQuestions.length - 1) {
       if (bbSubmitBtn) bbSubmitBtn.style.display = "";
@@ -120,7 +120,7 @@ if (bbSubmitBtn) {
     if (bbSummary) bbSummary.style.display = "";
     if (bbSummaryList) {
       bbSummaryList.innerHTML = bbQuestions.map((q, i) => {
-        const ans = (bbAnswers[i] !== undefined) ? q.options[bbAnswers[i]] : "—";
+        const ans = (bbAnswers[i] && bbAnswers[i].length) ? bbAnswers[i].map((idx) => q.options[idx]).join(", ") : "—";
         return '<div style="margin-bottom:8px;"><strong>' + (i + 1) + '. ' + esc(q.question) + '</strong><br/><span style="opacity:0.85;">Your pick: ' + esc(ans) + '</span></div>';
       }).join("");
     }
