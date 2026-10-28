@@ -10,7 +10,6 @@ const bbOptions = document.querySelector("#bbOptions");
 const bbLockBtn = document.querySelector("#bbLockBtn");
 const bbResult = document.querySelector("#bbResult");
 const bbProgress = document.querySelector("#bbProgress");
-const bbNextBtn = document.querySelector("#bbNextBtn");
 const bbSubmitBtn = document.querySelector("#bbSubmitBtn");
 const bbSummary = document.querySelector("#bbSummary");
 const bbSummaryList = document.querySelector("#bbSummaryList");
@@ -59,9 +58,11 @@ function renderBbQuestion() {
   if (bbResult) bbResult.textContent = "";
   bbAnswered = false;
   if (bbProgress) bbProgress.textContent = "Question " + (bbIndex + 1) + " of " + bbQuestions.length;
-  if (bbNextBtn) bbNextBtn.style.display = "none";
+  if (bbLockBtn) {
+    bbLockBtn.style.display = "";
+    bbLockBtn.textContent = (bbIndex >= bbQuestions.length - 1) ? "Submit ▶" : "Next Question ▶";
+  }
   if (bbSubmitBtn) bbSubmitBtn.style.display = "none";
-  if (bbLockBtn) bbLockBtn.style.display = "";
 }
 
 if (bbEnterBtn) {
@@ -96,51 +97,37 @@ if (bbLockBtn) {
     bbAnswered = true;
     bbAnswers[bbIndex] = checked;
     bbOptions.querySelectorAll('input[type="checkbox"]').forEach((c) => { c.disabled = true; });
-    if (bbLockBtn) bbLockBtn.style.display = "none";
+    if (bbResult) bbResult.textContent = "";
     if (bbIndex >= bbQuestions.length - 1) {
-      if (bbSubmitBtn) bbSubmitBtn.style.display = "";
-    } else {
-      if (bbNextBtn) bbNextBtn.style.display = "";
-    }
-  });
-}
-
-if (bbNextBtn) {
-  bbNextBtn.addEventListener("click", () => {
-    bbIndex++;
-    if (bbIndex >= bbQuestions.length) return;
-    renderBbQuestion();
-  });
-}
-
-if (bbSubmitBtn) {
-  bbSubmitBtn.addEventListener("click", () => {
-    if (bbQuiz) bbQuiz.style.display = "none";
-    if (bbSummary) bbSummary.style.display = "";
-    if (bbSummaryList) {
-      bbSummaryList.innerHTML = bbQuestions.map((q, i) => {
-        const ans = (bbAnswers[i] && bbAnswers[i].length) ? bbAnswers[i].map((idx) => q.options[idx]).join(", ") : "—";
-        return '<div style="margin-bottom:8px;"><strong>' + (i + 1) + '. ' + esc(q.question) + '</strong><br/><span style="opacity:0.85;">Your pick: ' + esc(ans) + '</span></div>';
-      }).join("");
-    }
-    const endpoint = (window.CONFIG && window.CONFIG.birthdayBetsEndpoint) || "";
-    if (endpoint) {
+      // last question: submit directly
+      if (bbQuiz) bbQuiz.style.display = "none";
+      if (bbSummary) bbSummary.style.display = "";
+      if (bbSummaryList) {
+        bbSummaryList.innerHTML = bbQuestions.map((q, i) => {
+          const ans = (bbAnswers[i] && bbAnswers[i].length) ? bbAnswers[i].map((idx) => q.options[idx]).join(", ") : "—";
+          return '<div style="margin-bottom:8px;"><strong>' + (i + 1) + '. ' + esc(q.question) + '</strong><br/><span style="opacity:0.85;">Your pick: ' + esc(ans) + '</span></div>';
+        }).join("");
+      }
+      const endpoint = (window.CONFIG && window.CONFIG.birthdayBetsEndpoint) || "";
       const name = (bbName && bbName.value.trim()) || "";
-      const answers = bbQuestions.map((q, i) => (bbAnswers[i] || []).map((idx) => q.options[idx]));
-      fetch(endpoint, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ name: name, answers: answers, ts: new Date().toISOString() }),
-      }).then(() => {
-        if (bbThanks) {
-          bbThanks.innerHTML = 'Thanks ' + (name || '') + '! Your predictions are submitted. 🎉 <a href="https://docs.google.com/spreadsheets/d/1i2jMxx5CVeGnoat2cgX0f4qlbvH4ZxCpFpeEBSx8POM/edit" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">View the sheet</a>';
-        }
-      }).catch(() => {
-        if (bbThanks) bbThanks.textContent = "Network error. Please submit via the Google Sheet link. 🎉";
-      });
+      if (endpoint) {
+        const answers = bbQuestions.map((q, i) => (bbAnswers[i] || []).map((idx) => q.options[idx]));
+        fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ name: name, answers: answers, ts: new Date().toISOString() }),
+        }).then(() => {
+          if (bbThanks) bbThanks.innerHTML = 'Thanks ' + (name || '') + '! Your predictions are submitted. 🎉 <a href="https://docs.google.com/spreadsheets/d/1i2jMxx5CVeGnoat2cgX0f4qlbvH4ZxCpFpeEBSx8POM/edit" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">View the sheet</a>';
+        }).catch(() => {
+          if (bbThanks) bbThanks.textContent = "Network error. Please submit via the Google Sheet link. 🎉";
+        });
+      } else {
+        if (bbThanks) bbThanks.innerHTML = 'Thanks for playing! Your predictions are locked in. 🎉 <a href="https://docs.google.com/spreadsheets/d/1i2jMxx5CVeGnoat2cgX0f4qlbvH4ZxCpFpeEBSx8POM/edit" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">View the sheet</a>';
+      }
     } else {
-      if (bbThanks) bbThanks.innerHTML = 'Thanks for playing! Your predictions are locked in. 🎉 <a href="https://docs.google.com/spreadsheets/d/1i2jMxx5CVeGnoat2cgX0f4qlbvH4ZxCpFpeEBSx8POM/edit" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">View the sheet</a>';
+      bbIndex++;
+      renderBbQuestion();
     }
   });
 }
