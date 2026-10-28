@@ -28,7 +28,7 @@
   // Particles
   const particles = $("#particles");
   if (particles) {
-    const count = window.matchMedia("(max-width: 480px)").matches ? 18 : 36;
+    const count = window.matchMedia("(max-width: 480px)").matches ? 4 : 9;
     for (let i = 0; i < count; i++) {
       const p = document.createElement("span");
       p.className = "particle";
@@ -44,7 +44,7 @@
   // Balloons
   const balloons = $("#balloons");
   if (balloons) {
-    const bCount = window.matchMedia("(max-width: 480px)").matches ? 8 : 14;
+    const bCount = window.matchMedia("(max-width: 480px)").matches ? 2 : 4;
     for (let i = 0; i < bCount; i++) {
       const b = document.createElement("span");
       b.className = "balloon";

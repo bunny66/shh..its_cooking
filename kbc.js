@@ -87,7 +87,7 @@
           if (nextQBtn) nextQBtn.style.display = "";
         }
         // confetti
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 6; i++) {
           const conf = document.createElement("span");
           conf.textContent = ["🎉","✨","💰","♠","♥","♦","♣"][Math.floor(Math.random()*7)];
           conf.style.cssText = "position:fixed;left:50%;top:50%;font-size:1.4rem;pointer-events:none;z-index:9999;animation:confetti 1.2s ease-out forwards;";

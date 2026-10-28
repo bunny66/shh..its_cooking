@@ -54,7 +54,7 @@
     if (wrap) {
       wrap.querySelectorAll(".chaos-light").forEach((e) => e.remove());
       const lightR = Math.max(100, ((chaosWheel.parentElement && chaosWheel.parentElement.clientWidth) || 340) / 2 - 4);
-      const lightCount = 24;
+      const lightCount = 8;
       for (let i = 0; i < lightCount; i++) {
         const light = document.createElement("span");
         light.className = "chaos-light";
@@ -86,7 +86,7 @@
         if (chaosResult) { chaosResult.style.display = "block"; chaosResult.innerHTML = "<span class='chaos-win'>🎡 " + outcomes[idx] + "!</span><br><span class='chaos-desc'>" + outcomeDesc[idx] + "</span>"; }
         spinning = false;
         spinChaosBtn.disabled = false;
-        for (let i = 0; i < 25; i++) {
+        for (let i = 0; i < 6; i++) {
           const conf = document.createElement("span");
           conf.textContent = ["🎉","✨","♠","♥","♦","♣"][Math.floor(Math.random() * 6)];
           conf.style.cssText = "position:fixed;left:50%;top:50%;font-size:1.4rem;pointer-events:none;z-index:9999;animation:confetti 1.2s ease-out forwards;";
