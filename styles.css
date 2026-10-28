@@ -732,16 +732,16 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 /* ---------- Spin the Wheel of Chaos ---------- */
 .chaos-wheel-wrap {
   position: relative;
-  width: 340px;
-  height: 340px;
+  width: clamp(280px, 42vw, 460px);
+  height: clamp(280px, 42vw, 460px);
   margin: 20px auto;
 }
 .chaos-wheel {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 320px;
-  height: 320px;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
   border-radius: 50%;
   border: 6px solid var(--gold);
   box-shadow: 0 0 24px rgba(212,175,55,0.35), inset 0 0 20px rgba(0,0,0,0.5);
@@ -763,7 +763,7 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 }
 .chaos-label {
   position: absolute;
-  font-size: 0.62rem;
+  font-size: clamp(0.5rem, 1.2vw, 0.65rem);
   font-weight: 700;
   color: #fff;
   text-shadow: 0 1px 3px rgba(0,0,0,0.9);

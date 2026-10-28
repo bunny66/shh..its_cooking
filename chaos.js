@@ -23,7 +23,7 @@
     const grad = outcomes.map((_, i) => colors[i % colors.length] + " " + (i * angle) + "deg " + ((i + 1) * angle) + "deg").join(", ");
     chaosWheel.style.background = "conic-gradient(" + grad + ")";
     chaosWheel.querySelectorAll(".chaos-label").forEach((e) => e.remove());
-    const r = 108;
+    const r = Math.max(60, (chaosWheel.clientWidth || 320) / 2 * 0.68);
     outcomes.forEach((label, i) => {
       const span = document.createElement("span");
       span.className = "chaos-label";
@@ -40,7 +40,7 @@
     const wrap = chaosWheel.parentElement;
     if (wrap) {
       wrap.querySelectorAll(".chaos-light").forEach((e) => e.remove());
-      const lightR = 168;
+      const lightR = Math.max(100, ((chaosWheel.parentElement && chaosWheel.parentElement.clientWidth) || 340) / 2 - 4);
       const lightCount = 24;
       for (let i = 0; i < lightCount; i++) {
         const light = document.createElement("span");
