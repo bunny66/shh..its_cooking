@@ -1,6 +1,7 @@
 "use strict";
   const spinChaosBtn = $("#spinChaosBtn");
   const chaosResult = $("#chaosResult");
+  if (chaosResult) chaosResult.style.display = "none";
   const chaosWheel = $("#chaosWheel");
   const outcomes = [
     "Double Your Chips",
@@ -82,7 +83,7 @@
       chaosWheel.style.transform = "rotate(" + target + "deg)";
       rotation = target;
       setTimeout(() => {
-        if (chaosResult) chaosResult.innerHTML = "<span class='chaos-win'>🎡 " + outcomes[idx] + "!</span><br><span class='chaos-desc'>" + outcomeDesc[idx] + "</span>";
+        if (chaosResult) { chaosResult.style.display = "block"; chaosResult.innerHTML = "<span class='chaos-win'>🎡 " + outcomes[idx] + "!</span><br><span class='chaos-desc'>" + outcomeDesc[idx] + "</span>"; }
         spinning = false;
         spinChaosBtn.disabled = false;
         for (let i = 0; i < 25; i++) {
