@@ -746,10 +746,17 @@ main { position: relative; z-index: 1; }
   font-weight: 600;
   font-size: clamp(0.9rem, 1.8vw, 1.05rem);
   list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(212,175,55,0.08);
+  border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 8px;
 }
 .hh-cat-title::-webkit-details-marker { display: none; }
-.hh-cat-title::before { content: "▸ "; color: var(--gold-bright); }
-.hh-cat[open] .hh-cat-title::before { content: "▾ "; }
+.hh-cat-title::after { content: "▾"; color: var(--gold-bright); font-size: 0.9rem; }
+.hh-cat:not([open]) .hh-cat-title::after { content: "▸"; }
 .hh-cat .bet-list { margin-top: 10px; }
 .hh-cat .bet-list li {
   padding: 8px 10px;
