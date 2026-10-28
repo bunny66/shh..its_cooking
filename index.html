@@ -131,9 +131,18 @@
     <section id="bet" class="section">
       <div class="section-head">
         <h2 class="section-title"><span class="suit">♣</span> Place Your Bets</h2>
-        <p class="section-sub">Fun betting games moved to their own page.</p>
+        <p class="section-sub">Bet your play money on predictions, quiz your friends, and spin the Winner’s Wheel of Chaos.</p>
       </div>
-      <p class="more-link-wrap"><a class="btn btn-gold" href="bets.html">Play betting games →</a></p>
+      <h3 class="section-title" style="font-size:1.2rem;text-align:center;margin-bottom:8px;"><span class="suit">♠</span> Winner’s Wheel of Chaos</h3>
+      <div class="chaos-wheel-wrap">
+        <div class="chaos-wheel" id="chaosWheel" aria-label="Winner’s Wheel of Chaos"></div>
+        <div class="chaos-pointer" aria-hidden="true"></div>
+      </div>
+      <div style="text-align:center;margin-top:12px;">
+        <button class="btn btn-gold" id="spinChaosBtn">Spin the Wheel 🎡</button>
+      </div>
+      <p class="bet-result" id="chaosResult" style="text-align:center;margin-top:10px;"></p>
+      <p class="more-link-wrap" style="margin-top:20px;"><a class="btn btn-outline" href="bets.html">Play betting games →</a></p>
     </section>
 
     <!-- MUSIC / PLAYLISTS -->
@@ -145,6 +154,32 @@
       <div class="playlists" id="playlistsGrid" data-limit="4"></div>
       <p class="empty-hint" id="musicEmpty" hidden>Add playlists in content.js - playlists array.</p>
       <p class="more-link-wrap"><a class="btn btn-outline" href="music.html">View all playlists & music →</a></p>
+    </section>
+
+    <section id="leaderboard" class="section">
+      <div class="section-head">
+        <h2 class="section-title"><span class="suit">♣</span> Leaderboard</h2>
+        <p class="section-sub">Top chip holders of the night.</p>
+      </div>
+      <div class="bet-board" style="max-width:900px;">
+        <div id="leaderboardStatus" class="bet-result" style="margin-bottom:12px;"></div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;color:#fff;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--card-border);">
+                <th style="padding:10px;text-align:left;">Rank</th>
+                <th style="padding:10px;text-align:left;">Player</th>
+                <th style="padding:10px;text-align:right;">Chips</th>
+                <th style="padding:10px;text-align:left;">Remarks</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardBody"></tbody>
+          </table>
+        </div>
+        <p class="more-link-wrap" style="margin-top:20px;">
+          <a class="btn btn-outline" href="leaderboard.html">View full leaderboard →</a>
+        </p>
+      </div>
     </section>
 
     <footer class="footer">
@@ -191,6 +226,7 @@
   <script src="extras.js"></script>
   <script src="games-modal.js"></script>
   <script src="chaos.js"></script>
+  <script src="leaderboard.js"></script>
   <script src="kbc.js"></script>
   <script src="birthday-bets.js"></script>
 </body>

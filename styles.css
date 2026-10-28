@@ -729,3 +729,90 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
   body { background: #fff; color: #000; }
 }
 
+/* ---------- Chaos result ---------- */
+#chaosResult {
+  background: rgba(212,175,55,0.12);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 12px;
+  min-height: 56px;
+  text-align: center;
+}
+.chaos-win {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--gold-bright);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+.chaos-desc {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.95rem;
+  color: #fff;
+  line-height: 1.4;
+}
+/* ---------- Spin the Wheel of Chaos ---------- */
+.chaos-wheel-wrap {
+  position: relative;
+  width: clamp(280px, 42vw, 460px);
+  height: clamp(280px, 42vw, 460px);
+  margin: 20px auto;
+}
+.chaos-wheel {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  border: 6px solid var(--gold);
+  box-shadow: 0 0 24px rgba(212,175,55,0.35), inset 0 0 20px rgba(0,0,0,0.5);
+  transition: transform 4.2s cubic-bezier(0.17,0.67,0.12,0.99);
+  overflow: hidden;
+}
+.chaos-pointer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 22px solid var(--gold-bright);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+  z-index: 5;
+}
+.chaos-label {
+  position: absolute;
+  font-size: clamp(0.5rem, 1.2vw, 0.65rem);
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  white-space: nowrap;
+  pointer-events: none;
+  max-width: 90px;
+  text-align: center;
+  line-height: 1.1;
+}
+.chaos-light {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  box-shadow: 0 0 6px var(--gold-bright), 0 0 12px var(--gold);
+  z-index: 2;
+  animation: chaosBlink 1.4s ease-in-out infinite alternate;
+}
+@keyframes chaosBlink {
+  0% { opacity: 0.5; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1.1); }
+}
+@media (max-width: 480px) {
+  .chaos-wheel-wrap { width: 280px; height: 280px; }
+  .chaos-wheel { top: 8px; left: 8px; width: 264px; height: 264px; }
+  .chaos-label { font-size: 0.55rem; max-width: 70px; }
+}
