@@ -755,6 +755,21 @@ main { position: relative; z-index: 1; }
   line-height: 1.4;
 }
 /* ---------- Spin the Wheel of Chaos ---------- */
+.bet-block.chaos-curtain {
+  position: relative;
+  background-image: url("https://images.stockcake.com/public/d/8/2/d8209dd7-5d79-4a33-8e40-ea9fda98f509_large/elegant-theater-curtain-stockcake.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.bet-block.chaos-curtain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6,36,26,0.55), rgba(6,36,26,0.75));
+  z-index: 0;
+}
+.bet-block.chaos-curtain > * { position: relative; z-index: 1; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
 .chaos-wheel-wrap {
   position: relative;
   width: clamp(280px, 42vw, 460px);
