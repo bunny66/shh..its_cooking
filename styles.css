@@ -299,7 +299,7 @@ main { position: relative; z-index: 1; }
 .game-compact .game-meta { font-size: 0.75rem; }
 .read-more-btn {
   margin-top: 4px; padding: 4px 10px; border-radius: 999px;
-  background: var(--gold); color: #1a1400 !important; border: 1px solid var(--gold);
+  background: rgba(212,175,55,0.15); color: var(--gold); border: 1px solid rgba(212,175,55,0.4);
   font-size: 0.8rem; cursor: pointer; align-self: flex-end;
   white-space: nowrap; font-weight: 600;
 }
