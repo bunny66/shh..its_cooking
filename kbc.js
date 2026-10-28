@@ -1,4 +1,18 @@
 "use strict";
+  // KBC background image with fallback
+  (function () {
+    const primary = "https://static.wikia.nocookie.net/millionaire/images/a/a4/KBC16_2024.png/revision/latest?cb=20241001050334";
+    const fallback = "https://static.langimg.com/nbt/thumb/69355236/kbc.jpg?imgsize=428966&width=400&height=225&resizemode=75";
+    const el = document.querySelector(".bet-block.bet-jackpot");
+    if (!el) return;
+    const img = new Image();
+    img.onload = () => { el.style.backgroundImage = 'url("' + primary + '")'; };
+    img.onerror = () => { el.style.backgroundImage = 'url("' + fallback + '")'; };
+    img.src = primary;
+  })();
+
+
+"use strict";
   // Place Your Bet - fun quiz
   const betChips = $("#betChips");
   const betSelected = $("#betSelected");
