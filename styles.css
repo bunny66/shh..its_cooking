@@ -729,6 +729,77 @@ main { position: relative; z-index: 1; }
 }
 @media (orientation: landscape) and (max-height: 500px) {
   .hero { min-height: auto; padding-top: 20px; padding-bottom: 20px; }
+/* ---------- House Hustles (modern) ---------- */
+.hh-modern {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.hh-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.hh-cat-modern {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,175,55,0.2);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.hh-cat-title-modern {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--gold);
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(212,175,55,0.25);
+}
+.hh-task {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(212,175,55,0.12);
+  border-radius: 10px;
+  transition: transform .15s ease, border-color .15s, background .15s;
+}
+.hh-task:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+  background: rgba(212,175,55,0.06);
+}
+.hh-icon {
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  flex-shrink: 0;
+}
+.hh-info { flex: 1; min-width: 0; }
+.hh-info strong {
+  display: block;
+  color: var(--gold);
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  margin-bottom: 2px;
+}
+.hh-info p {
+  margin: 0;
+  font-size: clamp(0.75rem, 1.3vw, 0.85rem);
+  color: var(--muted);
+  line-height: 1.3;
+}
+.hh-reward {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+  color: #1a1400;
+  font-weight: 700;
+  font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+  box-shadow: 0 2px 6px rgba(212,175,55,0.35);
+  white-space: nowrap;
+}
 /* ---------- House Hustles ---------- */
 .hh-cat {
   background: var(--card);
