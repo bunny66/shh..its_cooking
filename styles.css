@@ -338,6 +338,13 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 .bet-list { list-style: none; padding: 0; max-width: 520px; margin: 12px auto 0; text-align: left; }
 .bet-list li { padding: 8px 12px; margin-bottom: 6px; background: var(--card); border: 1px solid var(--card-border); border-radius: 8px; }
 .bet-list li::before { content: "♠ "; color: var(--gold); }
+/* ---------- Birthday bet screen height ---------- */
+@media (min-width: 1281px) {
+  .bet-block.bet-birthday { min-height: 420px; }
+}
+@media (min-width: 1920px) {
+  .bet-block.bet-birthday { min-height: 520px; }
+}
 .birthday-bet-item { padding: 10px 12px; margin-bottom: 8px; background: var(--card); border: 1px solid var(--card-border); border-radius: 8px; }
 .birthday-bet-item strong { color: var(--gold); display: block; margin-bottom: 4px; }
 .bet-sublist { margin: 4px 0 0 18px; padding: 0; list-style: disc; }
