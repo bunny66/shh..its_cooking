@@ -133,12 +133,14 @@ if (bbSubmitBtn) {
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({ name: name, answers: answers, ts: new Date().toISOString() }),
       }).then(() => {
-        if (bbThanks) bbThanks.textContent = "Thanks " + (name || "") + "! Your predictions are submitted to the sheet. 🎉";
+        if (bbThanks) {
+          bbThanks.innerHTML = 'Thanks ' + (name || '') + '! Your predictions are submitted. 🎉 <a href="https://docs.google.com/spreadsheets/d/1i2jMxx5CVeGnoat2cgX0f4qlbvH4ZxCpFpeEBSx8POM/edit" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">View the sheet</a>';
+        }
       }).catch(() => {
         if (bbThanks) bbThanks.textContent = "Network error. Please submit via the Google Sheet link. 🎉";
       });
     } else {
-      if (bbThanks) bbThanks.textContent = "Thanks for playing! Your predictions are locked in. (Configure birthdayBetsEndpoint in config.js to save to sheet.) 🎉";
+      if (bbThanks) bbThanks.innerHTML = 'Thanks for playing! Your predictions are locked in. 🎉 <a href="https://docs.google.com/spreadsheets/d/1i2jMxx5CVeGnoat2cgX0f4qlbvH4ZxCpFpeEBSx8POM/edit" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">View the sheet</a>';
     }
   });
 }
