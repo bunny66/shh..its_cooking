@@ -729,6 +729,40 @@ main { position: relative; z-index: 1; }
 }
 @media (orientation: landscape) and (max-height: 500px) {
   .hero { min-height: auto; padding-top: 20px; padding-bottom: 20px; }
+/* ---------- House Hustles ---------- */
+.hh-cat {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-top: 12px;
+  transition: border-color .2s, background .2s;
+}
+.hh-cat:hover { border-color: var(--gold); }
+.hh-cat[open] { background: rgba(255,255,255,0.08); }
+.hh-cat-title {
+  cursor: pointer;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  list-style: none;
+}
+.hh-cat-title::-webkit-details-marker { display: none; }
+.hh-cat-title::before { content: "▸ "; color: var(--gold-bright); }
+.hh-cat[open] .hh-cat-title::before { content: "▾ "; }
+.hh-cat .bet-list { margin-top: 10px; }
+.hh-cat .bet-list li {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,175,55,0.15);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+}
   .hero-chips { display: none; }
 }
 @media (min-aspect-ratio: 21/9) {
