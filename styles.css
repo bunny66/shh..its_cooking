@@ -766,7 +766,7 @@ main { position: relative; z-index: 1; }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(6,36,26,0.55), rgba(6,36,26,0.75));
+  background: linear-gradient(180deg, rgba(6,36,26,0.75), rgba(6,36,26,0.85));
   z-index: 0;
 }
 .bet-block.chaos-curtain > * { position: relative; z-index: 1; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
