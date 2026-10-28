@@ -285,9 +285,9 @@ main { position: relative; z-index: 1; }
 
 /* ---------- Featured game (Poker Hands) ---------- */
 .game-featured {
-  border-color: var(--gold);
+  border-color: rgba(212,175,55,0.5);
   background: linear-gradient(180deg, rgba(212,175,55,0.12), rgba(255,255,255,0.02));
-  box-shadow: 0 0 0 1px var(--gold), 0 12px 40px rgba(212,175,55,0.25);
+  box-shadow: 0 0 0 1px rgba(212,175,55,0.3), 0 8px 24px rgba(212,175,55,0.15);
 /* ---------- Compact game tiles ---------- */
 .game-compact {
   padding: 12px; gap: 4px;
