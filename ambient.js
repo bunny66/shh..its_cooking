@@ -3,7 +3,7 @@
   const floatingCards = $("#floatingCards");
   if (floatingCards) {
     const cards = ["A"];
-    const cCount = window.matchMedia("(max-width: 480px)").matches ? 5 : 9;
+    const cCount = window.matchMedia("(max-width: 480px)").matches ? 2 : 4;
     for (let i = 0; i < cCount; i++) {
       const c = document.createElement("span");
       c.className = "fcard";
@@ -20,7 +20,7 @@
   const floatingIcons = $("#floatingIcons");
   if (floatingIcons) {
     const icons = ["🎲", "🃏", "🪙", "🎰", "🎡", "👑", "🎯", "♠", "♥", "♦", "♣", "⭐", "✨", "💃", "🎂", "🥂"];
-    const iCount = window.matchMedia("(max-width: 480px)").matches ? 12 : 22;
+    const iCount = window.matchMedia("(max-width: 480px)").matches ? 6 : 11;
     for (let i = 0; i < iCount; i++) {
       const el = document.createElement("span");
       el.className = "ficon";
@@ -36,7 +36,7 @@
   // Star dust
   const starDust = $("#starDust");
   if (starDust) {
-    const dCount = window.matchMedia("(max-width: 480px)").matches ? 12 : 25;
+    const dCount = window.matchMedia("(max-width: 480px)").matches ? 6 : 12;
     for (let i = 0; i < dCount; i++) {
       const d = document.createElement("span");
       d.className = "stardust";
