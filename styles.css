@@ -319,11 +319,11 @@ main { position: relative; z-index: 1; }
 }
 .game-featured::after {
   content: "👑";
-  position: absolute; top: 12px; right: 12px;
-  background: #1a1400; color: var(--gold);
-  font-size: 1.6rem;
-  padding: 6px 10px; border-radius: 999px;
-  border: 1px solid var(--gold);
+  position: absolute; top: clamp(4px, 1vw, 10px); right: clamp(4px, 1vw, 10px);
+  background: rgba(26,20,0,0.6); color: var(--gold);
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  padding: clamp(2px, 0.5vw, 4px) clamp(4px, 1vw, 8px); border-radius: 999px;
+  border: 1px solid rgba(212,175,55,0.4);
   box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 .game-clickable { cursor: pointer; }
@@ -698,7 +698,7 @@ main { position: relative; z-index: 1; }
   .agenda { grid-template-columns: repeat(7, 1fr); gap: 12px; }
   .game-compact { min-height: 150px; }
   .game-compact .game-name { font-size: 1.1rem; }
-  .game-featured::after { top: 8px; right: 8px; font-size: 1.2rem; }
+  .game-featured::after { top: clamp(4px, 1vw, 8px); right: clamp(4px, 1vw, 8px); font-size: clamp(0.9rem, 2vw, 1.2rem); }
   .game-head { padding-right: 36px; }
 }
 @media (min-width: 1920px) {
@@ -709,7 +709,7 @@ main { position: relative; z-index: 1; }
   .game-rules li { font-size: 1.05rem; }
   .game-compact { min-height: 180px; }
   .game-compact .game-name { font-size: 1.2rem; }
-  .game-featured::after { top: 10px; right: 10px; font-size: 1.4rem; }
+  .game-featured::after { top: clamp(6px, 1vw, 10px); right: clamp(6px, 1vw, 10px); font-size: clamp(1rem, 2vw, 1.4rem); }
   .game-head { padding-right: 44px; }
 }
 @media (orientation: portrait) and (max-width: 600px) {
