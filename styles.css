@@ -338,6 +338,13 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 .bet-list { list-style: none; padding: 0; max-width: 520px; margin: 12px auto 0; text-align: left; }
 .bet-list li { padding: 8px 12px; margin-bottom: 6px; background: var(--card); border: 1px solid var(--card-border); border-radius: 8px; }
 .bet-list li::before { content: "♠ "; color: var(--gold); }
+/* ---------- Birthday bet screen height ---------- */
+@media (min-width: 1281px) {
+  .bet-block.bet-birthday { min-height: 420px; }
+}
+@media (min-width: 1920px) {
+  .bet-block.bet-birthday { min-height: 520px; }
+}
 .birthday-bet-item { padding: 10px 12px; margin-bottom: 8px; background: var(--card); border: 1px solid var(--card-border); border-radius: 8px; }
 .birthday-bet-item strong { color: var(--gold); display: block; margin-bottom: 4px; }
 .bet-sublist { margin: 4px 0 0 18px; padding: 0; list-style: disc; }
@@ -370,6 +377,8 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
 
 /* ---------- Place Your Bet ---------- */
 /* ---------- KBC screen ---------- */
+.question-backdrop { background: #e8f0e8; border-radius: 8px; padding: 12px 16px; margin-bottom: 12px; }
+.question-backdrop .bet-question { color: #1a3a2a; margin: 0; }
 .bet-board { text-align: center; max-width: 600px; margin: 0 auto; }
 .kbc-screen { background: linear-gradient(180deg, #0a1f44 0%, #06122b 100%); border: 2px solid #d4af37; border-radius: 12px; padding: 24px; color: #fff; max-width: 980px; margin: 0 auto; }
 .kbc-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; gap: 12px; }

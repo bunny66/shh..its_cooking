@@ -1,42 +1,133 @@
 "use strict";
-  // Birthday Boy gate
-  const bbEnterBtn = $("#bbEnterBtn");
-  const bbName = $("#bbName");
-  const bbPin = $("#bbPin");
-  const bbError = $("#bbError");
-  const bbList = $("#birthdayBetList");
-  const bbGate = $("#birthdayGate");
-  const expectedBbPin = (window.CONFIG && window.CONFIG.birthdayPin) || "9999";
-  if (bbEnterBtn) {
-    bbEnterBtn.addEventListener("click", async () => {
-      const pin = (bbPin && bbPin.value.trim()) || "";
-      const name = (bbName && bbName.value.trim()) || "";
-      if (pin !== expectedBbPin) {
-        if (bbError) bbError.textContent = "Wrong PIN. Try again.";
-        return;
-      }
-      if (!name) {
-        if (bbError) bbError.textContent = "Please enter your name.";
-        return;
-      }
-      if (bbError) bbError.textContent = "";
-      // render questions now
-      if (bbList) {
-        let data = [];
-        if (location.protocol !== 'file:') {
-          try {
-            const res = await fetch('birthday-bets.json');
-            if (res.ok) data = await res.json();
-          } catch (e) {}
-        }
-        if (!data.length) data = (window.FALLBACK_BIRTHDAY_BETS || []);
-        bbList.innerHTML = data.map((q, i) => {
-          const opts = (q.options || []).map((o) => '<li class="bet-option-item">' + esc(o) + '</li>').join("");
-          return '<li class="birthday-bet-item"><strong>' + (i + 1) + '. ' + esc(q.question) + '</strong><ul class="bet-sublist">' + opts + '</ul></li>';
+const bbEnterBtn = document.querySelector("#bbEnterBtn");
+const bbName = document.querySelector("#bbName");
+const bbPin = document.querySelector("#bbPin");
+const bbError = document.querySelector("#bbError");
+const bbGate = document.querySelector("#birthdayGate");
+const bbQuiz = document.querySelector("#bbQuiz");
+const bbQuestion = document.querySelector("#bbQuestion");
+const bbOptions = document.querySelector("#bbOptions");
+const bbLockBtn = document.querySelector("#bbLockBtn");
+const bbResult = document.querySelector("#bbResult");
+const bbProgress = document.querySelector("#bbProgress");
+const bbSubmitBtn = document.querySelector("#bbSubmitBtn");
+const bbSummary = document.querySelector("#bbSummary");
+const bbSummaryList = document.querySelector("#bbSummaryList");
+const bbThanks = document.querySelector("#bbThanks");
+
+const expectedBbPin = (window.CONFIG && window.CONFIG.birthdayPin) || "9999";
+let bbQuestions = [];
+let bbIndex = 0;
+let bbAnswers = [];
+let bbAnswered = false;
+
+async function loadBbQuestions() {
+  let data = [];
+  if (location.protocol !== 'file:') {
+    try {
+      const res = await fetch('birthday-bets.json');
+      if (res.ok) data = await res.json();
+    } catch (e) {}
+  }
+  if (!data.length) data = window.FALLBACK_BIRTHDAY_BETS || [];
+  return data;
+}
+
+function renderBbQuestion() {
+  if (!bbQuestions.length) return;
+  const q = bbQuestions[bbIndex];
+  if (bbQuestion) bbQuestion.textContent = q.question;
+  if (bbOptions) {
+    bbOptions.innerHTML = "";
+    const ul = document.createElement("ul");
+    ul.className = "photo-checklist";
+    ul.style.maxWidth = "100%";
+    q.options.forEach((o, i) => {
+      const li = document.createElement("li");
+      const label = document.createElement("label");
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.value = String(i);
+      label.appendChild(cb);
+      label.appendChild(document.createTextNode(" " + o));
+      li.appendChild(label);
+      ul.appendChild(li);
+    });
+    bbOptions.appendChild(ul);
+  }
+  if (bbResult) bbResult.textContent = "";
+  bbAnswered = false;
+  if (bbProgress) bbProgress.textContent = "Question " + (bbIndex + 1) + " of " + bbQuestions.length;
+  if (bbLockBtn) {
+    bbLockBtn.style.display = "";
+    bbLockBtn.textContent = (bbIndex >= bbQuestions.length - 1) ? "Submit ▶" : "Next Question ▶";
+  }
+  if (bbSubmitBtn) bbSubmitBtn.style.display = "none";
+}
+
+if (bbEnterBtn) {
+  bbEnterBtn.addEventListener("click", async () => {
+    const pin = (bbPin && bbPin.value.trim()) || "";
+    const name = (bbName && bbName.value.trim()) || "";
+    if (pin !== expectedBbPin) {
+      if (bbError) bbError.textContent = "Wrong PIN. Try again.";
+      return;
+    }
+    if (!name) {
+      if (bbError) bbError.textContent = "Please enter your name.";
+      return;
+    }
+    if (bbError) bbError.textContent = "";
+    bbQuestions = await loadBbQuestions();
+    bbIndex = 0;
+    bbAnswers = [];
+    if (bbGate) bbGate.style.display = "none";
+    if (bbQuiz) bbQuiz.style.display = "";
+    renderBbQuestion();
+  });
+}
+
+if (bbLockBtn) {
+  bbLockBtn.addEventListener("click", () => {
+    const checked = Array.from(bbOptions.querySelectorAll('input[type="checkbox"]:checked')).map((c) => parseInt(c.value, 10));
+    if (!checked.length) {
+      if (bbResult) bbResult.textContent = "Pick at least one option!";
+      return;
+    }
+    bbAnswered = true;
+    bbAnswers[bbIndex] = checked;
+    bbOptions.querySelectorAll('input[type="checkbox"]').forEach((c) => { c.disabled = true; });
+    if (bbResult) bbResult.textContent = "";
+    if (bbIndex >= bbQuestions.length - 1) {
+      // last question: submit directly
+      if (bbQuiz) bbQuiz.style.display = "none";
+      if (bbSummary) bbSummary.style.display = "";
+      if (bbSummaryList) {
+        bbSummaryList.innerHTML = bbQuestions.map((q, i) => {
+          const ans = (bbAnswers[i] && bbAnswers[i].length) ? bbAnswers[i].map((idx) => q.options[idx]).join(", ") : "—";
+          return '<div style="margin-bottom:8px;"><strong>' + (i + 1) + '. ' + esc(q.question) + '</strong><br/><span style="opacity:0.85;">Your pick: ' + esc(ans) + '</span></div>';
         }).join("");
       }
-      if (bbGate) bbGate.style.display = "none";
-      if (bbList) bbList.style.display = "";
-    });
-  }
-})();
+      const endpoint = (window.CONFIG && window.CONFIG.birthdayBetsEndpoint) || "";
+      const name = (bbName && bbName.value.trim()) || "";
+      if (endpoint) {
+        const answers = bbQuestions.map((q, i) => (bbAnswers[i] || []).map((idx) => q.options[idx]));
+        fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ name: name, answers: answers, ts: new Date().toISOString() }),
+        }).then(() => {
+          if (bbThanks) bbThanks.innerHTML = 'Thanks ' + (name || '') + '! Your predictions are submitted. 🎉 <a href="https://docs.google.com/spreadsheets/d/1i2jMxx5CVeGnoat2cgX0f4qlbvH4ZxCpFpeEBSx8POM/edit" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">View the sheet</a>';
+        }).catch(() => {
+          if (bbThanks) bbThanks.textContent = "Network error. Please submit via the Google Sheet link. 🎉";
+        });
+      } else {
+        if (bbThanks) bbThanks.innerHTML = 'Thanks for playing! Your predictions are locked in. 🎉 <a href="https://docs.google.com/spreadsheets/d/1i2jMxx5CVeGnoat2cgX0f4qlbvH4ZxCpFpeEBSx8POM/edit" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">View the sheet</a>';
+      }
+    } else {
+      bbIndex++;
+      renderBbQuestion();
+    }
+  });
+}

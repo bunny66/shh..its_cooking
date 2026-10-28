@@ -80,7 +80,7 @@
       <div class="bet-block bet-birthday">
         <h3 class="section-title" style="font-size:1.3rem;"><span class="suit">♠</span> Bet on the Birthday Boy</h3>
         <p class="section-sub">Bet your play money on predictions about Ayushman. Reveal answers throughout the evening — win or lose chips!</p>
-        <div id="birthdayGate" style="margin:12px 0;">
+        <div id="birthdayGate" style="margin:12px 0;padding:40px;">
           <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;margin:8px 0;">
             <input type="text" id="bbName" placeholder="Your name" value="Test" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:180px;flex:1;" />
             <input type="password" id="bbPin" placeholder="PIN" maxlength="4" inputmode="numeric" value="9999" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:#fff;max-width:100px;letter-spacing:4px;text-align:center;" />
@@ -88,7 +88,23 @@
           </div>
           <p id="bbError" style="color:#ff6b6b;margin:4px 0;text-align:center;"></p>
         </div>
-        <ul class="bet-list" id="birthdayBetList" style="display:none;"></ul>
+        <div class="bet-board" id="bbQuiz" style="display:none;margin-top:24px;position:relative;">
+          <div class="question-backdrop">
+            <p class="bet-question" id="bbQuestion"></p>
+          </div>
+          <div class="bet-options" id="bbOptions"></div>
+          <p class="bet-result" id="bbResult"></p>
+          <div class="kbc-footer">
+            <p class="bet-score" id="bbProgress" style="margin:0;">Question 1 of 1</p>
+            <button class="btn btn-gold" id="bbLockBtn">Next Question ▶</button>
+          </div>
+        </div>
+        <div class="bet-board" id="bbSummary" style="display:none;">
+          <p class="bet-question">Your Predictions</p>
+          <div id="bbSummaryList" style="text-align:left;"></div>
+          <p class="bet-result" id="bbThanks"></p>
+        </div>
+        <p class="section-sub" style="margin-top:12px;font-size:0.8rem;opacity:0.7;">Enter PIN 9999 to play. Pick any options per question. Your picks are saved to the sheet on submit. 🎁 Exciting prize for the top predictor!</p>
       </div>
 
       <div class="bet-block">
