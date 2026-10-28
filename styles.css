@@ -305,6 +305,10 @@ main { position: relative; z-index: 1; }
 }
 .read-more-btn:hover { background: rgba(212,175,55,0.12); }
 .lightbox.game-modal { align-items: center; padding: 20px; overflow: visible; }
+@media (max-width: 480px) {
+  .lightbox.game-modal { align-items: flex-start; padding-top: 60px; }
+  .img-modal img { max-height: 60vh; }
+}
 .game-modal-body { max-width: 640px; width: 90vw; background: var(--bg-2); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 20px; color: var(--ink); max-height: 70vh; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .game-modal-body h2 { font-family: var(--font-display); color: var(--gold); margin: 0 0 8px; }
 .gm-section { margin-bottom: 14px; }
@@ -655,7 +659,7 @@ main { position: relative; z-index: 1; }
 .lightbox {
   position: fixed; inset: 0; z-index: 100;
   background: rgba(0,0,0,0.92); display: none;
-  align-items: center; justify-content: center; padding: 20px;
+  align-items: flex-start; justify-content: center; padding: 40px 20px;
   overflow-y: auto;
 }
 .lightbox.open { display: flex; }
