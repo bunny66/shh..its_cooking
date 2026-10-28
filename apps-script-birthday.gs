@@ -17,6 +17,30 @@ function doPost(e) {
 }
 
 function doGet(e) {
+  const sheetName = (e && e.parameter && e.parameter.sheet) ? String(e.parameter.sheet) : "";
+  if (sheetName === "leaderboard") {
+    const ss = SpreadsheetApp.openById('1i2jMxx5CVeGnoat2cgX0f4qlbvH4ZxCpFpeEBSx8POM');
+    const sh = ss.getSheetByName('leaderboard') || ss.getActiveSheet();
+    const values = sh.getDataRange().getValues();
+    const headers = values.length ? values[0].map(function (h) { return String(h || '').trim().toLowerCase(); }) : [];
+    const data = values.slice(1).map(function (r) {
+      const obj = {};
+      headers.forEach(function (h, i) { obj[h] = r[i]; });
+      return {
+        player: obj.player || obj.name || 'Guest',
+        chips: Number(obj.chips || obj.chip || 0),
+        remarks: obj.remarks || obj.remark || obj.note || ''
+      };
+    }).filter(function (r) { return r.player; });
+    const payload = JSON.stringify({ rows: data, headers: headers });
+    const cb = e && e.parameter && e.parameter.callback;
+    if (cb) {
+      return ContentService.createTextOutput(cb + '(' + payload + ')')
+        .setMimeType(ContentService.MimeType.JAVASCRIPT);
+    }
+    return ContentService.createTextOutput(payload)
+      .setMimeType(ContentService.MimeType.JSON);
+  }
   return ContentService.createTextOutput(JSON.stringify({ result: 'ok' }))
     .setMimeType(ContentService.MimeType.JSON);
 }
