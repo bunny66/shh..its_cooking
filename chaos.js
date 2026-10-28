@@ -14,6 +14,18 @@
     "Lucky You!",
     "Birthday Boy’s Choice"
   ];
+  const outcomeDesc = [
+    "Double the chips you just won.",
+    "Take over the playlist.",
+    "Your pick. Everyone else plays along.",
+    "A little victory toast.",
+    "Take 50 chips from anyone you choose.",
+    "Swap your chip balance with another guest.",
+    "Gift 50 chips to a guest of your choice.",
+    "Pick someone for a dance-off, sing-off, or comedy showdown. Let the battle begin!",
+    "Take another spin.",
+    "Ayushman gets to decide your fate."
+  ];
   const colors = ["#c0392b","#d4af37","#0f5132","#1a3a7a","#9c7a1a","#e74c3c","#27ae60","#8e44ad","#f39c12","#0a1f44"];
   const n = outcomes.length;
   const angle = 360 / n;
@@ -70,7 +82,7 @@
       chaosWheel.style.transform = "rotate(" + target + "deg)";
       rotation = target;
       setTimeout(() => {
-        if (chaosResult) chaosResult.textContent = "🎡 " + outcomes[idx] + "!";
+        if (chaosResult) chaosResult.innerHTML = "<span class='chaos-win'>🎡 " + outcomes[idx] + "!</span><br><span class='chaos-desc'>" + outcomeDesc[idx] + "</span>";
         spinning = false;
         spinChaosBtn.disabled = false;
         for (let i = 0; i < 25; i++) {

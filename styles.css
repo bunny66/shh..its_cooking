@@ -729,6 +729,30 @@ code { background: rgba(212,175,55,0.15); padding: 2px 6px; border-radius: 4px; 
   body { background: #fff; color: #000; }
 }
 
+/* ---------- Chaos result ---------- */
+#chaosResult {
+  background: rgba(212,175,55,0.12);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 12px;
+  min-height: 56px;
+  text-align: center;
+}
+.chaos-win {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--gold-bright);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+.chaos-desc {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: #fff;
+  line-height: 1.4;
+}
 /* ---------- Spin the Wheel of Chaos ---------- */
 .chaos-wheel-wrap {
   position: relative;
