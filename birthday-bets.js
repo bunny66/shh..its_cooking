@@ -123,6 +123,22 @@ if (bbSubmitBtn) {
         return '<div style="margin-bottom:8px;"><strong>' + (i + 1) + '. ' + esc(q.question) + '</strong><br/><span style="opacity:0.85;">Your pick: ' + esc(ans) + '</span></div>';
       }).join("");
     }
-    if (bbThanks) bbThanks.textContent = "Thanks for playing! Your predictions are locked in. 🎉";
+    const endpoint = (window.CONFIG && window.CONFIG.birthdayBetsEndpoint) || "";
+    if (endpoint) {
+      const name = (bbName && bbName.value.trim()) || "";
+      const answers = bbQuestions.map((q, i) => (bbAnswers[i] || []).map((idx) => q.options[idx]));
+      fetch(endpoint, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ name: name, answers: answers, ts: new Date().toISOString() }),
+      }).then(() => {
+        if (bbThanks) bbThanks.textContent = "Thanks " + (name || "") + "! Your predictions are submitted to the sheet. 🎉";
+      }).catch(() => {
+        if (bbThanks) bbThanks.textContent = "Network error. Please submit via the Google Sheet link. 🎉";
+      });
+    } else {
+      if (bbThanks) bbThanks.textContent = "Thanks for playing! Your predictions are locked in. (Configure birthdayBetsEndpoint in config.js to save to sheet.) 🎉";
+    }
   });
 }

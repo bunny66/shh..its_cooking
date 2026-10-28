@@ -3,4 +3,5 @@
 window.CONFIG = {
   pin: "2025",
   birthdayPin: "9999",
+  birthdayBetsEndpoint: "",
 };
