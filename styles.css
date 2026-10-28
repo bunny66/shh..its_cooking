@@ -411,7 +411,7 @@ main { position: relative; z-index: 1; }
 .kbc-option.correct .kbc-label, .kbc-option.wrong .kbc-label { background: rgba(255,255,255,0.25); color: #fff; }
 .bet-block.bet-jackpot {
   position: relative;
-  background-image: url("https://static.langimg.com/nbt/thumb/69355236/kbc.jpg?imgsize=428966&width=400&height=225&resizemode=75");
+  background-image: url("https://static.wikia.nocookie.net/millionaire/images/a/a4/KBC16_2024.png/revision/latest?cb=20241001050334");
   background-size: cover;
   background-position: center;
   border-radius: var(--radius);
