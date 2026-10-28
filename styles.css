@@ -243,23 +243,22 @@ main { position: relative; z-index: 1; }
 /* ---------- Agenda ---------- */
 .agenda {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 10px;
 }
-.agenda-item { white-space: nowrap; }
-.agenda-label { font-size: 0.95rem; }
+.agenda-item { white-space: normal; }
 .agenda-item {
   background: var(--card); border: 1px solid var(--card-border);
-  border-radius: var(--radius); padding: 20px 10px; text-align: center;
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  border-radius: var(--radius); padding: 16px 8px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
   transition: transform .2s ease, border-color .2s;
 }
 .agenda-item:hover { transform: translateY(-4px); border-color: var(--gold); }
 .game.expanded { height: auto; max-height: none; }
 .game.expanded .game-rules { display: flex !important; }
 
-.agenda-icon { font-size: 2rem; }
-.agenda-label { font-family: var(--font-display); font-size: 1.1rem; color: var(--gold); }
+.agenda-icon { font-size: clamp(1.4rem, 3vw, 2rem); }
+.agenda-label { font-family: var(--font-display); font-size: clamp(0.7rem, 1.5vw, 1rem); color: var(--gold); line-height: 1.2; }
 /* ---------- Bet block container ---------- */
 .bet-block {
   background: var(--card); border: 1px solid var(--card-border);
@@ -666,10 +665,10 @@ main { position: relative; z-index: 1; }
   .menu-btn { display: block; }
   .hero-chips { display: none; }
   .gallery { grid-template-columns: repeat(2, 1fr); }
-  .agenda { grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 8px; }
+  .agenda { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; }
   .agenda-item { padding: 12px 6px; }
-  .agenda-icon { font-size: 1.5rem; }
-  .agenda-label { font-size: 0.9rem; }
+  .agenda-icon { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
+  .agenda-label { font-size: clamp(0.65rem, 1.4vw, 0.85rem); }
   .btn { padding: 8px 12px; font-size: 0.8rem; }
   .section-title { font-size: 1.3rem; }
   .more-link-wrap .btn { font-size: 0.8rem; padding: 6px 10px; }
@@ -756,6 +755,21 @@ main { position: relative; z-index: 1; }
   line-height: 1.4;
 }
 /* ---------- Spin the Wheel of Chaos ---------- */
+.bet-block.chaos-curtain {
+  position: relative;
+  background-image: url("https://images.stockcake.com/public/d/8/2/d8209dd7-5d79-4a33-8e40-ea9fda98f509_large/elegant-theater-curtain-stockcake.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.bet-block.chaos-curtain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6,36,26,0.75), rgba(6,36,26,0.85));
+  z-index: 0;
+}
+.bet-block.chaos-curtain > * { position: relative; z-index: 1; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
 .chaos-wheel-wrap {
   position: relative;
   width: clamp(280px, 42vw, 460px);

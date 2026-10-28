@@ -18,15 +18,14 @@ window.CONTENT = {
   rsvpEndpoint: "https://script.google.com/macros/s/AKfycbyNew4GwEdWKjmfuPas4Omea_x4oqKl5D8SE0yvjsaorf-LPHGDCM9q8ByVnZzrmYR7VA/exec", // Google Apps Script web app URL to save RSVPs to the sheet
 
   agenda: [
-    // Add optional image per item to make it clickable, e.g.:
-    // { icon: "🤝", label: "Meet", image: "assets/meet.jpg" },
-    { icon: "🤝", label: "Meet & Greet" },
-    { icon: "🍽️", label: "Eat" },
-    { icon: "🥂", label: "Drink" },
-    { icon: "🎰", label: "Games" },
-    { icon: "💃", label: "Dance" },
-    { icon: "📸", label: "Photobooth" },
-    { icon: "🎂", label: "Cake" },
+    { icon: "🤝", label: "Join the House" },
+    { icon: "🍽️", label: "Fuel the Players" },
+    { icon: "🥂", label: "Raise the Stakes" },
+    { icon: "🎲", label: "Party Games" },
+    { icon: "🎰", label: "Place Your Bets" },
+    { icon: "💃", label: "Hit the Floor" },
+    { icon: "📸", label: "Capture the Evidence" },
+    { icon: "🎂", label: "The Birthday Jackpot" },
   ],
 
   artifacts: [
