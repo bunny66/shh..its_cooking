@@ -96,7 +96,6 @@ if (bbLockBtn) {
     bbAnswered = true;
     bbAnswers[bbIndex] = checked;
     bbOptions.querySelectorAll('input[type="checkbox"]').forEach((c) => { c.disabled = true; });
-    if (bbResult) bbResult.textContent = "Locked: " + checked.map((i) => bbQuestions[bbIndex].options[i]).join(", ");
     if (bbLockBtn) bbLockBtn.style.display = "none";
     if (bbIndex >= bbQuestions.length - 1) {
       if (bbSubmitBtn) bbSubmitBtn.style.display = "";
