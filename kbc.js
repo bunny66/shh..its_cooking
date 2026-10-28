@@ -126,6 +126,17 @@
       if (nextQBtn) nextQBtn.style.display = "none";
     });
   }
+  // KBC intro: prize ladder + bet + enter game
+  const kbcIntro = $("#kbcIntro");
+  const betQuiz = $("#betQuiz");
+  const introChips = $("#introChips");
+  const introSelected = $("#introSelected");
+  const enterGameBtn = $("#enterGameBtn");
+  const playerNameInput = $("#playerNameInput");
+  const pinInput = $("#pinInput");
+  const pinError = $("#pinError");
+  let introBet = null;
+  let playerName = "";
   (async () => {
     if (location.protocol !== 'file:') {
       try {
@@ -138,17 +149,7 @@
     if (betChips) makeChips(betChips, (v) => { selectedBet = v; if (betSelected) betSelected.textContent = "Selected: " + v.toLocaleString("en-IN"); });
   })();
 
-  // KBC intro: prize ladder + bet + enter game
-  const kbcIntro = $("#kbcIntro");
-  const betQuiz = $("#betQuiz");
-  const introChips = $("#introChips");
-  const introSelected = $("#introSelected");
-  const enterGameBtn = $("#enterGameBtn");
-  const playerNameInput = $("#playerNameInput");
-  const pinInput = $("#pinInput");
-  const pinError = $("#pinError");
-  let introBet = null;
-  let playerName = "";
+
 
   function prizeValue(str) {
     if (!str) return 0;
