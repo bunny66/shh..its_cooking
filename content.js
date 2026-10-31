@@ -89,7 +89,7 @@ window.CONTENT = {
         "Caller draws numbers; players mark matches on their ticket.",
         "First to complete a row/column wins a line prize; full house wins the jackpot.",
         "Casino twist: bonus prizes for corners, star, and top/bottom lines.",
-        "House (Ayushman) calls the numbers — keep your tickets ready!",
+        "Ayushman won't call the numbers, but someone will — or we'll use an app to call them. Keep your tickets ready!",
       ],
     },
     {
