@@ -33,9 +33,10 @@
           return;
         }
         var rank = 0;
+        var all500 = mapped.every(function (r) { return r.chips === 500; });
         body.innerHTML = mapped.map(function (r, i) {
           if (i === 0 || r.chips < mapped[i - 1].chips) rank = i + 1;
-          var medal = rank === 1 ? "🥇 " : rank === 2 ? "🥈 " : rank === 3 ? "🥉 " : "";
+          var medal = all500 ? "" : (rank === 1 ? "🥇 " : rank === 2 ? "🥈 " : rank === 3 ? "🥉 " : "");
           return "<tr style='border-bottom:1px solid rgba(255,255,255,0.08);'>" +
             "<td style='padding:10px;'>" + rank + "</td>" +
             "<td style='padding:10px;'>" + medal + escapeHtml(r.player) + "</td>" +
