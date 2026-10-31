@@ -84,7 +84,9 @@
       chaosWheel.style.transform = "rotate(" + target + "deg)";
       rotation = target;
       setTimeout(() => {
-        if (chaosResult) { chaosResult.style.display = "block"; chaosResult.innerHTML = "<span class='chaos-win'>🎡 " + outcomes[idx] + "!</span><br><span class='chaos-desc'>" + outcomeDesc[idx] + "</span>"; }
+        const finalRot = ((target % 360) + 360) % 360;
+        const winIdx = Math.floor(((360 - finalRot) % 360) / angle) % n;
+        if (chaosResult) { chaosResult.style.display = "block"; chaosResult.innerHTML = "<span class='chaos-win'>🎡 " + outcomes[winIdx] + "!</span><br><span class='chaos-desc'>" + outcomeDesc[winIdx] + "</span>"; }
         if (chaosNote) chaosNote.style.display = "block";
         spinning = false;
         spinChaosBtn.disabled = false;
