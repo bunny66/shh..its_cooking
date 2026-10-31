@@ -128,7 +128,13 @@
   const musicEmpty = $("#musicEmpty");
   const playlistsAll = Array.isArray(C.playlists) ? C.playlists : [];
   const limitAttr = playlistsGrid ? playlistsGrid.getAttribute("data-limit") : null;
-  const playlists = limitAttr ? playlistsAll.slice(0, parseInt(limitAttr, 10)) : playlistsAll;
+  let playlists = playlistsAll;
+  if (limitAttr === "responsive") {
+    const isMobile = window.matchMedia("(max-width: 480px)").matches;
+    playlists = playlistsAll.slice(0, isMobile ? 3 : 6);
+  } else if (limitAttr) {
+    playlists = playlistsAll.slice(0, parseInt(limitAttr, 10));
+  }
   if (playlistsGrid) {
     if (playlists.length === 0) {
       if (musicEmpty) musicEmpty.hidden = false;
