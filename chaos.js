@@ -1,6 +1,7 @@
 "use strict";
   const spinChaosBtn = $("#spinChaosBtn");
   const chaosResult = $("#chaosResult");
+  const chaosNote = $("#chaosNote");
   if (chaosResult) chaosResult.style.display = "none";
   const chaosWheel = $("#chaosWheel");
   const outcomes = [
@@ -42,9 +43,9 @@
       span.className = "chaos-label";
       span.textContent = label;
       const mid = i * angle + angle / 2;
-      const rad = (mid - 90) * Math.PI / 180;
-      const x = Math.cos(rad) * r;
-      const y = Math.sin(rad) * r;
+      const rad = (mid * Math.PI) / 180;
+      const x = Math.sin(rad) * r;
+      const y = -Math.cos(rad) * r;
       span.style.left = "calc(50% + " + x + "px)";
       span.style.top = "calc(50% + " + y + "px)";
       span.style.transform = "translate(-50%, -50%) rotate(" + mid + "deg)";
@@ -84,6 +85,7 @@
       rotation = target;
       setTimeout(() => {
         if (chaosResult) { chaosResult.style.display = "block"; chaosResult.innerHTML = "<span class='chaos-win'>🎡 " + outcomes[idx] + "!</span><br><span class='chaos-desc'>" + outcomeDesc[idx] + "</span>"; }
+        if (chaosNote) chaosNote.style.display = "block";
         spinning = false;
         spinChaosBtn.disabled = false;
         for (let i = 0; i < 6; i++) {
