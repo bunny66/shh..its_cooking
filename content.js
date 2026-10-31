@@ -88,7 +88,6 @@ window.CONTENT = {
         "Casino-themed Tambola (Housie). Each player gets a ticket with 4 rows of 4 numbers.",
         "Caller draws numbers; players mark matches on their ticket.",
         "Prizes for each completed row, Early 7, 4 corners, and Full House (jackpot).",
-        "Ayushman won't call the numbers, but someone will — or we'll use an app to call them. Keep your tickets ready!",
       ],
     },
     {
