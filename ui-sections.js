@@ -130,7 +130,7 @@
   const limitAttr = playlistsGrid ? playlistsGrid.getAttribute("data-limit") : null;
   let playlists = playlistsAll;
   if (limitAttr === "responsive") {
-    const isMobile = window.matchMedia("(max-width: 480px)").matches;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
     playlists = playlistsAll.slice(0, isMobile ? 3 : 6);
   } else if (limitAttr) {
     playlists = playlistsAll.slice(0, parseInt(limitAttr, 10));
